@@ -1,6 +1,7 @@
 body{
 	background-color: #d3e9f7;
 	font-family: GillSans, Calibri, Trebuchet, sans-serif;
+	min-height: 100%;
 }
 
 .cabezero{
@@ -51,15 +52,7 @@ body{
 	margin-left: 250px;
 	text-align: left;
 }
-.footer {
-	
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding: 1rem;
-	background-color: #efefef;
-	text-align: center;
-}
+
 .subindice{
 	vertical-align: sub;
 	font-size: 10px;
@@ -76,4 +69,16 @@ body{
 .superindice{
 	vertical-align:super;
 	font-size: 10px;
+}
+.contenedor{
+	overflow: auto;
+}
+footer{
+	position: relative;
+	left: 0;
+	bottom: 0%;
+	width: 100%;
+	text-align: right;
+	background-color: #efefef;
+	text-align: center;
 }
