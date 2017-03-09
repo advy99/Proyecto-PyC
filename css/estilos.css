@@ -1,0 +1,79 @@
+body{
+	background-color: #d3e9f7;
+	font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
+.cabezero{
+	text-align:center;
+	font-weight: bold;
+	font-size: 30px;
+}
+.cabezero a{
+	color: #3f4542;
+}
+.cabezero a:link,.cabezero a:visited{
+	text-decoration: none;
+}
+.cabezeroMenu{
+	font-size: 20px;
+	text-indent: 18px;
+}
+.menu_izq{
+	float: left;
+	width: 200px;
+	background-color: #54a2d4;
+	text-align: left;
+}
+.menu_izq a{
+	text-decoration: none;
+	display: block;
+	color: #32393c;
+
+}
+.menu_izq a:link,.table_izq a:visited{
+	text-decoration: none;
+}
+.menu_izq a:hover{
+	background-color: #3e5857;
+	color: #e4ee92;
+
+}
+.menu_izq ul{
+	list-style-type: none;
+	font-weight: bold;
+	padding-left: 10%;
+	font-size: 16px;
+}
+#algebra, #geometria{
+	padding-left: 12%;
+}
+.contenido{
+	margin-left: 250px;
+	text-align: left;
+}
+.footer {
+	
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: #efefef;
+	text-align: center;
+}
+.subindice{
+	vertical-align: sub;
+	font-size: 10px;
+}
+.matriz{
+	text-align: center;
+	margin: auto; 
+	display: inline;
+	word-spacing: 5px;
+}
+.parentesisMatriz{
+	font-size: 30px;
+}
+.superindice{
+	vertical-align:super;
+	font-size: 10px;
+}

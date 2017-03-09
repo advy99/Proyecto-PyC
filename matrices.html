@@ -1,0 +1,246 @@
+<html>
+	<meta charset="UTF-8" />
+	<head>
+		<title>Matematicas 2ºBachillerato</title>
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script type="text/javascript" src="javascript/javascript.js"></script>
+	</head>
+	<body>
+		<div class="cabezero"><h2><a href="index.html">Matematicas 2º Bachillerato</a></h2></div>
+		<div>
+			<div class="menu_izq">
+				<ul>
+					<li class="cabezeroMenu">Temario</li>
+					<li><a name="algebra" onclick="pulsarMenu(this.name)">Álgebra</a>
+						<div id="algebra" style="display: none;">
+							<ul>
+								<li><a href="matrices.html">Matrices</a></li>
+								<li><a href="determinantes.html">Determinantes</a></li>
+								<li><a href="sistemasEcuaciones.html">Sistemas de ecuaciones</a></li>
+							</ul>
+						</div>
+					</li>
+					<li><a name="geometria" onclick="pulsarMenu(this.name)">Geometria</a>
+						<div id="geometria" style="display: none;">
+							<ul>
+								<li><a href="vectores.html">Vectores</a></li>
+								<li><a href="ecuacionesRecta.html">Ecuaciones y posiciones de dos rectas en el espacio</a></li>
+								<li><a href="ecuacionesPlano.html">Ecuaciones del plano</a></li>
+								<li><a href="distancias.html">Distancias, areas y volumen</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="cabezeroMenu"><a onclick="manual();" style="color:black;">Manual</a></li>
+					<li class="cabezeroMenu">Sitios de interes</li>
+					<li><a href="http://www.juntadeandalucia.es/averroes/centros-tic/23000106/moodle2/"><img src="img/ies.gif" height="100" width="100" style="float: left;"><span style="float: right;padding-top: 25%;">Moodle 2</span></a></li>
+					<li><a href="http://www.unicoos.com/"><img src="img/unicoos.jpe" height="100" width="100" style="float:left;"><span style="float: right;padding-top: 25%;">Unicoos</span></a></li>
+				</ul>
+			</div>
+			<div class="contenido">
+				<h3>Matrices</h3>
+				<p>Se llama matriz de orden nxm a toda ordenación de n.m números ordenados en n
+
+					filas y m columnas. Se suelen llamar con letras mayúsculas A = (a<span class="subindice">ij</span>), 1 ≤ i ≤ n, 1 ≤
+
+				j ≤ m. El subíndice i indica el número de fila y el j el número de columna.</p>
+				<p>Ejemplo: A<span class="subindice">2x3</span> =
+				<table class="matriz">
+					<tr>
+						<td rowspan="2" class="parentesisMatriz">(</td>
+						<td>a<span class="subindice">11</span></td>
+						<td>a<span class="subindice">12</span></td>
+						<td>a<span class="subindice">13</span></td>
+						<td rowspan="2" class="parentesisMatriz">)</td>
+						<td rowspan="2">=</td>
+						<td rowspan="2" class="parentesisMatriz">(</td>
+						<td>1</td>
+						<td>0</td>
+						<td>-1</td>
+						<td rowspan="2" class="parentesisMatriz">)</td>
+
+					</tr>
+					<tr>
+						<td>a<span class="subindice">21</span></td>
+						<td>a<span class="subindice">22</span></td>
+						<td>a<span class="subindice">23</span></td>
+
+						<td>2</td>
+						<td>3</td>
+						<td>√2</td>
+					</tr>
+
+				</table>
+				</p>
+				<p>Tipos de matrices:</p>
+				<ul>
+					<li>Matriz fila, aquella donde m=0. Ej:(10 5 3 2)</li>
+					<li>Matriz columna, aquella donde n=0
+					Ej
+						<table class="matriz">
+							<tr>
+								<td rowspan="4" class="parentesisMatriz">(</td>
+								<td>5</td>
+								<td rowspan="4" class="parentesisMatriz">)</td>
+							</tr>
+							<tr>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>3</td>
+							</tr>
+							<tr>
+								<td>-8</td>
+							</tr>
+						</table>
+					</li>
+					<li>Matriz cuadrada, aquella donde n=m y se expresa como A<span class="subindice">n</span>.</li>
+					<li>Matriz opuesta, aquella donde todos sus elementos están cambiados de signo, es
+
+					decir, -A=
+					<table style="display: inline;">
+						<tr>
+							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td>-1</td>
+							<td>0</td>
+							<td>1</td>
+							<td rowspan="2" class="parentesisMatriz">)</td>
+						</tr>
+						<tr>
+							<td>-2</td>
+							<td>-3</td>
+							<td>-√2</td>
+						</tr>
+					</table>
+
+
+					</li>
+				
+					<li>
+						Matriz traspuesta, aquella donde se cambian los elementos de las filas por las columnas, y se escribirá A<span class="superindice">t</span>.=
+						<table style="display: inline;">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td>1</td>
+								<td>2</td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+							</tr>
+							<tr>
+								<td>0</td>
+								<td>3</td>
+							</tr>
+							<tr>
+								<td>-1</td>
+								<td>√2</td>
+							</tr>
+						</table>
+					</li>
+					<li>Matriz nula, aquella donde todos sus elementos son 0.</li>
+				</ul>
+				<p>Dentro de las matrices cuadradas de orden n, se tiene como elementos significativos, la Diagonal principal y secundaria, <span style="font-weight: bold;">matriz triangular superior</span> si a<span class="subindice">ij</span> = 0,
+					i > j, <span style="font-weight: bold;">matriz triangular inferior</span> si a<span class="subindice">ij</span>= 0, i < j, <span style="font-weight: bold;">matriz diagonal</span> si a<span class="subindice">ij</span> = 0,si i =
+					j, y por último, <span style="font-weight: bold;">matriz simétrica</span> si a<span class="subindice">ij</span>= a<span class="subindice">ij</span>.</p>
+
+				<h3>Operaciones con matrices</h3>
+				<p>Igualdad de matrices.- Dos matrices son iguales si lo son término a término, es
+					decir, A<span class="subindice">nxm</span> = (a<span class="subindice">ij</span>) , B<span class="subindice">nxm</span> = (b<span class="subindice">ij</span>), A = B ⇔ a<span class="subindice">ij</span>= b<span class="subindice">ij</span> ∀i, j.
+				</p>
+				<p>
+					Suma.- Deben de tener la misma dimensión es decir nxm. y se sumarían elemento
+					a elemento, es decir,
+					A<span class="subindice">nxm</span> = (a<span class="subindice">ij</span>) , B<span class="subindice">nxm</span>= (b<span class="subindice">ij</span>) , A<span class="subindice">nxm</span> + B<span class="subindice">nxm</span> = (a<span class="subindice">ij</span>+ b<span class="subindice">ij</span>).
+				</p>
+				<p>Por ejemplo
+					<table class="matriz">
+						<tr>
+							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td>1</td>
+							<td>0</td>
+							<td>-1</td>
+							<td rowspan="2" class="parentesisMatriz">)</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>3</td>
+							<td>√2</td>
+						</tr>
+					</table>
+					+
+					<table class="matriz">
+						<tr>
+							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td>-1</td>
+							<td>7</td>
+							<td>0</td>
+							<td rowspan="2" class="parentesisMatriz">)</td>
+						</tr>
+						<tr>
+							<td>-2</td>
+							<td>4</td>
+							<td>0</td>
+						</tr>
+					</table>
+					=
+					<table class="matriz">
+						<tr>
+							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td>0</td>
+							<td>7</td>
+							<td>0</td>
+							<td rowspan="2" class="parentesisMatriz">)</td>
+						</tr>
+						<tr>
+							<td>0</td>
+							<td>7</td>
+							<td>√2</td>
+						</tr>
+					</table>
+
+				</p>
+				<p>Verifican las propiedades de asociativa, conmutativa, elemento neutro y opuesto</p>
+				<p>Producto de un número real por una matriz.- Para multiplicar un escalar λ por
+					una matriz A, basta con multiplicarlo por cada uno de sus elementos, es decir,
+					λ · A<span class="subindice">nxm</span> = (λ · a<span class="subindice">ij</span>)
+				</p>
+				<p>Por ejemplo:</p>
+				<p>
+					<table class="matriz">
+						<tr>
+							<td rowspan="2">2*</td>
+							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td>4</td>
+							<td>6</td>
+							<td>2</td>
+							<td rowspan="2" class="parentesisMatriz">)</td>
+							<td rowspan="2">=</td>
+							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td>8</td>
+							<td>12</td>
+							<td>2</td>
+							<td rowspan="2" class="parentesisMatriz">)</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>9</td>
+							<td>7</td>
+
+							<td>4</td>
+							<td>18</td>
+							<td>14</td>
+						</tr>
+
+					</table>
+
+				</p>
+				<p>
+					Las matrices con esas dos operaciones tiene estructura de Espacio Vectorial (Ya veremos lo que significa).
+				</p>
+				<p>
+					Producto y potencia de matrices.- Para multiplicar dos matrices, ya no es tan intuitivo, se construye la multiplicación de la siguinete forma:
+				</p>
+				<p></p>
+			</div>
+		</div>
+		<div class="footer" class="footer"><p>Antonio David Villegas Yeguas 2ºBachillerato A</p>
+		</div>
+	</body>
+</html>
