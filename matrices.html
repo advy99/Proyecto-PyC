@@ -237,7 +237,79 @@
 				<p>
 					Producto y potencia de matrices.- Para multiplicar dos matrices, ya no es tan intuitivo, se construye la multiplicación de la siguinete forma:
 				</p>
-				<p></p>
+				<p>A<span class="subindice">nxm</span> · B<span class="subindice">mxp</span>= C<span class="subindice">nxp</span>, donde cada c<span class="subindice">ik</span>=</p>
+				<p>
+					<table style="display: inline;">
+						<tr>
+							<td><span class="subindice">m</span></td>
+							<td rowspan="3">a<span class="subindice">ij</span> · b<span class="subindice">jk</span> = a<span class="subindice">i1</span> · b<span class="subindice">1k</span> + a<span class="subindice">i2</span> · b<span class="subindice">2k</span> +...+ a<span class="subindice">im</span> · b<span class="subindice">mk</span></td>
+						</tr>
+						<tr>
+							<td>&sum;</td>
+						</tr>
+						<tr>
+							<td><span class="subindice">j=1</span></td>
+
+						</tr>
+					</table>
+				</p>
+				<p>Por ejemplo:
+					<table class="matriz">
+						<tr>
+							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td>1</td>
+							<td>0</td>
+							<td>-1</td>
+							<td rowspan="2" class="parentesisMatriz">)</td>
+							<td rowspan="2">.</td>
+							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td>1</td>
+							<td>0</td>
+							<td rowspan="2" class="parentesisMatriz">)</td>
+							<td rowspan="2">=</td>
+							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td>1</td>
+							<td>1</td>
+							<td rowspan="2" class="parentesisMatriz">)</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>3</td>
+							<td>√2</td>
+							
+							<td>-1</td>
+							<td>0</td>
+							
+							<td>-1</td>
+							<td>-√2</td>
+						</tr>
+						<tr>
+							<td colspan="7"></td>
+							<td>0</td>
+							<td>-1</td>
+						</tr>
+					</table>
+
+				</p>
+				<p>
+					Como sepuede observar, no es conmutativa la multiplicación de matrices, pero
+					verifica las siguientes propiedades:
+				</p>
+				<div style="text-indent: 30px;">
+					<p>a) A(BC)=(AB)C (Asociativa)</p>
+					<p>b) A(B+C)=AB+AC (Distributiva)</p>
+					<p>c) (A+B)C=AC+BC</p>
+					<p>d) (AB)<span class="superindice">t</span> = B<span class="superindice">t</span>A<span class="superindice">t</span></p>
+				</div>
+				<p>Otras propiedades de la matriz traspuesta con respecto a las operaciones definidas son:</p>
+				<ul>
+					<li>(A<span class="superindice">t</span>)<span class="superindice">t</span> = A</li>
+					<li>(A + B)<span class="superindice">t</span> = A<span class="superindice">t</span> + B<span class="superindice">t</span></li>
+				</ul>
+				<p>Matriz inversa.- Si consideramos solamente las matrices cuadradas, donde existe matriz unidad o Identidad, se puede hablar de matriz inversa por la izquierda y por la derecha, a aquella que al multiplicarla por la matriz me da la Identidad, es decir,</p>
+				<p>A<span class="superindice">−1</span>A = AA<span class="superindice">−1</span> = I</p>
+				<p>Si la matriz cuadrada tiene inversa se dice regular y si no singular, más adelante calcularemos matrices inversas de forma más metódica que por el método de Gauss-Jordan.</p>
+				<p>Para resolver sistemas y ecuaciones matriciales, basta con conocer las propiedades de los productos y las sumas.</p>
 			</div>
 		</div>
 		<footer id="footer"><p>Antonio David Villegas Yeguas 2ºBachillerato A</p>
