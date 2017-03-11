@@ -24,6 +24,7 @@ body{
 	width: 200px;
 	background-color: #54a2d4;
 	text-align: left;
+	height: 100%
 }
 .menu_izq a{
 	text-decoration: none;

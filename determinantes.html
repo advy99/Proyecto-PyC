@@ -98,7 +98,7 @@
 				<p>
 					<img src="img/sarrus.png">
 				</p>
-				<p>Propiedades de los determinantes.-</p>
+				<h3>Propiedades de los determinantes.-</h3>
 				<ul>
 					<li>El determinante de la matriz nula es 0 y el de la Identidad es 1.</li>
 					<li>El determinante de una matriz es igual al de su traspuesta.</li>
@@ -114,6 +114,49 @@
 				</ul>
 				<p>Una matriz se dice regular si su determinante es no nulo.</p>
 				<p>Si la matriz es de orden mayor a tres, se utilizan estas propiedades para conseguir ceros y aplicar el desarrollo por sus adjuntos mucho mś facilmente (Regla de Chio).</p>
+				<h3>Desarrollo de un determinate por los elementos de una línea.-</h3>
+				<p>Sea A una matriz cuadrada de orden n.</p>
+				<p>Se llama <span style="font-weight: bold;">submatriz complementaria</span> del elemento a<span class="subindice">ij</span> de una matriz, a la de orden 1 menos, que se obtiene de la anterior, eliminando la fila y la columna que contienen a dicho elemento.La vamos a expresar por α<span class="subindice">ij</span>.</p>
+				<p>Se llama <span style="font-weight: bold;">menor complementario del elemento a<span class="subindice">ij</span></span>, al determinante de la submatriz complementaria, es decir, |α<span class="subindice">ij</span>|.</p>
+				<p>Se llama <span style="font-weight: bold;">adjunto del elemento a<span class="subindice">ij</span></span> y se nota A<span class="subindice">ij</span>= ( − 1)<span class="superindice">i+j</span>·|α<span class="subindice">ij</span>|.</p>
+				<p>Si cada elemento de la matriz A la sustituimos por su adjunto, obtenemos la <span style="font-weight: bold;">matriz adjunta de A</span> que se notará Adj(A).</p>
+				<p>Si A es una matriz cuadrada de orden n, su determinante es la suma de los productos de los elementos de una línea por sus adjuntos respectivos.</p>
+				<h3>Cálculo de la matriz inversa.-</h3>
+				<p>Siempre que sea regular, es decir, su determinante sea distinto de cero, tiene inversa y su valor es:</p>
+				<p>
+					<table style="margin: auto;">
+						<tr>
+							<td rowspan="3">A<span class="superindice">-1</span>=</td>
+							<td>1</td>
+							<td rowspan="3">·(Adj(A))<span class="superindice">t</span>=</td>
+							<td>1</td>
+							<td rowspan="3">Adj(A)<span class="superindice">t</span></td>
+						</tr>
+						<tr>
+							<td>&#151; </td>
+							<td>&#151; </td>
+
+						</tr>
+						<tr>
+							<td>|A|</td>
+							<td>|A|</td>
+						</tr>
+					</table>
+				</p>
+				<h3>Propiedades.-</h3>
+				<ol>
+					<li>(AB)<span class="superindice">−1</span> = B<span class="superindice">−1</span>· A<span class="superindice">−1</span></li>
+					<li>(A<span class="superindice">t</span>)<span class="superindice">−1</span> = (A<span class="superindice">−1</span>)</li>
+				</ol>
+				<h3>Rango de una matriz.-</h3>
+				<p>Se llama menor de orden p de una matriz rectangular, A, de orden nxm a los determiantes de las submatrices de A de orden p.</p>
+				<p>Se llama <span style="font-weight: bold;">rango de una matriz rang(A)</span> al mayor menor no nulo de dicha matriz.</p>
+				<p>Al menor que me da el rango de la matriz se llama <span style="font-weight: bold;">menor principal</span> de la matriz A.</p>
+				<p>Dicho rango se suele calcular utilizando el <span style="font-weight: bold;">método del pivote</span>, que consiste en:</p>
+				<ol>
+					<li>Eliminaremos las líneas nulas y las que son combinación lineal de las restantes. (Estas me dan determinantes nulos)</li>
+					<li>Elegimos un elemento distinto de cero, con lo cual obtenemos rang(A)=1. Completamos ese menor con filas y columnas hasta obtener un menor distinto de cero, y así sucesivamente, consideranto los menores principales los distintos de cero y los vamos orlando o completando.</li>
+				</ol>
 			</div>
 			
 		</div>
