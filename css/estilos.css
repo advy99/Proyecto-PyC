@@ -73,6 +73,15 @@ body{
 .contenedor{
 	overflow: hidden;
 }
+.vector{
+	position: relative;
+    text-align: center;
+    top: -1em;
+    left: -1em;
+    width: 100%;
+    font-size: 70%;
+    text-align: center;
+}
 footer{
 	position: relative;
 	left: 0;
