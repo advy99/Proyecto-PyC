@@ -58,8 +58,8 @@ body{
 	font-size: 10px;
 }
 .matriz{
+
 	text-align: center;
-	margin: auto; 
 	display: inline;
 	word-spacing: 5px;
 }
@@ -71,7 +71,7 @@ body{
 	font-size: 10px;
 }
 .contenedor{
-	overflow: auto;
+	overflow: hidden;
 }
 footer{
 	position: relative;

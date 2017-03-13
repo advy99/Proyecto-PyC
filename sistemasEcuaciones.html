@@ -54,7 +54,7 @@
 					</tr>
 				</table>
 				<p>En forma matricial este sistema es equivalente al siguiente:</p>
-				<table>
+				<table class="matriz">
 					<tr>
 						<td rowspan="4">(</td>
 						<td>a<span class="subindice">11</span></td>
@@ -121,7 +121,57 @@
 					</li>
 
 				</ul>
-				</div>
+				<p>Dos <span style="font-weight: bold;">sistemas son equivalentes</span> si tienen el mismo conjunto de soluciones, y para pasar de uno a otro, se realizan transformacines elementales.</p>
+				<h3>Regla de Cramer.-</h3>
+				<p>La Regla de Cramer nos da la solución en el caso de sistemas de n-ecuaciones con n-incógnitas y compatible determinado.</p>
+				<table class="matriz" style="overflow-x:none">
+					<tr>
+						<td rowspan="3">X = A<span class="superindice">−1</span> · B ⇔ X =</td>
+						<td>Adj(A<span class="superindice">t</span>)</td>
+						<td rowspan="3">, es decir, x<span class="subindice">i</span> =</td>
+						<td>b<span class="subindice">1</span>A<span class="subindice">1i</span> + b<span class="subindice">2</span>A<span class="subindice">2i</span> +...+ b<span class="subindice">n1</span>A<span class="subindice">ni</span></td>
+					</tr>
+					<tr>
+						<td style="display: relative;transform:scale(3,1);">&#151;</td>
+						<td style="display: relative;transform:scale(11,1);">&#151;</td>
+					</tr>
+					<tr>
+						<td>|A|</td>
+						<td>|A|</td>
+
+					</tr>
+				</table>
+				<p>o lo que es lo mismo, cada incógnita es el cociente del determinante de la matriz que se forma sustituyendo esa columna por la de los términos independientes y dividirla po el determinante de la matriz de los coeficientes.</p>
+				<h3>Teorema de Rouché-Fröbenius.-</h3>
+				<p>A continuación estudiaremos cuando e número de ecuaciones e incógnitas no coincidan.</p>
+				<p>Un S.E.L »S» es compatible si y solo si el rango de la matriz de los coeficientes coincide con el rango de la matriz ampliada A|B, es decir,</p>
+				<p style="text-align: center;">S es compatible ⇔ rang(A)=rang(A|B)</p>
+				<p>Por tanto quedan así los resultados sobre sistemas:</p>
+				<p>Los sistemas de ecuaciones lineales (S.E.L), según su forma, sus soluciones y número de ellas se clasifican en:</p>
+				<ol>
+					<li>Sistemas homogéneos (Todos son compatibles puesto que rang(A)=rang(A|0)).
+						<ol  style="list-style-type: lower-latin;">
+							<li>Sistema Compatible Determinado (S.C.D) si rang(A)=n.</li>
+							<li>Sistema Compatible Indeterminado (S.C.I) si rang(A)=r&lt;n</li>
+						</ol>
+					</li>
+					<li>Sistemas no homogéneos.
+						<ol  style="list-style-type: lower-latin;">
+							<li>Compatibles si rang(A)=rang(A|B)=r
+								<ol style="list-style-type: lower-greek;">
+									<li>Determinado si r=n.</li>
+									<li>Indeterminado si r&lt;n</li>
+								</ol>
+							</li>
+							<li>Incompatible si rang(A)&ne;rang(A|B)</li>
+						</ol>
+					</li>
+				</ol>
+				<p>En el caso de que sea indeterminado, las r ecuaciones que me da el rango de la matriz se ponen en función de las n-r restantes que actuarán como parámetros.</p>
+				<h3>Discusión de los S.E.L. según sus parámetros.-</h3>
+				<p>Serán sistemas cuyos coeficientes son parámetros y los rangos vendrán en función de ellos y segun Rouché-Fröbenius, tendrán o no solución según el valos de ese parámetro.</p>
+				<p>Entendemos eliminar parámetros como la accción de pasar de uno con parámetros a otro sin ellos.</p>
+				<p>El método para eliminar parámetros es considerar dichos parámetros como incógnitas y resolver el sistema imponiéndole la condición de que tiene solución, es decir rang(A)=rang(A|B)</p>
 			</div>
 		</div>
 		<footer id="footer"><p>Antonio David Villegas Yeguas 2ºBachillerato A</p>
