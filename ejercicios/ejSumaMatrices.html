@@ -1,0 +1,67 @@
+<html>
+	<meta charset="UTF-8" />
+	<head>
+		<title>Matematicas 2ºBachillerato</title>
+		<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+		<script type="text/javascript" src="../javascript/javascript.js"></script>
+	</head>
+	<body onload="rellenarMatrices()">
+		<div class="cabezero"><h2><a href="index.html">Matematicas 2º Bachillerato</a></h2></div>
+		<div style="display: block;">
+			<p>Resuelve las siguiente matriz</p>
+			<div style="float: left">
+				<table class="matriz">
+					<tr>
+						<td rowspan="2" class="parentesisMatriz">(</td>
+						<td id="a11" class="a1"></td>
+						<td id="a12" class="a1"></td>
+						<td id="a13" class="a1"></td>
+						<td rowspan="2" class="parentesisMatriz">)</td>
+						<td rowspan="2">+</td>
+					</tr>
+					<tr>
+						<td id="a21" class="a2"></td>
+						<td id="a22" class="a2"></td>
+						<td id="a23" class="a2"></td>
+					</tr>
+				</table>
+				<table class="matriz">
+					<tr>
+						<td rowspan="2" class="parentesisMatriz">(</td>
+						<td id="b11" class="b1"></td>
+						<td id="b12" class="b1"></td>
+						<td id="b13" class="b1"></td>
+						<td rowspan="2" class="parentesisMatriz">)</td>
+					</tr>
+					<tr>
+						<td id="b21" class="b2"></td>
+						<td id="b22" class="b2"></td>
+						<td id="b23" class="b2"></td>
+					</tr>
+				</table>
+				=
+			</div>
+			<div style="">
+				<form class="ejMatriz">
+					<table>
+						<tr>
+							<td><input type="text" class="c1" id="c11" /></td>
+							<td><input type="text" class="c1" id="c12" /></td>
+							<td><input type="text" class="c1" id="c13" /></td>
+							<td rowspan="2"><input type="button" name="comprobar" value="Comprobar" onclick="comprobarSuma()" ></td>
+
+						</tr>
+						<tr>
+							<td><input type="text" class="c2" id="c21" /></td>
+							<td><input type="text" class="c2" id="c22" /></td>
+							<td><input type="text" class="c2" id="c23" /></td>
+						</tr>
+						
+					</table>
+			</form>
+			</div>
+		</div>
+		<footer id="footer"><p>Antonio David Villegas Yeguas 2ºBachillerato A</p>
+		</footer>
+	</body>
+</html>
