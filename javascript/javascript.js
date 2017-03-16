@@ -31,12 +31,12 @@ function rellenarMatrices(){
 	document.getElementsByClassName("b2")[1].innerHTML=Math.trunc((Math.random()*100));
 	document.getElementsByClassName("b2")[2].innerHTML=Math.trunc((Math.random()*100));
 
-	document.getElementsByName("c11").value="";
-	document.getElementsByName("c12").value="";
-	document.getElementsByName("c13").value="";
-	document.getElementsByName("c21").value="";
-	document.getElementsByName("c22").value="";
-	document.getElementsByName("c23").value="";
+	document.getElementById("c11").value="";
+	document.getElementById("c12").value="";
+	document.getElementById("c13").value="";
+	document.getElementById("c21").value="";
+	document.getElementById("c22").value="";
+	document.getElementById("c23").value="";
 }
 function comprobarSuma(){
 	a1= new Array(3);
