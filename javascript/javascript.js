@@ -79,11 +79,11 @@ function comprobarSuma(){
 	for (var i = 0; i <= 2; i++) {
 		if (c2[i].value==(Number(a2[i].innerHTML)+Number(b2[i].innerHTML))) {
 			c2[i].style.backgroundColor="green";
-			c2[i].style.color="black";
+			c2[i].style.color="white";
 		}
 		else{
 			c2[i].style.backgroundColor="red";
-			c2[i].style.color="black";
+			c2[i].style.color="white";
 		}
 	}
 
