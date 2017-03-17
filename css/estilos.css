@@ -104,6 +104,8 @@ footer{
 }
 .ejMatriz input[type=text]{
 	width: 50px;
+	text-align: center;
+	border-radius:10px;
 }
 .ejMatriz td{
 	width: 20px;

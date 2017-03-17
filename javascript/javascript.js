@@ -15,21 +15,21 @@ function ejSumaMatrices(){
 }
 function rellenarMatrices(){
 	//cogemosla matriz a y la rellenamos de numeros aleatorios
-	document.getElementsByClassName("a1")[0].innerHTML=Math.trunc((Math.random()*100));
-	document.getElementsByClassName("a1")[1].innerHTML=Math.trunc((Math.random()*100));
-	document.getElementsByClassName("a1")[2].innerHTML=Math.trunc((Math.random()*100));
-	document.getElementsByClassName("a2")[0].innerHTML=Math.trunc((Math.random()*100));
-	document.getElementsByClassName("a2")[1].innerHTML=Math.trunc((Math.random()*100));
-	document.getElementsByClassName("a2")[2].innerHTML=Math.trunc((Math.random()*100));
+	document.getElementsByClassName("a1")[0].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a1")[1].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a1")[2].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a2")[0].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a2")[1].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a2")[2].innerHTML=Math.trunc((Math.random()*10));
 	
 	//cogemosla matriz b y la rellenamos de numeros aleatorios
 
-	document.getElementsByClassName("b1")[0].innerHTML=Math.trunc((Math.random()*100));
-	document.getElementsByClassName("b1")[1].innerHTML=Math.trunc((Math.random()*100));
-	document.getElementsByClassName("b1")[2].innerHTML=Math.trunc((Math.random()*100));
-	document.getElementsByClassName("b2")[0].innerHTML=Math.trunc((Math.random()*100));
-	document.getElementsByClassName("b2")[1].innerHTML=Math.trunc((Math.random()*100));
-	document.getElementsByClassName("b2")[2].innerHTML=Math.trunc((Math.random()*100));
+	document.getElementsByClassName("b1")[0].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("b1")[1].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("b1")[2].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("b2")[0].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("b2")[1].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("b2")[2].innerHTML=Math.trunc((Math.random()*10));
 
 	document.getElementById("c11").value="";
 	document.getElementById("c12").value="";
@@ -86,6 +86,49 @@ function comprobarSuma(){
 			c2[i].style.color="white";
 		}
 	}
+}
+function ejNumeroMatriz(){
+	ventanaNumeroMatriz=window.open('ejercicios/ejNumeroMatriz.html','','width=700,height=500')
+}
+function comprobarNumeroMatriz(){
+	a1=new Array(3);
+	a1=document.getElementsByClassName("a1");
+	b1= new Array(3);
+
+	b1=document.getElementsByClassName("b1");
+
+	b2= new Array(3);
+
+	b2=document.getElementsByClassName("b2");
+
+	c1= new Array(3);
+
+	c1=document.getElementsByClassName("c1");
 
 
+	c2= new Array(3);
+
+	c2=document.getElementsByClassName("c2");
+
+	for (var i = 0; i <= 2; i++) {
+		if (c1[i].value==(Number(a1[0].innerHTML)*Number(b1[i].innerHTML))) {
+
+			c1[i].style.backgroundColor="green";
+			c1[i].style.color="white";
+		}
+		else{
+			c1[i].style.backgroundColor="red";
+			c1[i].style.color="white";
+		}
+	}
+	for (var i = 0; i <= 2; i++) {
+		if (c2[i].value==(Number(a1[0].innerHTML)*Number(b2[i].innerHTML))) {
+			c2[i].style.backgroundColor="green";
+			c2[i].style.color="white";
+		}
+		else{
+			c2[i].style.backgroundColor="red";
+			c2[i].style.color="white";
+		}
+	}
 }

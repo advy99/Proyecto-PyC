@@ -8,23 +8,21 @@
 	<body onload="rellenarMatrices()">
 		<div class="cabezero"><h2><a href="index.html">Matematicas 2º Bachillerato</a></h2></div>
 		<div style="display: block;">
-			<p>Resuelve las siguiente matriz</p>
+			<p>Resuelve la siguiente operacion</p>
 			<div style="float: left">
 				<table class="matriz">
 					<tr>
-						<td rowspan="2" class="parentesisMatriz">(</td>
-						<td id="a11" class="a1"></td>
-						<td id="a12" class="a1"></td>
-						<td id="a13" class="a1"></td>
-						<td rowspan="2" class="parentesisMatriz">)</td>
-						<td rowspan="2">+</td>
+						<td rowspan="2" id="a11" class="a1"></td>
+						<td style="display: none" class="a1"></td>
+						<td style="display: none" class="a1"></td>
 					</tr>
 					<tr>
-						<td id="a21" class="a2"></td>
-						<td id="a22" class="a2"></td>
-						<td id="a23" class="a2"></td>
+						<td style="display: none" class="a2"></td>
+						<td style="display: none" class="a2"></td>
+						<td style="display: none" class="a2"></td>
 					</tr>
 				</table>
+				*
 				<table class="matriz">
 					<tr>
 						<td rowspan="2" class="parentesisMatriz">(</td>
@@ -48,7 +46,7 @@
 							<td><input type="text" class="c1" id="c11" tabindex="1" /></td>
 							<td><input type="text" class="c1" id="c12" tabindex="2" /></td>
 							<td><input type="text" class="c1" id="c13" tabindex="3" /></td>
-							<td rowspan="2"><input type="button" name="comprobar" value="Comprobar" onclick="comprobarSuma()" tabindex="7" ></td>
+							<td rowspan="2"><input type="button" name="comprobar" value="Comprobar" onclick="comprobarNumeroMatriz()" tabindex="7" ></td>
 
 						</tr>
 						<tr>
