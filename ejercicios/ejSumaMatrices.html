@@ -6,37 +6,48 @@
 		<script type="text/javascript" src="../javascript/javascript.js"></script>
 	</head>
 	<body onload="rellenarMatrices()">
-		<div class="cabezero"><h2><a href="index.html">Matematicas 2º Bachillerato</a></h2></div>
+		<div class="cabezero"><h2><a href="../index.html">Matematicas 2º Bachillerato</a></h2></div>
 		<div style="display: block;">
-			<p>Resuelve las siguiente matriz</p>
-			<div style="float: left">
+			<p>Resuelve la operación de matrices</p>
+			<div style="float: left;margin-left: 35%">
 				<table class="matriz">
 					<tr>
 						<td rowspan="2" class="parentesisMatriz">(</td>
-						<td id="a11" class="a1"></td>
-						<td id="a12" class="a1"></td>
-						<td id="a13" class="a1"></td>
+						<td id="a11" class="a"></td>
+						<td id="a12" class="a"></td>
+						<td id="a13" class="a"></td>
 						<td rowspan="2" class="parentesisMatriz">)</td>
 						<td rowspan="2">+</td>
 					</tr>
 					<tr>
-						<td id="a21" class="a2"></td>
-						<td id="a22" class="a2"></td>
-						<td id="a23" class="a2"></td>
+						<td id="a21" class="a"></td>
+						<td id="a22" class="a"></td>
+						<td id="a23" class="a"></td>
+					</tr>
+					<tr>
+						<td style="display: none" class="a"></td>
+						<td style="display: none" class="a"></td>
+						<td style="display: none" class="a"></td>
 					</tr>
 				</table>
 				<table class="matriz">
 					<tr>
 						<td rowspan="2" class="parentesisMatriz">(</td>
-						<td id="b11" class="b1"></td>
-						<td id="b12" class="b1"></td>
-						<td id="b13" class="b1"></td>
+						<td id="b11" class="b"></td>
+						<td id="b12" class="b"></td>
+						<td id="b13" class="b"></td>
 						<td rowspan="2" class="parentesisMatriz">)</td>
 					</tr>
 					<tr>
-						<td id="b21" class="b2"></td>
-						<td id="b22" class="b2"></td>
-						<td id="b23" class="b2"></td>
+						<td id="b21" class="b"></td>
+						<td id="b22" class="b"></td>
+						<td id="b23" class="b"></td>
+
+					</tr>
+					<tr>
+						<td style="display: none" class="b"></td>
+						<td style="display: none" class="b"></td>
+						<td style="display: none" class="b"></td>
 					</tr>
 				</table>
 				=
@@ -45,18 +56,22 @@
 				<form class="ejMatriz">
 					<table>
 						<tr>
-							<td><input type="text" class="c1" id="c11" tabindex="1" /></td>
-							<td><input type="text" class="c1" id="c12" tabindex="2" /></td>
-							<td><input type="text" class="c1" id="c13" tabindex="3" /></td>
+							<td><input type="text" class="c" id="c11" tabindex="1" /></td>
+							<td><input type="text" class="c" id="c12" tabindex="2" /></td>
+							<td><input type="text" class="c" id="c13" tabindex="3" /></td>
 							<td rowspan="2"><input type="button" name="comprobar" value="Comprobar" onclick="comprobarSuma()" tabindex="7" ></td>
 
 						</tr>
 						<tr>
-							<td><input type="text" class="c2" id="c21" tabindex="4" /></td>
-							<td><input type="text" class="c2" id="c22" tabindex="5" /></td>
-							<td><input type="text" class="c2" id="c23" tabindex="6" /></td>
+							<td><input type="text" class="c" id="c21" tabindex="4" /></td>
+							<td><input type="text" class="c" id="c22" tabindex="5" /></td>
+							<td><input type="text" class="c" id="c23" tabindex="6" /></td>
 						</tr>
-						
+						<tr>
+							<td style="display: none" class="c" id="c31"></td>
+							<td style="display: none" class="c" id="c31"></td>
+							<td style="display: none" class="c" id="c31"></td>
+						</tr>
 					</table>
 			</form>
 			</div>

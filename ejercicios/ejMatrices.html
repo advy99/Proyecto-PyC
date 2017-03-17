@@ -8,33 +8,35 @@
 	<body onload="rellenarMatrices()">
 		<div class="cabezero"><h2><a href="../index.html">Matematicas 2º Bachillerato</a></h2></div>
 		<div style="display: block;">
-			<p>Resuelve la siguiente operación</p>
-			<div style="float: left;margin-left: 35%;">
+			<p>Resuelve la operación de matrices</p>
+			<div style="float: left;margin-left: 35%">
 				<table class="matriz">
 					<tr>
-						<td rowspan="2" id="a11" class="a"></td>
-						<td style="display: none" class="a"></td>
-						<td style="display: none" class="a"></td>
+						<td rowspan="3" class="parentesisMatriz">(</td>
+						<td id="a11" class="a"></td>
+						<td id="a12" class="a"></td>
+						<td id="a13" class="a"></td>
+						<td rowspan="3" class="parentesisMatriz">)</td>
+						<td rowspan="3">*</td>
 					</tr>
 					<tr>
-						<td style="display: none" class="a"></td>
-						<td style="display: none" class="a"></td>
-						<td style="display: none" class="a"></td>
+						<td id="a21" class="a"></td>
+						<td id="a22" class="a"></td>
+						<td id="a23" class="a"></td>
 					</tr>
 					<tr>
-						<td style="display: none" class="a"></td>
-						<td style="display: none" class="a"></td>
-						<td style="display: none" class="a"></td>
+						<td id="a31" class="a"></td>
+						<td id="a32" class="a"></td>
+						<td id="a33" class="a"></td>
 					</tr>
 				</table>
-				*
 				<table class="matriz">
 					<tr>
-						<td rowspan="2" class="parentesisMatriz">(</td>
+						<td rowspan="3" class="parentesisMatriz">(</td>
 						<td id="b11" class="b"></td>
 						<td id="b12" class="b"></td>
 						<td id="b13" class="b"></td>
-						<td rowspan="2" class="parentesisMatriz">)</td>
+						<td rowspan="3" class="parentesisMatriz">)</td>
 					</tr>
 					<tr>
 						<td id="b21" class="b"></td>
@@ -42,21 +44,21 @@
 						<td id="b23" class="b"></td>
 					</tr>
 					<tr>
-						<td style="display: none" class="b"></td>
-						<td style="display: none" class="b"></td>
-						<td style="display: none" class="b"></td>
+						<td id="b31" class="b"></td>
+						<td id="b32" class="b"></td>
+						<td id="b33" class="b"></td>
 					</tr>
 				</table>
 				=
 			</div>
-			<div>
+			<div style="">
 				<form class="ejMatriz">
 					<table>
 						<tr>
 							<td><input type="text" class="c" id="c11" tabindex="1" /></td>
 							<td><input type="text" class="c" id="c12" tabindex="2" /></td>
 							<td><input type="text" class="c" id="c13" tabindex="3" /></td>
-							<td rowspan="2"><input type="button" name="comprobar" value="Comprobar" onclick="comprobarNumeroMatriz()" tabindex="7" ></td>
+							<td rowspan="2"><input type="button" name="comprobar" value="Comprobar" onclick="comprobarMatrices()" tabindex="10" ></td>
 
 						</tr>
 						<tr>
@@ -65,10 +67,11 @@
 							<td><input type="text" class="c" id="c23" tabindex="6" /></td>
 						</tr>
 						<tr>
-							<td style="display: none" class="c" id="c31"></td>
-							<td style="display: none" class="c" id="c31"></td>
-							<td style="display: none" class="c" id="c31"></td>
+							<td><input type="text" class="c" id="c31" tabindex="7" /></td>
+							<td><input type="text" class="c" id="c32" tabindex="8" /></td>
+							<td><input type="text" class="c" id="c33" tabindex="9" /></td>
 						</tr>
+						
 					</table>
 			</form>
 			</div>
