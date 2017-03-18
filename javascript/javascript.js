@@ -196,3 +196,29 @@ function comprobarDeterminanteDos(){
 	}
 
 }
+function determinanteTres(){
+	window.open('ejercicios/ejDeterminante3.html','','width=900,height=500');
+}
+function comprobarDeterminanteTres(){
+	a=new Array(8);
+	a=document.getElementsByClassName("a");
+	positivos=(Number(a[0].innerHTML)*Number(a[4].innerHTML)*Number(a[8].innerHTML));
+	positivos+=(Number(a[1].innerHTML)*Number(a[5].innerHTML)*Number(a[6].innerHTML));
+	positivos+=(Number(a[2].innerHTML)*Number(a[3].innerHTML)*Number(a[7].innerHTML));
+
+	negativos=-(Number(a[2].innerHTML)*Number(a[4].innerHTML)*Number(a[6].innerHTML));
+	negativos-=(Number(a[1].innerHTML)*Number(a[3].innerHTML)*Number(a[8].innerHTML));
+	negativos-=(Number(a[0].innerHTML)*Number(a[5].innerHTML)*Number(a[7].innerHTML));
+
+	respuesta=Number(positivos)+Number(negativos);
+	sol=document.getElementById("determinanteTres");
+	if(sol.value==respuesta){
+		sol.style.backgroundColor="green";
+		sol.style.color="white";
+	}
+	else{
+		sol.style.backgroundColor="red";
+		sol.style.color="white";
+	}
+
+}

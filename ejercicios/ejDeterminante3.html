@@ -1,0 +1,48 @@
+<html>
+	<meta charset="UTF-8" />
+	<head>
+		<title>Matematicas 2ºBachillerato</title>
+		<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+		<script type="text/javascript" src="../javascript/javascript.js"></script>
+	</head>
+	<body onload="rellenarDeterminante2()">
+		<div class="cabezero"><h2><a href="../index.html">Matematicas 2º Bachillerato</a></h2></div>
+		<div style="display: block;">
+			<p>Resuelve el siguente determinante</p>
+			<div style="float: left;margin-left: 35%">
+				<table class="matriz">
+					<tr>
+						<td rowspan="3" class="parentesisMatriz">|</td>
+						<td id="a11" class="a"></td>
+						<td id="a12" class="a"></td>
+						<td id="a13" class="a"></td>
+						<td rowspan="3" class="parentesisMatriz">|</td>
+						<td rowspan="3">=</td>
+					</tr>
+					<tr>
+						<td id="a21" class="a"></td>
+						<td id="a22" class="a"></td>
+						<td id="a23" class="a"></td>
+					</tr>
+					<tr>
+						<td id="a31" class="a"></td>
+						<td id="a32" class="a"></td>
+						<td id="a33" class="a"></td>
+					</tr>
+				</table>
+
+				
+			</div>
+			<div style="">
+				<form class="ejMatriz">
+					<input type="text" name="determinanteDos" id="determinanteTres" style="margin-top: 10px;" />
+					<input type="button" name="determinanteDos" id="comprobarDeterminante" value="Comprobar" onclick="comprobarDeterminanteTres()" style="margin-top: 10px;" />
+				</form>
+			</div>
+		</div>
+		<div style="margin-top: 25%">
+		<footer id="footer"><p>Antonio David Villegas Yeguas 2ºBachillerato A</p>
+		</footer>
+		</div>
+	</body>
+</html>
