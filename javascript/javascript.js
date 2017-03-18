@@ -110,7 +110,7 @@ function comprobarNumeroMatriz(){
 	
 }
 function ejMatrices(){
-	ventanaMatriz=window.open('ejercicios/ejMatrices.html','','width=900,height=500')
+	ventanaMatriz=window.open('ejercicios/ejMatrices.html','','width=900,height=500');
 }
 function comprobarMatrices(){
 	a1= new Array(8);
@@ -164,4 +164,35 @@ function comprobarMatrices(){
 		}
 		num+=3;
 	}
+}
+function rellenarDeterminante2(){
+	document.getElementsByClassName("a")[0].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a")[1].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a")[2].innerHTML=Math.trunc((Math.random()*10));
+
+	document.getElementsByClassName("a")[3].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a")[4].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a")[5].innerHTML=Math.trunc((Math.random()*10));
+
+	document.getElementsByClassName("a")[6].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a")[7].innerHTML=Math.trunc((Math.random()*10));
+	document.getElementsByClassName("a")[8].innerHTML=Math.trunc((Math.random()*10));
+}
+function determinanteDos(){
+	window.open('ejercicios/ejDeterminante2.html','','width=900,height=500');
+}
+function comprobarDeterminanteDos(){
+	a=new Array(8);
+	a=document.getElementsByClassName("a");
+	respuesta=(Number(a[0].innerHTML)*Number(a[4].innerHTML))-(Number(a[1].innerHTML)*Number(a[3].innerHTML));
+	sol=document.getElementById("determinanteDos");
+	if(sol.value==respuesta){
+		sol.style.backgroundColor="green";
+		sol.style.color="white";
+	}
+	else{
+		sol.style.backgroundColor="red";
+		sol.style.color="white";
+	}
+
 }
