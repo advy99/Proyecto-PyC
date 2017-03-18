@@ -1,0 +1,31 @@
+<html>
+	<meta charset="UTF-8" />
+	<head>
+		<title>Matematicas 2ºBachillerato</title>
+		<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+		<script type="text/javascript" src="../javascript/javascript.js"></script>
+	</head>
+	<body onload="ordenSarrus()">
+		<div class="cabezero"><h2><a href="../index.html">Matematicas 2º Bachillerato</a></h2></div>
+		<div style="display: block;">
+			<p>Pincha en el orden correcto en el que se debe realizar el determinante según Sarrus</p>
+			<img src="../img/matriz.png" alt="imagen determinante" usemap="#ordenSarrus"/>
+			<map name="ordenSarrus" class="areaImagen">
+				<area shape="rect" id="area1" coords="31,14,75,36" onclick="clickSarrus(this.id)">
+				<area shape="rect" id="area2" coords="31,41,75,63" onclick="clickSarrus(this.id)">
+				<area shape="rect" id="area3" coords="31,66,75,89" onclick="clickSarrus(this.id)">
+
+				<area shape="rect" id="area4" coords="84,14,135,36" onclick="clickSarrus(this.id)">
+				<area shape="rect" id="area5" coords="84,41,135,63" onclick="clickSarrus(this.id)">
+				<area shape="rect" id="area6" coords="84,66,135,89" onclick="clickSarrus(this.id)">
+
+				<area shape="rect" id="area7" coords="140,14,184,36" onclick="clickSarrus(this.id)">
+				<area shape="rect" id="area8" coords="140,41,184,63" onclick="clickSarrus(this.id)">
+				<area shape="rect" id="area9" coords="140,66,184,89" onclick="clickSarrus(this.id)">
+				
+			</map>
+		</div>
+		<footer id="footer"><p>Antonio David Villegas Yeguas 2ºBachillerato A </p>
+		</footer>
+	</body>
+</html>

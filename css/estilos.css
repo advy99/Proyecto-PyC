@@ -83,9 +83,10 @@ body{
     text-align: center;
 }
 footer{
-	position: relative;
+	position: absolute;
+	line-height: 2;
+	margin: 0;
 	left: 0;
-	bottom: 0%;
 	width: 100%;
 	background-color: #efefef;
 	text-align: center;
@@ -109,4 +110,7 @@ footer{
 }
 .ejMatriz td{
 	width: 20px;
+}
+.areaImagen area{
+	cursor: pointer;
 }

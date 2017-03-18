@@ -1,3 +1,5 @@
+
+var ORDENARRAY = [];
 function pulsarMenu(menu){
 	pulsado=document.getElementById(menu);
 	if (pulsado.style.display=="block") {
@@ -221,4 +223,22 @@ function comprobarDeterminanteTres(){
 		sol.style.color="white";
 	}
 
+}
+function abrirImagenSarrus(){
+	window.open('ejercicios/matrizSarrus.html','','width=900,height=500');
+}
+
+
+function ordenSarrus(){
+
+	ORDENARRAY = [];
+
+}
+function clickSarrus(item){
+	ORDENARRAY.push(item);
+	console.log(ORDENARRAY);
+	if (ORDENARRAY.length == 9){
+		console.log('comprobarOrden');
+		ORDENARRAY = [];
+	}
 }
