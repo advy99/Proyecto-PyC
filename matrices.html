@@ -39,17 +39,17 @@
 				<p>Ejemplo: A<span class="subindice">2x3</span> =
 				<table class="matriz">
 					<tr>
-						<td rowspan="2" class="parentesisMatriz">(</td>
+						<td rowspan="2" class="parentesisMatrizIzq"></td>
 						<td>a<span class="subindice">11</span></td>
 						<td>a<span class="subindice">12</span></td>
 						<td>a<span class="subindice">13</span></td>
-						<td rowspan="2" class="parentesisMatriz">)</td>
+						<td rowspan="2" class="parentesisMatrizDer"></td>
 						<td rowspan="2">=</td>
-						<td rowspan="2" class="parentesisMatriz">(</td>
+						<td rowspan="2" class="parentesisMatrizIzq"></td>
 						<td>1</td>
 						<td>0</td>
 						<td>-1</td>
-						<td rowspan="2" class="parentesisMatriz">)</td>
+						<td rowspan="2" class="parentesisMatrizDer"></td>
 
 					</tr>
 					<tr>
@@ -71,9 +71,9 @@
 					Ej
 						<table class="matriz">
 							<tr>
-								<td rowspan="4" class="parentesisMatriz">(</td>
+								<td rowspan="4" class="parentesisMatrizIzq"></td>
 								<td>5</td>
-								<td rowspan="4" class="parentesisMatriz">)</td>
+								<td rowspan="4" class="parentesisMatrizDer"></td>
 							</tr>
 							<tr>
 								<td>7</td>
@@ -90,13 +90,13 @@
 					<li>Matriz opuesta, aquella donde todos sus elementos están cambiados de signo, es
 
 					decir, -A=
-					<table style="display: inline;">
+					<table style="display: inline;" class="matriz">
 						<tr>
-							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td rowspan="2" class="parentesisMatrizIzq"></td>
 							<td>-1</td>
 							<td>0</td>
 							<td>1</td>
-							<td rowspan="2" class="parentesisMatriz">)</td>
+							<td rowspan="2" class="parentesisMatrizDer"></td>
 						</tr>
 						<tr>
 							<td>-2</td>
@@ -110,12 +110,12 @@
 				
 					<li>
 						Matriz traspuesta, aquella donde se cambian los elementos de las filas por las columnas, y se escribirá A<span class="superindice">t</span>.=
-						<table style="display: inline;">
+						<table style="display: inline;" class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td>1</td>
 								<td>2</td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 							</tr>
 							<tr>
 								<td>0</td>
@@ -145,11 +145,11 @@
 				<p>Por ejemplo
 					<table class="matriz">
 						<tr>
-							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td rowspan="2" class="parentesisMatrizIzq"></td>
 							<td>1</td>
 							<td>0</td>
 							<td>-1</td>
-							<td rowspan="2" class="parentesisMatriz">)</td>
+							<td rowspan="2" class="parentesisMatrizDer"></td>
 						</tr>
 						<tr>
 							<td>2</td>
@@ -160,11 +160,11 @@
 					+
 					<table class="matriz">
 						<tr>
-							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td rowspan="2" class="parentesisMatrizIzq"></td>
 							<td>-1</td>
 							<td>7</td>
 							<td>0</td>
-							<td rowspan="2" class="parentesisMatriz">)</td>
+							<td rowspan="2" class="parentesisMatrizDer"></td>
 						</tr>
 						<tr>
 							<td>-2</td>
@@ -175,11 +175,11 @@
 					=
 					<table class="matriz">
 						<tr>
-							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td rowspan="2" class="parentesisMatrizIzq"></td>
 							<td>0</td>
 							<td>7</td>
 							<td>0</td>
-							<td rowspan="2" class="parentesisMatriz">)</td>
+							<td rowspan="2" class="parentesisMatrizDer"></td>
 						</tr>
 						<tr>
 							<td>0</td>
@@ -203,17 +203,17 @@
 					<table class="matriz">
 						<tr>
 							<td rowspan="2">2*</td>
-							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td rowspan="2" class="parentesisMatrizIzq"></td>
 							<td>4</td>
 							<td>6</td>
 							<td>2</td>
-							<td rowspan="2" class="parentesisMatriz">)</td>
+							<td rowspan="2" class="parentesisMatrizDer"></td>
 							<td rowspan="2">=</td>
-							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td rowspan="2" class="parentesisMatrizIzq"></td>
 							<td>8</td>
 							<td>12</td>
 							<td>2</td>
-							<td rowspan="2" class="parentesisMatriz">)</td>
+							<td rowspan="2" class="parentesisMatrizDer"></td>
 						</tr>
 						<tr>
 							<td>2</td>
@@ -258,40 +258,52 @@
 				<p>Por ejemplo:
 					<table class="matriz">
 						<tr>
-							<td rowspan="2" class="parentesisMatriz">(</td>
+							<td rowspan="2" class="parentesisMatrizIzq"></td>
 							<td>1</td>
 							<td>0</td>
 							<td>-1</td>
-							<td rowspan="2" class="parentesisMatriz">)</td>
-							<td rowspan="2">.</td>
-							<td rowspan="2" class="parentesisMatriz">(</td>
-							<td>1</td>
-							<td>0</td>
-							<td rowspan="2" class="parentesisMatriz">)</td>
-							<td rowspan="2">=</td>
-							<td rowspan="2" class="parentesisMatriz">(</td>
-							<td>1</td>
-							<td>1</td>
-							<td rowspan="2" class="parentesisMatriz">)</td>
+							<td rowspan="2" class="parentesisMatrizDer"></td>
+
 						</tr>
 						<tr>
 							<td>2</td>
 							<td>3</td>
 							<td>√2</td>
 							
+							
+							
+						</tr>
+						
+					</table>*
+					<table class="matriz">
+						<tr>
+							<td rowspan="3" class="parentesisMatrizIzq"></td>
+							<td>1</td>
+							<td>0</td>
+							<td rowspan="3" class="parentesisMatrizDer"></td>
+
+						</tr>
+						<tr>
 							<td>-1</td>
 							<td>0</td>
-							
+						</tr>
+						<tr>
+							<td>0</td>
+							<td>-1</td>
+						</tr>
+					</table>=
+					<table class="matriz">
+						<tr>
+							<td rowspan="2" class="parentesisMatrizIzq"></td>
+							<td>1</td>
+							<td>1</td>
+							<td rowspan="2" class="parentesisMatrizDer"></td>
+						</tr>
+						<tr>
 							<td>-1</td>
 							<td>-√2</td>
 						</tr>
-						<tr>
-							<td colspan="7"></td>
-							<td>0</td>
-							<td>-1</td>
-						</tr>
 					</table>
-
 				</p>
 				<p>
 						<form>

@@ -263,6 +263,22 @@ function clickSarrus(item,nombre){
 		
 	}
 }
+function iniciarCalculadora(){
+	document.getElementById("formCalc").reset();
+	document.getElementById("1sel").selected="selected";
+	suma=document.getElementById("sumaM");
+	resta=document.getElementById("restaM");
+	multiplicarMatrizNumero=document.getElementById("multiplicarNM");
+	multiplicarMatriz=document.getElementById("multiplicarM");
+	determinanteO2=document.getElementById("detO2");
+	determinanteO3=document.getElementById("detO3");
+	suma.style.display="none";
+	resta.style.display="none";
+	multiplicarMatrizNumero.style.display="none";
+	multiplicarMatriz.style.display="none";
+	determinanteO2.style.display="none";
+	determinanteO3.style.display="none";
+}
 function cambiarCalculadora(operacion){
 	suma=document.getElementById("sumaM");
 	resta=document.getElementById("restaM");
@@ -276,8 +292,7 @@ function cambiarCalculadora(operacion){
 	multiplicarMatriz.style.display="none";
 	determinanteO2.style.display="none";
 	determinanteO3.style.display="none";
-	document.getElementById("formCalc").reset();
-	document.getElementById("1sel").selected="selected";
+	
 	switch(operacion){
 		case "sumaMatrices":
 							suma.style.display="inline";

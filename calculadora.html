@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<script type="text/javascript" src="javascript/javascript.js"></script>
 	</head>
-	<body onload="cambiarCalculadora()">
+	<body onload="iniciarCalculadora()">
 		<div class="cabezero"><h2><a href="index.html">Matematicas 2º Bachillerato</a></h2></div>
 		<div class="contenedor">
 			<div class="menu_izq">
@@ -48,11 +48,11 @@
 					<div id="sumaM" class="ejMatriz">
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td><input type="text" class="a" name="a" /></td>
 								<td><input type="text" class="a" name="a" /></td>
 								<td><input type="text" class="a" name="a" /></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 								<td rowspan="3">+</td>
 
 							</tr>
@@ -69,11 +69,11 @@
 						</table>
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td><input type="text" class="b" name="b" /></td>
 								<td><input type="text" class="b" name="b" /></td>
 								<td><input type="text" class="b" name="b" /></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 								<td rowspan="3">=</td>
 							</tr>
 							<tr>
@@ -90,11 +90,11 @@
 						</table>
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td class="c"></td>
 								<td class="c"></td>
 								<td class="c"></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 							</tr>
 							<tr>
 								<td class="c"></td>
@@ -117,11 +117,11 @@
 					<div id="restaM" class="ejMatriz">
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td><input type="text" class="a1" name="a1" /></td>
 								<td><input type="text" class="a1" name="a1" /></td>
 								<td><input type="text" class="a1" name="a1" /></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 								<td rowspan="3">-</td>
 
 							</tr>
@@ -138,11 +138,11 @@
 						</table>
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td><input type="text" class="b1" name="b1" /></td>
 								<td><input type="text" class="b1" name="b1" /></td>
 								<td><input type="text" class="b1" name="b1" /></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 								<td rowspan="3">=</td>
 							</tr>
 							<tr>
@@ -159,11 +159,11 @@
 						</table>
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td class="c1"></td>
 								<td class="c1"></td>
 								<td class="c1"></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 							</tr>
 							<tr>
 								<td class="c1"></td>
@@ -182,11 +182,11 @@
 						<input type="text" name="a2" class="a2" />*
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td><input type="text" class="b2" name="b2" /></td>
 								<td><input type="text" class="b2" name="b2" /></td>
 								<td><input type="text" class="b2" name="b2" /></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 								<td rowspan="3">=</td>
 							</tr>
 							<tr>
@@ -203,11 +203,11 @@
 						</table>
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td class="c2"></td>
 								<td class="c2"></td>
 								<td class="c2"></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 							</tr>
 							<tr>
 								<td class="c2"></td>
@@ -225,11 +225,11 @@
 					<div id="multiplicarM" class="ejMatriz">
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td><input type="text" class="a3" name="a3" /></td>
 								<td><input type="text" class="a3" name="a3" /></td>
 								<td><input type="text" class="a3" name="a3" /></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 								<td rowspan="3">*</td>
 
 							</tr>
@@ -246,11 +246,11 @@
 						</table>
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td><input type="text" class="b3" name="b3" /></td>
 								<td><input type="text" class="b3" name="b3" /></td>
 								<td><input type="text" class="b3" name="b3" /></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 								<td rowspan="3">=</td>
 							</tr>
 							<tr>
@@ -267,11 +267,11 @@
 						</table>
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td rowspan="3" class="parentesisMatrizIzq"></td>
 								<td class="c3"></td>
 								<td class="c3"></td>
 								<td class="c3"></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3" class="parentesisMatrizDer"></td>
 							</tr>
 							<tr>
 								<td class="c3"></td>
@@ -289,10 +289,10 @@
 					<div id="detO2" class="ejMatriz">
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td class="detDer" rowspan="3"></td>
 								<td><input type="text" class="a4" name="a4" /></td>
 								<td><input type="text" class="a4" name="a4" /></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td class="detIzq" rowspan="3"></td>
 								<td rowspan="3">=</td>
 								<td rowspan="3" class="c4"></td>
 
@@ -310,11 +310,11 @@
 					<div id="detO3" class="ejMatriz">
 						<table class="matriz">
 							<tr>
-								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td class="detDer" rowspan="3"></td>
 								<td><input type="text" class="a5" name="a5" /></td>
 								<td><input type="text" class="a5" name="a5" /></td>
 								<td><input type="text" class="a5" name="a5" /></td>
-								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td class="detIzq" rowspan="3"></td>
 								<td rowspan="3">=</td>
 								<td rowspan="3" class="c5"></td>
 							</tr>
