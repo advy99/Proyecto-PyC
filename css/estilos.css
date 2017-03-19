@@ -93,11 +93,12 @@ footer{
 	margin-top: 10%;
 }
 .botonEjercicio{
+	text-align: center;
 	margin-top: 30px;
 	margin-bottom: 30px;
 	font-size: 20pt;
 	font-weight: bold;
-	margin-left: 30%;
+	margin-left: 35%;
 }
 .ejMatriz{
 	display: inline;
@@ -113,4 +114,9 @@ footer{
 }
 .areaImagen area{
 	cursor: pointer;
+}
+.correccionSarrus{
+	text-align: center;
+	font-size: 16pt;
+	font-weight: bold;
 }

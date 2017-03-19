@@ -1,5 +1,6 @@
 
 var ORDENARRAY = [];
+var ORDENEVALIDOS =[1,5,9,4,8,3,7,2,6,3,5,7,6,8,1,9,2,4];
 function pulsarMenu(menu){
 	pulsado=document.getElementById(menu);
 	if (pulsado.style.display=="block") {
@@ -232,13 +233,33 @@ function abrirImagenSarrus(){
 function ordenSarrus(){
 
 	ORDENARRAY = [];
+	var seleccionados=document.getElementById("listaSeleccionados");
+	seleccionados.innerHTML="Posiciones Seleccionadas :";
+	var correccion=document.getElementById("correccion");
+	correccion.innerHTML="";
 
 }
-function clickSarrus(item){
-	ORDENARRAY.push(item);
-	console.log(ORDENARRAY);
-	if (ORDENARRAY.length == 9){
-		console.log('comprobarOrden');
-		ORDENARRAY = [];
+function clickSarrus(item,nombre){
+	ORDENARRAY.push(Number(item));
+	var seleccionados=document.getElementById("listaSeleccionados");
+	var correccion=document.getElementById("correccion");
+	if (ORDENARRAY.length<=18) {
+		seleccionados.innerHTML+='posicion '+ nombre;
+		seleccionados.innerHTML+='. ';
+	}
+	if (ORDENARRAY.length > 17){
+		
+		if (String(ORDENARRAY)==String(ORDENEVALIDOS)) {
+			correccion.innerHTML="¡CORRECTO!";
+		}
+		else{
+			correccion.innerHTML="Vuelve a probar";
+
+		}
+		//ORDENARRAY = [];
+
+	}
+	else{
+		
 	}
 }
