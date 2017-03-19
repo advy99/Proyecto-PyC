@@ -263,3 +263,131 @@ function clickSarrus(item,nombre){
 		
 	}
 }
+function cambiarCalculadora(operacion){
+	suma=document.getElementById("sumaM");
+	resta=document.getElementById("restaM");
+	multiplicarMatrizNumero=document.getElementById("multiplicarNM");
+	multiplicarMatriz=document.getElementById("multiplicarM");
+	determinanteO2=document.getElementById("detO2");
+	determinanteO3=document.getElementById("detO3");
+	suma.style.display="none";
+	resta.style.display="none";
+	multiplicarMatrizNumero.style.display="none";
+	multiplicarMatriz.style.display="none";
+	determinanteO2.style.display="none";
+	determinanteO3.style.display="none";
+	document.getElementById("formCalc").reset();
+	document.getElementById("1sel").selected="selected";
+	switch(operacion){
+		case "sumaMatrices":
+							suma.style.display="inline";
+							break;
+		case "restaMatrices":
+							resta.style.display="inline";
+							break;
+		case "multiplicarNMatriz":
+							multiplicarMatrizNumero.style.display="inline";
+							break;
+		case "multiplicarMatrices":
+							multiplicarMatriz.style.display="inline";
+							break;
+		case "determinante2":
+							determinanteO2.style.display="inline";
+							break;
+		case "determinante3":
+							determinanteO3.style.display="inline";
+							break;
+	}
+}
+function calcSuma(){
+	a=document.getElementsByClassName("a");
+	b=document.getElementsByClassName("b");
+	c=document.getElementsByClassName("c");
+	for (var i = 0; i < 9; i++) {
+		c[i].innerHTML=Number(a[i].value)+Number(b[i].value);
+	}
+}
+function calcResta(){
+	a1=document.getElementsByClassName("a1");
+	b1=document.getElementsByClassName("b1");
+	c1=document.getElementsByClassName("c1");
+	for (var i = 0; i < 9; i++) {
+		c1[i].innerHTML=Number(a1[i].value)-Number(b1[i].value);
+	}
+}
+function calcNMatriz(){
+	a2=document.getElementsByClassName("a2");
+	b2=document.getElementsByClassName("b2");
+	c2=document.getElementsByClassName("c2");
+	for (var i = 0; i < 9; i++) {
+		c2[i].innerHTML=Number(a2[0].value)*Number(b2[i].value);
+	}
+}
+function calcMatrices(){
+	a3=document.getElementsByClassName("a3");
+	b3=document.getElementsByClassName("b3");
+	c3=document.getElementsByClassName("c3");
+	sol=0;
+	sol=Number(sol);
+	j=0;
+	k=0;
+	cont=0;
+	num=0;
+	for (var l = 0; l <3; l++) {
+
+		for (var i = 0; i <=11; i++) {	
+			if(cont<3){
+				sol=sol+(Number(a3[num].value)*Number(b3[j].value));
+				j+=3;
+				cont++;
+				num++;
+			}
+			else{
+				c3[k].innerHTML=sol;
+				sol=0;
+/*
+				if (c1[k].value==sol) {
+					c1[k].style.backgroundColor="green";
+					c1[k].style.color="white";
+					sol=0;
+				}
+				else{
+					c1[k].style.backgroundColor="red";
+					c1[k].style.color="white";
+					sol=0;
+				}*/
+				k++;
+				if(j>=11){
+					j-=11;
+				}
+				else{
+					j-=8;
+				}
+				cont=0;
+				num-=3;
+			}
+
+		}
+		num+=3;
+	}
+}
+function calcDet2(){
+	a4=document.getElementsByClassName("a4");
+	c4=document.getElementsByClassName("c4");
+	c4[0].innerHTML=(Number(a4[0].value)*Number(a4[3].value))-(Number(a4[1].value)*Number(a4[2].value));
+
+}
+function calcDet3(){
+	a5=document.getElementsByClassName("a5");
+	c5=document.getElementsByClassName("c5");
+	positivos=(Number(a5[0].value)*Number(a5[4].value)*Number(a5[8].value));
+	positivos+=(Number(a5[1].value)*Number(a5[5].value)*Number(a5[6].value));
+	positivos+=(Number(a5[2].value)*Number(a5[3].value)*Number(a5[7].value));
+
+	negativos=-(Number(a5[2].value)*Number(a5[4].value)*Number(a5[6].value));
+	negativos-=(Number(a5[1].value)*Number(a5[3].value)*Number(a5[8].value));
+	negativos-=(Number(a5[0].value)*Number(a5[5].value)*Number(a5[7].value));
+
+	c5[0].innerHTML=Number(positivos)+Number(negativos);
+
+}

@@ -1,0 +1,341 @@
+<html>
+	<meta charset="UTF-8" />
+	<head>
+		<title>Matematicas 2ºBachillerato</title>
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script type="text/javascript" src="javascript/javascript.js"></script>
+	</head>
+	<body onload="cambiarCalculadora()">
+		<div class="cabezero"><h2><a href="index.html">Matematicas 2º Bachillerato</a></h2></div>
+		<div class="contenedor">
+			<div class="menu_izq">
+				<ul>
+					<li class="cabezeroMenu">Temario</li>
+					<li><a name="algebra" onclick="pulsarMenu(this.name)">Álgebra</a>
+						<div id="algebra" style="display: none;">
+							<ul>
+								<li><a href="matrices.html">Matrices</a></li>
+								<li><a href="determinantes.html">Determinantes</a></li>
+								<li><a href="sistemasEcuaciones.html">Sistemas de ecuaciones</a></li>
+							</ul>
+						</div>
+					</li>
+					<li><a name="calculadora" href="calculadora.html">Calculadora matricial</a>
+						
+					</li>
+
+					<li class="cabezeroMenu"><a onclick="manual();" style="color:black;">Manual</a></li>
+
+					<li class="cabezeroMenu">Sitios de interes</li>
+					<li><a href="http://www.juntadeandalucia.es/averroes/centros-tic/23000106/moodle2/"><img src="img/ies.gif" height="100" width="100" style="float: left;"><span style="float: right;padding-top: 25%;">Moodle 2</span></a></li>
+					<li><a href="http://www.unicoos.com/"><img src="img/unicoos.jpe" height="100" width="100" style="float:left;"><span style="float: right;padding-top: 25%;">Unicoos</span></a></li>
+				</ul>
+			</div>
+			<div class="contenido">
+				<p>Calculadora de matrices</p>
+				<p><form>
+					<select onchange="cambiarCalculadora(this.value)">
+						<option value="seleccion" selected="selected" id="1sel">Seleccione una operación</option>
+						<option value="sumaMatrices">Sumar matrices</option>
+						<option value="restaMatrices">Restar matrices</option>
+						<option value="multiplicarNMatriz">Multiplicar una matriz por un número</option>
+						<option value="multiplicarMatrices">Multiplicar matrices</option>
+						<option value="determinante2">Calcular determinante orden 2</option>
+						<option value="determinante3">Calcular determinante orden 3</option>
+					</select>
+					</form></p>
+					<form id="formCalc">
+					<div id="sumaM" class="ejMatriz">
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td><input type="text" class="a" name="a" /></td>
+								<td><input type="text" class="a" name="a" /></td>
+								<td><input type="text" class="a" name="a" /></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3">+</td>
+
+							</tr>
+							<tr>
+								<td><input type="text" class="a" name="a" /></td>
+								<td><input type="text" class="a" name="a" /></td>
+								<td><input type="text" class="a" name="a" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="a" name="a" /></td>
+								<td><input type="text" class="a" name="a" /></td>
+								<td><input type="text" class="a" name="a" /></td>
+							</tr>
+						</table>
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td><input type="text" class="b" name="b" /></td>
+								<td><input type="text" class="b" name="b" /></td>
+								<td><input type="text" class="b" name="b" /></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3">=</td>
+							</tr>
+							<tr>
+								<td><input type="text" class="b" name="b" /></td>
+								<td><input type="text" class="b" name="b" /></td>
+								<td><input type="text" class="b" name="b" /></td>
+
+							</tr>
+							<tr>
+								<td><input type="text" class="b" name="b" /></td>
+								<td><input type="text" class="b" name="b" /></td>
+								<td><input type="text" class="b" name="b" /></td>
+							</tr>
+						</table>
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td class="c"></td>
+								<td class="c"></td>
+								<td class="c"></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+							</tr>
+							<tr>
+								<td class="c"></td>
+								<td class="c"></td>
+								<td class="c"></td>
+							</tr>
+							<tr>
+								<td class="c"></td>
+								<td class="c"></td>
+								<td class="c"></td>
+							</tr>
+						</table>
+						<input type="button" name="operacion" value="Calcular" onclick="calcSuma()">
+
+					</div>
+					
+
+
+
+					<div id="restaM" class="ejMatriz">
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td><input type="text" class="a1" name="a1" /></td>
+								<td><input type="text" class="a1" name="a1" /></td>
+								<td><input type="text" class="a1" name="a1" /></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3">-</td>
+
+							</tr>
+							<tr>
+								<td><input type="text" class="a1" name="a1" /></td>
+								<td><input type="text" class="a1" name="a1" /></td>
+								<td><input type="text" class="a1" name="a1" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="a1" name="a1" /></td>
+								<td><input type="text" class="a1" name="a1" /></td>
+								<td><input type="text" class="a1" name="a1" /></td>
+							</tr>
+						</table>
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td><input type="text" class="b1" name="b1" /></td>
+								<td><input type="text" class="b1" name="b1" /></td>
+								<td><input type="text" class="b1" name="b1" /></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3">=</td>
+							</tr>
+							<tr>
+								<td><input type="text" class="b1" name="b1" /></td>
+								<td><input type="text" class="b1" name="b1" /></td>
+								<td><input type="text" class="b1" name="b1" /></td>
+
+							</tr>
+							<tr>
+								<td><input type="text" class="b1" name="b1" /></td>
+								<td><input type="text" class="b1" name="b1" /></td>
+								<td><input type="text" class="b1" name="b1" /></td>
+							</tr>
+						</table>
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td class="c1"></td>
+								<td class="c1"></td>
+								<td class="c1"></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+							</tr>
+							<tr>
+								<td class="c1"></td>
+								<td class="c1"></td>
+								<td class="c1"></td>
+							</tr>
+							<tr>
+								<td class="c1"></td>
+								<td class="c1"></td>
+								<td class="c1"></td>
+							</tr>
+						</table>
+						<input type="button" name="operacion" value="Calcular" onclick="calcResta()">
+					</div>
+					<div id="multiplicarNM" class="ejMatriz">
+						<input type="text" name="a2" class="a2" />*
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td><input type="text" class="b2" name="b2" /></td>
+								<td><input type="text" class="b2" name="b2" /></td>
+								<td><input type="text" class="b2" name="b2" /></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3">=</td>
+							</tr>
+							<tr>
+								<td><input type="text" class="b2" name="b2" /></td>
+								<td><input type="text" class="b2" name="b2" /></td>
+								<td><input type="text" class="b2" name="b2" /></td>
+
+							</tr>
+							<tr>
+								<td><input type="text" class="b2" name="b2" /></td>
+								<td><input type="text" class="b2" name="b2" /></td>
+								<td><input type="text" class="b2" name="b2" /></td>
+							</tr>
+						</table>
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td class="c2"></td>
+								<td class="c2"></td>
+								<td class="c2"></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+							</tr>
+							<tr>
+								<td class="c2"></td>
+								<td class="c2"></td>
+								<td class="c2"></td>
+							</tr>
+							<tr>
+								<td class="c2"></td>
+								<td class="c2"></td>
+								<td class="c2"></td>
+							</tr>
+						</table>
+						<input type="button" name="operacion" value="Calcular" onclick="calcNMatriz()">
+					</div>
+					<div id="multiplicarM" class="ejMatriz">
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td><input type="text" class="a3" name="a3" /></td>
+								<td><input type="text" class="a3" name="a3" /></td>
+								<td><input type="text" class="a3" name="a3" /></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3">*</td>
+
+							</tr>
+							<tr>
+								<td><input type="text" class="a3" name="a3" /></td>
+								<td><input type="text" class="a3" name="a3" /></td>
+								<td><input type="text" class="a3" name="a3" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="a3" name="a3" /></td>
+								<td><input type="text" class="a3" name="a3" /></td>
+								<td><input type="text" class="a3" name="a3" /></td>
+							</tr>
+						</table>
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td><input type="text" class="b3" name="b3" /></td>
+								<td><input type="text" class="b3" name="b3" /></td>
+								<td><input type="text" class="b3" name="b3" /></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3">=</td>
+							</tr>
+							<tr>
+								<td><input type="text" class="b3" name="b3" /></td>
+								<td><input type="text" class="b3" name="b3" /></td>
+								<td><input type="text" class="b3" name="b3" /></td>
+
+							</tr>
+							<tr>
+								<td><input type="text" class="b3" name="b3" /></td>
+								<td><input type="text" class="b3" name="b3" /></td>
+								<td><input type="text" class="b3" name="b3" /></td>
+							</tr>
+						</table>
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td class="c3"></td>
+								<td class="c3"></td>
+								<td class="c3"></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+							</tr>
+							<tr>
+								<td class="c3"></td>
+								<td class="c3"></td>
+								<td class="c3"></td>
+							</tr>
+							<tr>
+								<td class="c3"></td>
+								<td class="c3"></td>
+								<td class="c3"></td>
+							</tr>
+						</table>
+						<input type="button" name="operacion" value="Calcular" onclick="calcMatrices()">
+					</div>
+					<div id="detO2" class="ejMatriz">
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td><input type="text" class="a4" name="a4" /></td>
+								<td><input type="text" class="a4" name="a4" /></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3">=</td>
+								<td rowspan="3" class="c4"></td>
+
+							</tr>
+							<tr>
+								<td><input type="text" class="a4" name="a4" /></td>
+								<td><input type="text" class="a4" name="a4" /></td>
+							</tr>
+							<tr>
+								<td class="c4"></td>
+							</tr>
+						</table>
+						<input type="button" name="operacion" value="Calcular" onclick="calcDet2()">
+					</div>
+					<div id="detO3" class="ejMatriz">
+						<table class="matriz">
+							<tr>
+								<td rowspan="3" class="parentesisMatriz">(</td>
+								<td><input type="text" class="a5" name="a5" /></td>
+								<td><input type="text" class="a5" name="a5" /></td>
+								<td><input type="text" class="a5" name="a5" /></td>
+								<td rowspan="3" class="parentesisMatriz">)</td>
+								<td rowspan="3">=</td>
+								<td rowspan="3" class="c5"></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="a5" name="a5" /></td>
+								<td><input type="text" class="a5" name="a5" /></td>
+								<td><input type="text" class="a5" name="a5" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="a5" name="a5" /></td>
+								<td><input type="text" class="a5" name="a5" /></td>
+								<td><input type="text" class="a5" name="a5" /></td>
+							</tr>
+						</table>
+						<input type="button" name="operacion" value="Calcular" onclick="calcDet3()">
+					</div>
+					</form>				
+			</div>
+			
+		</div>
+		<footer id="footer"><p>Antonio David Villegas Yeguas 2ºBachillerato A</p>
+		</footer>
+	</body>
+</html>
