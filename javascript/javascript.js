@@ -11,7 +11,7 @@ function pulsarMenu(menu){
 	}
 }
 function manual(){
-	ventanaManual=window.open('manual.html','','width=1000,height=500');
+	ventanaManual=window.open('manual.html','','width=1000,height=500,top=100000000,left=100000000');
 }
 function ejSumaMatrices(){
 	ventanaSumaMatrices=window.open('ejercicios/ejSumaMatrices.html','','width=900,height=500')
