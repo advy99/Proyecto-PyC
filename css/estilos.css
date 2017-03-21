@@ -139,3 +139,7 @@ footer{
 .detIzq{
 	border-left: 3px solid black;
 }
+label{
+	display: inline;
+	text-align: right;
+}

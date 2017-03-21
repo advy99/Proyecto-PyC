@@ -290,6 +290,102 @@ function clickSarrus(item,nombre){
 	}
 }
 
+//abre la pagina de ejercicio de sistemas
+function abrirEjSistemas(){
+	window.open('ejercicios/ejSistemasCramer.html','','width=900,height=500');
+}
+function comprobarSistema(){
+	a=document.getElementsByClassName("a");
+	b=document.getElementsByClassName("b");
+
+
+	//Calculamos el determinante del sistema
+	positivos=(Number(a[0].innerHTML)*Number(a[4].innerHTML)*Number(a[8].innerHTML));
+	positivos+=(Number(a[1].innerHTML)*Number(a[5].innerHTML)*Number(a[6].innerHTML));
+	positivos+=(Number(a[2].innerHTML)*Number(a[3].innerHTML)*Number(a[7].innerHTML));
+
+	negativos=-(Number(a[2].innerHTML)*Number(a[4].innerHTML)*Number(a[6].innerHTML));
+	negativos-=(Number(a[1].innerHTML)*Number(a[3].innerHTML)*Number(a[8].innerHTML));
+	negativos-=(Number(a[0].innerHTML)*Number(a[5].innerHTML)*Number(a[7].innerHTML));
+	detA=Number(positivos)+Number(negativos);
+	positivos=0;
+	negativos=0;
+
+	//Calculamos el determinante del sistema, cambiando los elementos de la primera columna por los de clase B
+	positivos=(Number(b[0].innerHTML)*Number(a[4].innerHTML)*Number(a[8].innerHTML));
+	positivos+=(Number(a[1].innerHTML)*Number(a[5].innerHTML)*Number(b[2].innerHTML));
+	positivos+=(Number(a[2].innerHTML)*Number(b[1].innerHTML)*Number(a[7].innerHTML));
+
+	negativos=-(Number(a[2].innerHTML)*Number(a[4].innerHTML)*Number(b[2].innerHTML));
+	negativos-=(Number(a[1].innerHTML)*Number(b[1].innerHTML)*Number(a[8].innerHTML));
+	negativos-=(Number(b[0].innerHTML)*Number(a[5].innerHTML)*Number(a[7].innerHTML));
+
+	det1=Number(positivos)+Number(negativos);
+
+	//Calculamos el determinante del sistema, cambiando los elementos de la segunda columna por los de clase B
+
+	positivos=(Number(a[0].innerHTML)*Number(b[1].innerHTML)*Number(a[8].innerHTML));
+	positivos+=(Number(b[0].innerHTML)*Number(a[5].innerHTML)*Number(a[6].innerHTML));
+	positivos+=(Number(a[2].innerHTML)*Number(a[3].innerHTML)*Number(b[2].innerHTML));
+
+	negativos=-(Number(a[2].innerHTML)*Number(b[1].innerHTML)*Number(a[6].innerHTML));
+	negativos-=(Number(b[0].innerHTML)*Number(a[3].innerHTML)*Number(a[8].innerHTML));
+	negativos-=(Number(a[0].innerHTML)*Number(a[5].innerHTML)*Number(b[2].innerHTML));
+	det2=Number(positivos)+Number(negativos);
+
+	//Calculamos el determinante del sistema, cambiando los elementos de la tercera columna por los de clase B
+
+	positivos=(Number(a[0].innerHTML)*Number(a[4].innerHTML)*Number(b[2].innerHTML));
+	positivos+=(Number(a[1].innerHTML)*Number(b[1].innerHTML)*Number(a[6].innerHTML));
+	positivos+=(Number(b[0].innerHTML)*Number(a[3].innerHTML)*Number(a[7].innerHTML));
+
+	negativos=-(Number(b[0].innerHTML)*Number(a[4].innerHTML)*Number(a[6].innerHTML));
+	negativos-=(Number(a[1].innerHTML)*Number(a[3].innerHTML)*Number(b[2].innerHTML));
+	negativos-=(Number(a[0].innerHTML)*Number(b[1].innerHTML)*Number(a[7].innerHTML));
+	det3=Number(positivos)+Number(negativos);
+
+	x1=document.getElementById("c1");
+	x2=document.getElementById("c2");
+	x3=document.getElementById("c3");
+
+	//comprobamos si son correctos con la regla de cramer
+	if(c1.value==Math.round((det1/detA)*100)/100){//Multiplicamos por cien, redondeamos y dividimos por cien para aproximarlo a los decimales
+		//Aplica estilos si es correcto
+		c1.style.backgroundColor="green";
+		c1.style.color="white";
+	}
+	else{
+		//Aplica estilos si es falso
+		c1.style.backgroundColor="red";
+		c1.style.color="white";
+	}
+	if(c2.value==Math.round((det3/detA)*100)/100){
+		//Aplica estilos si es correcto
+		c2.style.backgroundColor="green";
+		c2.style.color="white";
+	}
+	else{
+		//Aplica estilos si es falso
+		c2.style.backgroundColor="red";
+		c2.style.color="white";
+	}
+
+	if(c3.value==Math.round((det3/detA)*100)/100){
+		//Aplica estilos si es correcto
+		c3.style.backgroundColor="green";
+		c3.style.color="white";
+	}
+	else{
+		//Aplica estilos si es falso
+		c3.style.backgroundColor="red";
+		c3.style.color="white";
+	}
+
+
+}
+
+
+
 //Inicializa la calculadora
 //Pone todas las operaciones ocultas y vacia las casillas con la funcion reset()
 function iniciarCalculadora(){
@@ -301,12 +397,14 @@ function iniciarCalculadora(){
 	multiplicarMatriz=document.getElementById("multiplicarM");
 	determinanteO2=document.getElementById("detO2");
 	determinanteO3=document.getElementById("detO3");
+	sistemaCramer=document.getElementById("sistema");
 	suma.style.display="none";
 	resta.style.display="none";
 	multiplicarMatrizNumero.style.display="none";
 	multiplicarMatriz.style.display="none";
 	determinanteO2.style.display="none";
 	determinanteO3.style.display="none";
+	sistemaCramer.style.display="none";
 }
 
 //Ejecuta al cambiar de operacion en a calculadora
@@ -317,12 +415,15 @@ function cambiarCalculadora(operacion){
 	multiplicarMatriz=document.getElementById("multiplicarM");
 	determinanteO2=document.getElementById("detO2");
 	determinanteO3=document.getElementById("detO3");
+	sistemaCramer=document.getElementById("sistema");
+
 	suma.style.display="none";
 	resta.style.display="none";
 	multiplicarMatrizNumero.style.display="none";
 	multiplicarMatriz.style.display="none";
 	determinanteO2.style.display="none";
 	determinanteO3.style.display="none";
+	sistemaCramer.style.display="none";
 	
 	//Comprobamos la operacion seleccionada en la calculadora con un switch y la mostramos con display:inline
 	switch(operacion){
@@ -343,6 +444,9 @@ function cambiarCalculadora(operacion){
 							break;
 		case "determinante3":
 							determinanteO3.style.display="inline";
+							break;
+		case "sistema":
+							sistemaCramer.style.display="inline";
 							break;
 	}
 }
@@ -439,5 +543,65 @@ function calcDet3(){
 	negativos-=(Number(a5[0].value)*Number(a5[5].value)*Number(a5[7].value));
 
 	c5[0].innerHTML=Number(positivos)+Number(negativos);
+
+}
+
+function calcSistema(){
+	a=document.getElementsByClassName("a6");
+	b=document.getElementsByClassName("b6");
+
+
+	//Calculamos el determinante del sistema
+	positivos=(Number(a[0].value)*Number(a[4].value)*Number(a[8].value));
+	positivos+=(Number(a[1].value)*Number(a[5].value)*Number(a[6].value));
+	positivos+=(Number(a[2].value)*Number(a[3].value)*Number(a[7].value));
+
+	negativos=-(Number(a[2].value)*Number(a[4].value)*Number(a[6].value));
+	negativos-=(Number(a[1].value)*Number(a[3].value)*Number(a[8].value));
+	negativos-=(Number(a[0].value)*Number(a[5].value)*Number(a[7].value));
+	detA=Number(positivos)+Number(negativos);
+	positivos=0;
+	negativos=0;
+
+	//Calculamos el determinante del sistema, cambiando los elementos de la primera columna por los de clase B
+	positivos=(Number(b[0].value)*Number(a[4].value)*Number(a[8].value));
+	positivos+=(Number(a[1].value)*Number(a[5].value)*Number(b[2].value));
+	positivos+=(Number(a[2].value)*Number(b[1].value)*Number(a[7].value));
+
+	negativos=-(Number(a[2].value)*Number(a[4].value)*Number(b[2].value));
+	negativos-=(Number(a[1].value)*Number(b[1].value)*Number(a[8].value));
+	negativos-=(Number(b[0].value)*Number(a[5].value)*Number(a[7].value));
+
+	det1=Number(positivos)+Number(negativos);
+
+	//Calculamos el determinante del sistema, cambiando los elementos de la segunda columna por los de clase B
+
+	positivos=(Number(a[0].value)*Number(b[1].value)*Number(a[8].value));
+	positivos+=(Number(b[0].value)*Number(a[5].value)*Number(a[6].value));
+	positivos+=(Number(a[2].value)*Number(a[3].value)*Number(b[2].value));
+
+	negativos=-(Number(a[2].value)*Number(b[1].value)*Number(a[6].value));
+	negativos-=(Number(b[0].value)*Number(a[3].value)*Number(a[8].value));
+	negativos-=(Number(a[0].value)*Number(a[5].value)*Number(b[2].value));
+	det2=Number(positivos)+Number(negativos);
+
+	//Calculamos el determinante del sistema, cambiando los elementos de la tercera columna por los de clase B
+
+	positivos=(Number(a[0].value)*Number(a[4].value)*Number(b[2].value));
+	positivos+=(Number(a[1].value)*Number(b[1].value)*Number(a[6].value));
+	positivos+=(Number(b[0].value)*Number(a[3].value)*Number(a[7].value));
+
+	negativos=-(Number(b[0].value)*Number(a[4].value)*Number(a[6].value));
+	negativos-=(Number(a[1].value)*Number(a[3].value)*Number(b[2].value));
+	negativos-=(Number(a[0].value)*Number(b[1].value)*Number(a[7].value));
+	det3=Number(positivos)+Number(negativos);
+
+	x1=document.getElementById("c1");
+	x2=document.getElementById("c2");
+	x3=document.getElementById("c3");
+	x1.innerHTML=Math.round((det1/detA)*100)/100;
+	x2.innerHTML=Math.round((det2/detA)*100)/100;
+	x3.innerHTML=Math.round((det3/detA)*100)/100;
+
 
 }

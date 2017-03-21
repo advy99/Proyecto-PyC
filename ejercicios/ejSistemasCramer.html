@@ -1,0 +1,68 @@
+<html>
+	<meta charset="UTF-8" />
+	<head>
+		<title>Matematicas 2ºBachillerato</title>
+		<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+		<script type="text/javascript" src="../javascript/javascript.js"></script>
+	</head>
+	<body onload="rellenarMatrices()">
+		<div class="cabezero"><h2><a href="../index.html">Matematicas 2º Bachillerato</a></h2></div>
+		<div style="display: block;">
+			<p>Resuelve el siguente sistema de ecuaciones</p>
+			<div style="float: left;margin-left: 35%">
+				<table class="matriz">
+					<tr>
+						<td><span class="a"></span>x<span class="subindice">1</span>+</td>
+						<td><span class="a"></span>x<span class="subindice">2</span>+</td>
+						<td><span class="a"></span>x<span class="subindice">3</span>+</td>
+						<td>=</td>
+						<td class="b"></td>
+
+					</tr>
+					<tr>
+						<td><span class="a"></span>x<span class="subindice">1</span>+</td>
+						<td><span class="a"></span>x<span class="subindice">2</span>+</td>
+						<td><span class="a"></span>x<span class="subindice">3</span>+</td>
+						<td>=</td>
+						<td class="b"></td>
+
+					</tr>
+					<tr>
+						<td><span class="a"></span>x<span class="subindice">1</span>+</td>
+						<td><span class="a"></span>x<span class="subindice">2</span>+</td>
+						<td><span class="a"></span>x<span class="subindice">3</span>+</td>
+						<td>=</td>
+						<td class="b"></td>
+
+					</tr>
+				</table>
+
+				
+			</div>
+			<div style="margin-right: 150px;text-align: right;">
+				<p>Redondea las soluciones a dos decimales</p>
+				<form style="display: inline;" class="ejMatriz">
+				<p style="display: inline;">X<span class="subindice">1</span>=
+					
+						<input type="text" name="x1" class="c" id="c1">
+				
+
+				</p>
+				<p style="display: inline;">X<span class="subindice">2</span>=
+						<input type="text" name="x2" class="c" id="c2">
+
+				</p>
+				<p style="display: inline;">X<span class="subindice">3</span>=
+						<input type="text" name="x3" class="c" id="c3">
+
+				</p>
+				<input type="button" name="" value="Comprobar" onclick="comprobarSistema()">
+				</form>
+			</div>
+		</div>
+		<div style="margin-top: 25%">
+		<footer id="footer"><p>Antonio David Villegas Yeguas 2ºBachillerato A</p>
+		</footer>
+		</div>
+	</body>
+</html>

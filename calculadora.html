@@ -42,6 +42,8 @@
 						<option value="multiplicarMatrices">Multiplicar matrices</option>
 						<option value="determinante2">Calcular determinante orden 2</option>
 						<option value="determinante3">Calcular determinante orden 3</option>
+						<option value="sistema">Calcular sistema de ecuaciones</option>
+
 					</select>
 					</form></p>
 					<form id="formCalc">
@@ -330,6 +332,56 @@
 							</tr>
 						</table>
 						<input type="button" name="operacion" value="Calcular" onclick="calcDet3()">
+					</div>
+					<div id="sistema" class="ejMatriz">
+						<table class="matriz">
+							<tr>
+								
+								<td><input type="text" class="a6" name="a6" id="x11" /></td>
+								<td>x<span class="subindice">1</span>+</td>
+								
+								<td><input type="text" class="a6" name="a6" /></td>
+								<td>x<span class="subindice">2</span>+</td>
+								<td><input type="text" class="a6" name="a6" /></td>
+								<td>x<span class="subindice">3</span>+</td>
+								<td>=</td>
+								<td><input type="text" class="b6" name="b6" /></td>
+								
+							</tr>
+							<tr>
+								<td><input type="text" class="a6" name="a6" /></td>
+								<td>x<span class="subindice">1</span>+</td>
+								<td><input type="text" class="a6" name="a6" /></td>
+								<td>x<span class="subindice">2</span>+</td>
+								<td><input type="text" class="a6" name="a6" /></td>
+								<td>x<span class="subindice">3</span>+</td>
+								<td>=</td>
+								<td><input type="text" class="b6" name="b6" /></td>
+							</tr>
+							<tr>
+								<td><input type="text" class="a6" name="a6" /></td>
+								<td>x<span class="subindice">1</span>+</td>
+								<td><input type="text" class="a6" name="a6" /></td>
+								<td>x<span class="subindice">2</span>+</td>
+								<td><input type="text" class="a6" name="a6" /></td>
+								<td>x<span class="subindice">3</span>+</td>
+								<td>=</td>
+								<td><input type="text" class="b6" name="b6" /></td>
+							</tr>
+						</table>
+						<input type="button" name="operacion" value="Calcular" onclick="calcSistema()">
+						<p>
+							X<span class="subindice">1</span>=
+							<span id="c1"></span>
+						</p>
+						<p>
+							X<span class="subindice">3</span>=
+							<span id="c2"></span>
+						</p>
+						<p>
+							X<span class="subindice">3</span>=
+							<span id="c3"></span>
+						</p>
 					</div>
 					</form>				
 			</div>
