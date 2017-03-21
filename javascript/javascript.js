@@ -18,43 +18,20 @@ function ejSumaMatrices(){
 }
 function rellenarMatrices(){
 	//cogemosla matriz a y la rellenamos de numeros aleatorios
-	document.getElementsByClassName("a")[0].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("a")[1].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("a")[2].innerHTML=Math.trunc((Math.random()*10));
+	a=document.getElementsByClassName("a");
+	b=document.getElementsByClassName("b");
+	c=document.getElementsByClassName("c");
+	for (var i = 0; i < a.length; i++) {
+		a[i].innerHTML=Math.trunc((Math.random()*10));
+	}
+	for (var i = 0; i < b.length; i++) {
+		b[i].innerHTML=Math.trunc((Math.random()*10));
+	}
+	for (var i = 0; i < c.length; i++) {
+		c[i].value="";
+	}
 
-	document.getElementsByClassName("a")[3].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("a")[4].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("a")[5].innerHTML=Math.trunc((Math.random()*10));
 
-	document.getElementsByClassName("a")[6].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("a")[7].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("a")[8].innerHTML=Math.trunc((Math.random()*10));
-	
-	//cogemosla matriz b y la rellenamos de numeros aleatorios
-
-	document.getElementsByClassName("b")[0].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("b")[1].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("b")[2].innerHTML=Math.trunc((Math.random()*10));
-
-	document.getElementsByClassName("b")[3].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("b")[4].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("b")[5].innerHTML=Math.trunc((Math.random()*10));
-
-	document.getElementsByClassName("b")[6].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("b")[7].innerHTML=Math.trunc((Math.random()*10));
-	document.getElementsByClassName("b")[8].innerHTML=Math.trunc((Math.random()*10));
-
-	document.getElementById("c11").value="";
-	document.getElementById("c12").value="";
-	document.getElementById("c13").value="";
-
-	document.getElementById("c21").value="";
-	document.getElementById("c22").value="";
-	document.getElementById("c23").value="";
-
-	document.getElementById("c31").value="";
-	document.getElementById("c32").value="";
-	document.getElementById("c33").value="";
 }
 function comprobarSuma(){
 	a1=new Array(8);
@@ -256,7 +233,6 @@ function clickSarrus(item,nombre){
 			correccion.innerHTML="Vuelve a probar";
 
 		}
-		//ORDENARRAY = [];
 
 	}
 	else{
@@ -360,17 +336,7 @@ function calcMatrices(){
 			else{
 				c3[k].innerHTML=sol;
 				sol=0;
-/*
-				if (c1[k].value==sol) {
-					c1[k].style.backgroundColor="green";
-					c1[k].style.color="white";
-					sol=0;
-				}
-				else{
-					c1[k].style.backgroundColor="red";
-					c1[k].style.color="white";
-					sol=0;
-				}*/
+
 				k++;
 				if(j>=11){
 					j-=11;
