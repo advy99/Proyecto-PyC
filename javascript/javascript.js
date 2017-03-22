@@ -348,37 +348,42 @@ function comprobarSistema(){
 	x2=document.getElementById("c2");
 	x3=document.getElementById("c3");
 
-	//comprobamos si son correctos con la regla de cramer
-	if(c1.value==Math.round((det1/detA)*100)/100){//Multiplicamos por cien, redondeamos y dividimos por cien para aproximarlo a los decimales
-		//Aplica estilos si es correcto
-		c1.style.backgroundColor="green";
-		c1.style.color="white";
+	if (detA==0) {
+		alert('Para resolver el sistema de ecuaciones el determinante de A debe ser distinto de 0');
 	}
 	else{
-		//Aplica estilos si es falso
-		c1.style.backgroundColor="red";
-		c1.style.color="white";
-	}
-	if(c2.value==Math.round((det3/detA)*100)/100){
-		//Aplica estilos si es correcto
-		c2.style.backgroundColor="green";
-		c2.style.color="white";
-	}
-	else{
-		//Aplica estilos si es falso
-		c2.style.backgroundColor="red";
-		c2.style.color="white";
-	}
+		//comprobamos si son correctos con la regla de cramer
+		if(c1.value==Math.round((det1/detA)*100)/100){//Multiplicamos por cien, redondeamos y dividimos por cien para aproximarlo a los decimales
+			//Aplica estilos si es correcto
+			c1.style.backgroundColor="green";
+			c1.style.color="white";
+		}
+		else{
+			//Aplica estilos si es falso
+			c1.style.backgroundColor="red";
+			c1.style.color="white";
+		}
+		if(c2.value==Math.round((det3/detA)*100)/100){
+			//Aplica estilos si es correcto
+			c2.style.backgroundColor="green";
+			c2.style.color="white";
+		}
+		else{
+			//Aplica estilos si es falso
+			c2.style.backgroundColor="red";
+			c2.style.color="white";
+		}
 
-	if(c3.value==Math.round((det3/detA)*100)/100){
-		//Aplica estilos si es correcto
-		c3.style.backgroundColor="green";
-		c3.style.color="white";
-	}
-	else{
-		//Aplica estilos si es falso
-		c3.style.backgroundColor="red";
-		c3.style.color="white";
+		if(c3.value==Math.round((det3/detA)*100)/100){
+			//Aplica estilos si es correcto
+			c3.style.backgroundColor="green";
+			c3.style.color="white";
+		}
+		else{
+			//Aplica estilos si es falso
+			c3.style.backgroundColor="red";
+			c3.style.color="white";
+		}
 	}
 
 
@@ -596,12 +601,16 @@ function calcSistema(){
 	negativos-=(Number(a[0].value)*Number(b[1].value)*Number(a[7].value));
 	det3=Number(positivos)+Number(negativos);
 
-	x1=document.getElementById("c1");
-	x2=document.getElementById("c2");
-	x3=document.getElementById("c3");
-	x1.innerHTML=Math.round((det1/detA)*100)/100;
-	x2.innerHTML=Math.round((det2/detA)*100)/100;
-	x3.innerHTML=Math.round((det3/detA)*100)/100;
-
+	if (detA==0) {
+		alert('Para calcular el sistema de ecuaciones el determinante de A debe ser distinto de 0');
+	}
+	else{
+		x1=document.getElementById("c1");
+		x2=document.getElementById("c2");
+		x3=document.getElementById("c3");
+		x1.innerHTML=Math.round((det1/detA)*100)/100;
+		x2.innerHTML=Math.round((det2/detA)*100)/100;
+		x3.innerHTML=Math.round((det3/detA)*100)/100;
+	}
 
 }
