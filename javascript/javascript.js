@@ -120,20 +120,8 @@ function comprobarNumeroMatriz(){
 function ejMatrices(){
 	ventanaMatriz=window.open('ejercicios/ejMatrices.html','','width=900,height=500');
 }
-//Comprueba la multiplicacion de matrices
-function comprobarMatrices(){
-	//Recoge las matrices y la repuesta
-	a1= new Array(8);
-	
-	a1=document.getElementsByClassName("a");
 
-	b1= new Array(8);
-	
-	b1=document.getElementsByClassName("b");
-	c1= new Array(8);
-	
-	c1=document.getElementsByClassName("c");
-	//Creamos una variable en la que se almacenara la solucion
+function multiplicarMatrices(a1,b1){
 	sol=0;
 	sol=Number(sol);
 	//Otra variable que controlara el numero de columna al multiplicar
@@ -144,31 +132,25 @@ function comprobarMatrices(){
 	cont=0;
 	//Otra variable que controlara el numero de fila al multiplicar
 	num=0;
+
+	//Creamos un vector con la solucion, servira para devolver todas las soluciones de golpe
+	vectorSolucion = [];
 	//for para las tres filas
-	for (var l = 0; l <3; l++) {
+	for (var l = 0; l < 3; l++) {
 		//Cada fila tendra que realizar los calculos 12 veces
 		for (var i = 0; i <=11; i++) {	
 			//cuando el contador es menor que tres multiplica los elementos en orden
 			if(cont<3){
-				sol=sol+(Number(a1[num].innerHTML)*Number(b1[j].innerHTML));
+				sol=sol+(Number(a1[num])*Number(b1[j]));
 				j+=3;
 				cont++;
 				num++;
 			}
-			//cuando acaba con un elemento lo comprueba
+			//cuando acaba con un elemento lo añade a la comprobacion
 			else{
-				if (c1[k].value==sol) {
-					c1[k].style.backgroundColor="green";
-					c1[k].style.color="white";
-					sol=0;
-				}
-				else{
-					c1[k].style.backgroundColor="red";
-					c1[k].style.color="white";
-					sol=0;
-				}
-				k++;
-				//calcula a que elemento se tiene que mover una vez ha acabado con el anterior
+				vectorSolucion.push(sol);
+				sol=0;
+				
 				if(j>=11){
 					j-=11;
 				}
@@ -183,6 +165,42 @@ function comprobarMatrices(){
 		}
 		num+=3;
 	}
+	//devuelve el vector solucion, para comprobar
+	return vectorSolucion;
+	
+}
+//Comprueba la multiplicacion de matrices
+function comprobarMatrices(){
+	//Recoge las matrices y la repuesta
+	//Vector con todo el campo
+	a1=document.getElementsByClassName("a");
+	//Vector que contendra los numeros
+	a = [];
+	for (var i = 0; i < a1.length; i++) {
+		a.push(a1[i].innerHTML);
+	}
+	b1=document.getElementsByClassName("b");
+	b = [];
+	for (var i = 0; i < b1.length; i++) {
+		b.push(b1[i].innerHTML);
+	}
+	c1=document.getElementsByClassName("c");
+	//Creamos un vector en la que se almacenara la solucion
+	soluciones = [];
+	soluciones = multiplicarMatrices(a,b);
+	for (var k = c1.length - 1; k >= 0; k--) {
+		if (c1[k].value==soluciones[k]) {
+			c1[k].style.backgroundColor="green";
+			c1[k].style.color="white";
+			sol=0;
+		}
+		else{
+			c1[k].style.backgroundColor="red";
+			c1[k].style.color="white";
+			sol=0;
+		}
+	}
+	
 }
 function rellenarDeterminante2(){
 	a=document.getElementsByClassName("a");
@@ -486,43 +504,21 @@ function calcNMatriz(){
 //calculamos la multiplicacion de matrices
 function calcMatrices(){
 	a3=document.getElementsByClassName("a3");
+	a = [];
+	for (var i = 0; i < a3.length; i++) {
+		a.push(a3[i].value);
+	}
 	b3=document.getElementsByClassName("b3");
+	b = [];
+	for (var i = 0; i < b3.length; i++) {
+		b.push(b3[i].value);
+	}
 	c3=document.getElementsByClassName("c3");
 	//Usamos el mismo bucle que con el ejercicio
-
-	sol=0;
-	sol=Number(sol);
-	j=0;
-	k=0;
-	cont=0;
-	num=0;
-	for (var l = 0; l <3; l++) {
-
-		for (var i = 0; i <=11; i++) {	
-			if(cont<3){
-				sol=sol+(Number(a3[num].value)*Number(b3[j].value));
-				j+=3;
-				cont++;
-				num++;
-			}
-			else{
-				//en lugar de comprobar si es correcto lo sustituimos en la matriz respuesta
-				c3[k].innerHTML=sol;
-				sol=0;
-
-				k++;
-				if(j>=11){
-					j-=11;
-				}
-				else{
-					j-=8;
-				}
-				cont=0;
-				num-=3;
-			}
-
-		}
-		num+=3;
+	soluciones = [];
+	soluciones = multiplicarMatrices(a,b);
+	for (var i = soluciones.length - 1; i >= 0; i--) {
+		c3[i].innerHTML=soluciones[i];
 	}
 }
 
