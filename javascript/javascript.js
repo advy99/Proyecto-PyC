@@ -308,62 +308,16 @@ function abrirEjSistemas(){
 function comprobarSistema(){
 	a=document.getElementsByClassName("a");
 	b=document.getElementsByClassName("b");
-	vDetA=[];
+	a1 = [];
 	for (var i = 0; i < a.length; i++) {
-		vDetA[i]=a[i].innerHTML;
+		a1.push(a[i].innerHTML);
 	}
-	//Calculamos el determinante del sistema
-	detA=calcDet3(vDetA);
-	//Calculamos el determinante del sistema, cambiando los elementos de la primera columna por los de clase B
-	vDet1=[];
-	for (var i = 0; i < a.length; i++) {
-		switch (i) {
-			case 0:vDet1[i]=b[0].innerHTML;
-				break;
-			case 3:vDet1[i]=b[1].innerHTML;
-				break;
-
-			case 6:vDet1[i]=b[2].innerHTML;
-				break;
-			default:vDet1[i]=a[i].innerHTML;
-
-		}
+	b1 = [];
+	for (var i = 0; i < b.length; i++) {
+		b1.push(b[i].innerHTML);
 	}
-	det1=calcDet3(vDet1);
 
-	vDet2=[];
-	for (var i = 0; i < a.length; i++) {
-		switch (i) {
-			case 1:vDet2[i]=b[0].innerHTML;
-				break;
-			case 4:vDet2[i]=b[1].innerHTML;
-				break;
-
-			case 7:vDet2[i]=b[2].innerHTML;
-				break;
-			default:vDet2[i]=a[i].innerHTML;
-
-		}
-	}
-	det2=calcDet3(vDet2);
-
-	//Calculamos el determinante del sistema, cambiando los elementos de la tercera columna por los de clase B
-
-	vDet3=[];
-	for (var i = 0; i < a.length; i++) {
-		switch (i) {
-			case 2:vDet3[i]=b[0].innerHTML;
-				break;
-			case 5:vDet3[i]=b[1].innerHTML;
-				break;
-
-			case 8:vDet3[i]=b[2].innerHTML;
-				break;
-			default:vDet3[i]=a[i].innerHTML;
-
-		}
-	}
-	det3=calcDet3(vDet3);
+	soluciones=calcSistema(a1,b1);
 
 	x1=document.getElementById("c1");
 	x2=document.getElementById("c2");
@@ -374,7 +328,7 @@ function comprobarSistema(){
 	}
 	else{
 		//comprobamos si son correctos con la regla de cramer
-		if(c1.value==Math.round((det1/detA)*100)/100){//Multiplicamos por cien, redondeamos y dividimos por cien para aproximarlo a los decimales
+		if(c1.value==Math.round((soluciones[1]/soluciones[0])*100)/100){//Multiplicamos por cien, redondeamos y dividimos por cien para aproximarlo a los decimales
 			//Aplica estilos si es correcto
 			c1.style.backgroundColor="green";
 			c1.style.color="white";
@@ -384,7 +338,7 @@ function comprobarSistema(){
 			c1.style.backgroundColor="red";
 			c1.style.color="white";
 		}
-		if(c2.value==Math.round((det2/detA)*100)/100){
+		if(c2.value==Math.round((soluciones[2]/soluciones[0])*100)/100){
 			//Aplica estilos si es correcto
 			c2.style.backgroundColor="green";
 			c2.style.color="white";
@@ -395,7 +349,7 @@ function comprobarSistema(){
 			c2.style.color="white";
 		}
 
-		if(c3.value==Math.round((det3/detA)*100)/100){
+		if(c3.value==Math.round((soluciones[3]/soluciones[0])*100)/100){
 			//Aplica estilos si es correcto
 			c3.style.backgroundColor="green";
 			c3.style.color="white";
@@ -552,58 +506,21 @@ function mostrarDeterminante3(){
 	c5=document.getElementsByClassName("c5");
 	c5[0].innerHTML=calcDet3(a5);
 }
-function calcSistema(){
+function mostrarSistema(){
 	a=document.getElementsByClassName("a6");
 	b=document.getElementsByClassName("b6");
-
-
+	a1 = [];
+	for (var i = 0; i < a.length; i++) {
+		a1.push(a[i].value);
+	}
+	b1 = [];
+	for (var i = 0; i < b.length; i++) {
+		b1.push(b[i].value);
+	}
+	soluciones=calcSistema(a1,b1);
 	//Calculamos el determinante del sistema
-	positivos=(Number(a[0].value)*Number(a[4].value)*Number(a[8].value));
-	positivos+=(Number(a[1].value)*Number(a[5].value)*Number(a[6].value));
-	positivos+=(Number(a[2].value)*Number(a[3].value)*Number(a[7].value));
-
-	negativos=-(Number(a[2].value)*Number(a[4].value)*Number(a[6].value));
-	negativos-=(Number(a[1].value)*Number(a[3].value)*Number(a[8].value));
-	negativos-=(Number(a[0].value)*Number(a[5].value)*Number(a[7].value));
-	detA=Number(positivos)+Number(negativos);
-	positivos=0;
-	negativos=0;
-
-	//Calculamos el determinante del sistema, cambiando los elementos de la primera columna por los de clase B
-	positivos=(Number(b[0].value)*Number(a[4].value)*Number(a[8].value));
-	positivos+=(Number(a[1].value)*Number(a[5].value)*Number(b[2].value));
-	positivos+=(Number(a[2].value)*Number(b[1].value)*Number(a[7].value));
-
-	negativos=-(Number(a[2].value)*Number(a[4].value)*Number(b[2].value));
-	negativos-=(Number(a[1].value)*Number(b[1].value)*Number(a[8].value));
-	negativos-=(Number(b[0].value)*Number(a[5].value)*Number(a[7].value));
-
-	det1=Number(positivos)+Number(negativos);
-
-	//Calculamos el determinante del sistema, cambiando los elementos de la segunda columna por los de clase B
-
-	positivos=(Number(a[0].value)*Number(b[1].value)*Number(a[8].value));
-	positivos+=(Number(b[0].value)*Number(a[5].value)*Number(a[6].value));
-	positivos+=(Number(a[2].value)*Number(a[3].value)*Number(b[2].value));
-
-	negativos=-(Number(a[2].value)*Number(b[1].value)*Number(a[6].value));
-	negativos-=(Number(b[0].value)*Number(a[3].value)*Number(a[8].value));
-	negativos-=(Number(a[0].value)*Number(a[5].value)*Number(b[2].value));
-	det2=Number(positivos)+Number(negativos);
-
-	//Calculamos el determinante del sistema, cambiando los elementos de la tercera columna por los de clase B
-
-	positivos=(Number(a[0].value)*Number(a[4].value)*Number(b[2].value));
-	positivos+=(Number(a[1].value)*Number(b[1].value)*Number(a[6].value));
-	positivos+=(Number(b[0].value)*Number(a[3].value)*Number(a[7].value));
-
-	negativos=-(Number(b[0].value)*Number(a[4].value)*Number(a[6].value));
-	negativos-=(Number(a[1].value)*Number(a[3].value)*Number(b[2].value));
-	negativos-=(Number(a[0].value)*Number(b[1].value)*Number(a[7].value));
-	det3=Number(positivos)+Number(negativos);
-
-	if (detA==0) {
-		if (det1!=0 && det2!=0 && det3!=0) {
+	if (soluciones[0]==0) {
+		if (soluciones[1]!=0 && soluciones[2]!=0 && soluciones[3]!=0) {
 
 		}
 		else {
@@ -615,9 +532,69 @@ function calcSistema(){
 		x1=document.getElementById("c1");
 		x2=document.getElementById("c2");
 		x3=document.getElementById("c3");
-		x1.innerHTML=Math.round((det1/detA)*100)/100;
-		x2.innerHTML=Math.round((det2/detA)*100)/100;
-		x3.innerHTML=Math.round((det3/detA)*100)/100;
+		x1.innerHTML=Math.round((soluciones[1]/soluciones[0])*100)/100;
+		x2.innerHTML=Math.round((soluciones[2]/soluciones[0])*100)/100;
+		x3.innerHTML=Math.round((soluciones[3]/soluciones[0])*100)/100;
 	}
 
+}
+function calcSistema(a,b){
+	vDetA=[];
+	for (var i = 0; i < a.length; i++) {
+		vDetA[i]=a[i];
+	}
+	//Calculamos el determinante del sistema
+	detA=calcDet3(vDetA);
+	//Calculamos el determinante del sistema, cambiando los elementos de la primera columna por los de clase B
+	vDet1=[];
+	for (var i = 0; i < a.length; i++) {
+		switch (i) {
+			case 0:vDet1[i]=b[0];
+				break;
+			case 3:vDet1[i]=b[1];
+				break;
+
+			case 6:vDet1[i]=b[2];
+				break;
+			default:vDet1[i]=a[i];
+
+		}
+	}
+	det1=calcDet3(vDet1);
+
+	vDet2=[];
+	for (var i = 0; i < a.length; i++) {
+		switch (i) {
+			case 1:vDet2[i]=b[0];
+				break;
+			case 4:vDet2[i]=b[1];
+				break;
+
+			case 7:vDet2[i]=b[2];
+				break;
+			default:vDet2[i]=a[i];
+
+		}
+	}
+	det2=calcDet3(vDet2);
+
+	//Calculamos el determinante del sistema, cambiando los elementos de la tercera columna por los de clase B
+
+	vDet3=[];
+	for (var i = 0; i < a.length; i++) {
+		switch (i) {
+			case 2:vDet3[i]=b[0];
+				break;
+			case 5:vDet3[i]=b[1];
+				break;
+
+			case 8:vDet3[i]=b[2];
+				break;
+			default:vDet3[i]=a[i];
+
+		}
+	}
+	det3=calcDet3(vDet3);
+	var arrayDeterminantes=[detA,det1,det2,det3];
+	return arrayDeterminantes;
 }
