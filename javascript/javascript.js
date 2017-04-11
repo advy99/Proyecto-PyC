@@ -308,52 +308,62 @@ function abrirEjSistemas(){
 function comprobarSistema(){
 	a=document.getElementsByClassName("a");
 	b=document.getElementsByClassName("b");
-
-
+	vDetA=[];
+	for (var i = 0; i < a.length; i++) {
+		vDetA[i]=a[i].innerHTML;
+	}
 	//Calculamos el determinante del sistema
-	positivos=(Number(a[0].innerHTML)*Number(a[4].innerHTML)*Number(a[8].innerHTML));
-	positivos+=(Number(a[1].innerHTML)*Number(a[5].innerHTML)*Number(a[6].innerHTML));
-	positivos+=(Number(a[2].innerHTML)*Number(a[3].innerHTML)*Number(a[7].innerHTML));
-
-	negativos=-(Number(a[2].innerHTML)*Number(a[4].innerHTML)*Number(a[6].innerHTML));
-	negativos-=(Number(a[1].innerHTML)*Number(a[3].innerHTML)*Number(a[8].innerHTML));
-	negativos-=(Number(a[0].innerHTML)*Number(a[5].innerHTML)*Number(a[7].innerHTML));
-	detA=Number(positivos)+Number(negativos);
-	positivos=0;
-	negativos=0;
-
+	detA=calcDet3(vDetA);
 	//Calculamos el determinante del sistema, cambiando los elementos de la primera columna por los de clase B
-	positivos=(Number(b[0].innerHTML)*Number(a[4].innerHTML)*Number(a[8].innerHTML));
-	positivos+=(Number(a[1].innerHTML)*Number(a[5].innerHTML)*Number(b[2].innerHTML));
-	positivos+=(Number(a[2].innerHTML)*Number(b[1].innerHTML)*Number(a[7].innerHTML));
+	vDet1=[];
+	for (var i = 0; i < a.length; i++) {
+		switch (i) {
+			case 0:vDet1[i]=b[0].innerHTML;
+				break;
+			case 3:vDet1[i]=b[1].innerHTML;
+				break;
 
-	negativos=-(Number(a[2].innerHTML)*Number(a[4].innerHTML)*Number(b[2].innerHTML));
-	negativos-=(Number(a[1].innerHTML)*Number(b[1].innerHTML)*Number(a[8].innerHTML));
-	negativos-=(Number(b[0].innerHTML)*Number(a[5].innerHTML)*Number(a[7].innerHTML));
+			case 6:vDet1[i]=b[2].innerHTML;
+				break;
+			default:vDet1[i]=a[i].innerHTML;
 
-	det1=Number(positivos)+Number(negativos);
+		}
+	}
+	det1=calcDet3(vDet1);
 
-	//Calculamos el determinante del sistema, cambiando los elementos de la segunda columna por los de clase B
+	vDet2=[];
+	for (var i = 0; i < a.length; i++) {
+		switch (i) {
+			case 1:vDet2[i]=b[0].innerHTML;
+				break;
+			case 4:vDet2[i]=b[1].innerHTML;
+				break;
 
-	positivos=(Number(a[0].innerHTML)*Number(b[1].innerHTML)*Number(a[8].innerHTML));
-	positivos+=(Number(b[0].innerHTML)*Number(a[5].innerHTML)*Number(a[6].innerHTML));
-	positivos+=(Number(a[2].innerHTML)*Number(a[3].innerHTML)*Number(b[2].innerHTML));
+			case 7:vDet2[i]=b[2].innerHTML;
+				break;
+			default:vDet2[i]=a[i].innerHTML;
 
-	negativos=-(Number(a[2].innerHTML)*Number(b[1].innerHTML)*Number(a[6].innerHTML));
-	negativos-=(Number(b[0].innerHTML)*Number(a[3].innerHTML)*Number(a[8].innerHTML));
-	negativos-=(Number(a[0].innerHTML)*Number(a[5].innerHTML)*Number(b[2].innerHTML));
-	det2=Number(positivos)+Number(negativos);
+		}
+	}
+	det2=calcDet3(vDet2);
 
 	//Calculamos el determinante del sistema, cambiando los elementos de la tercera columna por los de clase B
 
-	positivos=(Number(a[0].innerHTML)*Number(a[4].innerHTML)*Number(b[2].innerHTML));
-	positivos+=(Number(a[1].innerHTML)*Number(b[1].innerHTML)*Number(a[6].innerHTML));
-	positivos+=(Number(b[0].innerHTML)*Number(a[3].innerHTML)*Number(a[7].innerHTML));
+	vDet3=[];
+	for (var i = 0; i < a.length; i++) {
+		switch (i) {
+			case 2:vDet3[i]=b[0].innerHTML;
+				break;
+			case 5:vDet3[i]=b[1].innerHTML;
+				break;
 
-	negativos=-(Number(b[0].innerHTML)*Number(a[4].innerHTML)*Number(a[6].innerHTML));
-	negativos-=(Number(a[1].innerHTML)*Number(a[3].innerHTML)*Number(b[2].innerHTML));
-	negativos-=(Number(a[0].innerHTML)*Number(b[1].innerHTML)*Number(a[7].innerHTML));
-	det3=Number(positivos)+Number(negativos);
+			case 8:vDet3[i]=b[2].innerHTML;
+				break;
+			default:vDet3[i]=a[i].innerHTML;
+
+		}
+	}
+	det3=calcDet3(vDet3);
 
 	x1=document.getElementById("c1");
 	x2=document.getElementById("c2");
@@ -374,7 +384,7 @@ function comprobarSistema(){
 			c1.style.backgroundColor="red";
 			c1.style.color="white";
 		}
-		if(c2.value==Math.round((det3/detA)*100)/100){
+		if(c2.value==Math.round((det2/detA)*100)/100){
 			//Aplica estilos si es correcto
 			c2.style.backgroundColor="green";
 			c2.style.color="white";
@@ -525,7 +535,7 @@ function calcDet2(){
 //Calculamos el determinante de orden 3, como el ejercicio
 
 function calcDet3(a){
-	console.log(a[1]);
+
 	positivos=(Number(a[0])*Number(a[4])*Number(a[8]));
 	positivos+=(Number(a[1])*Number(a[5])*Number(a[6]));
 	positivos+=(Number(a[2])*Number(a[3])*Number(a[7]));
@@ -534,7 +544,6 @@ function calcDet3(a){
 	negativos-=(Number(a[1])*Number(a[3])*Number(a[8]));
 	negativos-=(Number(a[0])*Number(a[5])*Number(a[7]));
 	solucion=Number(positivos)+Number(negativos);
-	console.log(solucion);
 	return solucion;
 
 }
