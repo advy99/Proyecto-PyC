@@ -514,7 +514,6 @@ function calcMatrices(){
 		b.push(b3[i].value);
 	}
 	c3=document.getElementsByClassName("c3");
-	//Usamos el mismo bucle que con el ejercicio
 	soluciones = [];
 	soluciones = multiplicarMatrices(a,b);
 	for (var i = soluciones.length - 1; i >= 0; i--) {
