@@ -53,9 +53,9 @@ function rellenarMatrices(){
 function comprobarSuma(){
 	//Recoge las matrices A,B y la solucion, C
 	a1=new Array(8);
-	
+
 	a1=document.getElementsByClassName("a");
-	
+
 	b1= new Array(8);
 
 	b1=document.getElementsByClassName("b");
@@ -67,7 +67,7 @@ function comprobarSuma(){
 	//Comprueba que la casilla N de C valga la casilla N de A + la casilla N de B
 	for (var i = 0; i <= 5; i++) {
 		if (c1[i].value==(Number(a1[i].innerHTML)+Number(b1[i].innerHTML))) {
-			//Si es correcto le aplica un fondo verde con letra en blanco 
+			//Si es correcto le aplica un fondo verde con letra en blanco
 			c1[i].style.backgroundColor="green";
 			c1[i].style.color="white";
 		}
@@ -88,9 +88,9 @@ function ejNumeroMatriz(){
 function comprobarNumeroMatriz(){
 	//Recoge las matrices y la solucion
 	a1=new Array(8);
-	
+
 	a1=document.getElementsByClassName("a");
-	
+
 	b1= new Array(8);
 
 	b1=document.getElementsByClassName("b");
@@ -114,7 +114,7 @@ function comprobarNumeroMatriz(){
 			c1[i].style.color="white";
 		}
 	}
-	
+
 }
 //Abre ventana de multiplicacion de matrices
 function ejMatrices(){
@@ -138,7 +138,7 @@ function multiplicarMatrices(a1,b1){
 	//for para las tres filas
 	for (var l = 0; l < 3; l++) {
 		//Cada fila tendra que realizar los calculos 12 veces
-		for (var i = 0; i <=11; i++) {	
+		for (var i = 0; i <=11; i++) {
 			//cuando el contador es menor que tres multiplica los elementos en orden
 			if(cont<3){
 				sol=sol+(Number(a1[num])*Number(b1[j]));
@@ -150,7 +150,7 @@ function multiplicarMatrices(a1,b1){
 			else{
 				vectorSolucion.push(sol);
 				sol=0;
-				
+
 				if(j>=11){
 					j-=11;
 				}
@@ -167,7 +167,7 @@ function multiplicarMatrices(a1,b1){
 	}
 	//devuelve el vector solucion, para comprobar
 	return vectorSolucion;
-	
+
 }
 //Comprueba la multiplicacion de matrices
 function comprobarMatrices(){
@@ -200,11 +200,11 @@ function comprobarMatrices(){
 			sol=0;
 		}
 	}
-	
+
 }
 function rellenarDeterminante2(){
 	a=document.getElementsByClassName("a");
-	
+
 	//Rellena la matriz A
 	for (var i = 0; i < a.length; i++) {
 		a[i].innerHTML=Math.trunc((Math.random()*10));
@@ -240,19 +240,12 @@ function determinanteTres(){
 }
 //Comprueba determinante orden 3
 function comprobarDeterminanteTres(){
-	a=new Array(8);
 	a=document.getElementsByClassName("a");
-	//Realiza las operaciones de la teoria
-	//Primero calcula los positivos
-	positivos=(Number(a[0].innerHTML)*Number(a[4].innerHTML)*Number(a[8].innerHTML));
-	positivos+=(Number(a[1].innerHTML)*Number(a[5].innerHTML)*Number(a[6].innerHTML));
-	positivos+=(Number(a[2].innerHTML)*Number(a[3].innerHTML)*Number(a[7].innerHTML));
-	//Y luego los negativos
-	negativos=-(Number(a[2].innerHTML)*Number(a[4].innerHTML)*Number(a[6].innerHTML));
-	negativos-=(Number(a[1].innerHTML)*Number(a[3].innerHTML)*Number(a[8].innerHTML));
-	negativos-=(Number(a[0].innerHTML)*Number(a[5].innerHTML)*Number(a[7].innerHTML));
-
-	respuesta=Number(positivos)+Number(negativos);
+	b= [];
+	for (var i = 0; i < a.length; i++) {
+		b[i]=a[i].innerHTML;
+	}
+	respuesta=calcDet3(b);
 	sol=document.getElementById("determinanteTres");
 	if(sol.value==respuesta){
 		//Aplica estilos si es correcto
@@ -296,7 +289,7 @@ function clickSarrus(item,nombre){
 	}
 	//Cuando supera los 17 click comprueba el orden. ya que sarrus se hace en 18 click
 	if (ORDENARRAY.length > 17){
-		
+
 		if (String(ORDENARRAY)==String(ORDENEVALIDOS)) {
 			correccion.innerHTML="¡CORRECTO!";
 		}
@@ -447,7 +440,7 @@ function cambiarCalculadora(operacion){
 	determinanteO2.style.display="none";
 	determinanteO3.style.display="none";
 	sistemaCramer.style.display="none";
-	
+
 	//Comprobamos la operacion seleccionada en la calculadora con un switch y la mostramos con display:inline
 	switch(operacion){
 		case "sumaMatrices":
@@ -531,21 +524,25 @@ function calcDet2(){
 
 //Calculamos el determinante de orden 3, como el ejercicio
 
-function calcDet3(){
-	a5=document.getElementsByClassName("a5");
-	c5=document.getElementsByClassName("c5");
-	positivos=(Number(a5[0].value)*Number(a5[4].value)*Number(a5[8].value));
-	positivos+=(Number(a5[1].value)*Number(a5[5].value)*Number(a5[6].value));
-	positivos+=(Number(a5[2].value)*Number(a5[3].value)*Number(a5[7].value));
+function calcDet3(a){
+	console.log(a[1]);
+	positivos=(Number(a[0])*Number(a[4])*Number(a[8]));
+	positivos+=(Number(a[1])*Number(a[5])*Number(a[6]));
+	positivos+=(Number(a[2])*Number(a[3])*Number(a[7]));
 
-	negativos=-(Number(a5[2].value)*Number(a5[4].value)*Number(a5[6].value));
-	negativos-=(Number(a5[1].value)*Number(a5[3].value)*Number(a5[8].value));
-	negativos-=(Number(a5[0].value)*Number(a5[5].value)*Number(a5[7].value));
-
-	c5[0].innerHTML=Number(positivos)+Number(negativos);
+	negativos=-(Number(a[2])*Number(a[4])*Number(a[6]));
+	negativos-=(Number(a[1])*Number(a[3])*Number(a[8]));
+	negativos-=(Number(a[0])*Number(a[5])*Number(a[7]));
+	solucion=Number(positivos)+Number(negativos);
+	console.log(solucion);
+	return solucion;
 
 }
-
+function mostrarDeterminante3(){
+	a5=document.getElementsByClassName("a5");
+	c5=document.getElementsByClassName("c5");
+	c5[0].innerHTML=calcDet3(a5);
+}
 function calcSistema(){
 	a=document.getElementsByClassName("a6");
 	b=document.getElementsByClassName("b6");
@@ -597,7 +594,13 @@ function calcSistema(){
 	det3=Number(positivos)+Number(negativos);
 
 	if (detA==0) {
-		alert('Para calcular el sistema de ecuaciones el determinante de A debe ser distinto de 0');
+		if (det1!=0 && det2!=0 && det3!=0) {
+
+		}
+		else {
+			alert('Ha introducido un sistema incompatible, no tiene solución');
+		}
+
 	}
 	else{
 		x1=document.getElementById("c1");
