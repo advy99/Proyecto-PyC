@@ -334,6 +334,15 @@
 						<input type="button" name="operacion" value="Calcular" onclick="mostrarDeterminante3()">
 					</div>
 					<div id="sistema" class="ejMatriz">
+						<p>
+							Selecciona el metodo de resolución
+						</p>
+						<p>
+							<label for="cramer">Cramer</form>
+							<input type="radio" name="sistemas" onclick="mostrarSistemaCramer()">
+							<label for="gauss">Gauss</form>
+							<input type="radio" name="sistemas" onclick="mostrarSistemaGauss()">
+						</p>
 						<table class="matriz">
 							<tr>
 
@@ -369,7 +378,7 @@
 								<td><input type="text" class="b6" name="b6" /></td>
 							</tr>
 						</table>
-						<input type="button" name="operacion" value="Calcular" onclick="mostrarSistema()">
+						
 						<p>
 							X<span class="subindice">1</span>=
 							<span id="c1"></span>
