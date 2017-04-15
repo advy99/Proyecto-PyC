@@ -532,9 +532,9 @@ function mostrarSistemaCramer(){
 		x1=document.getElementById("c1");
 		x2=document.getElementById("c2");
 		x3=document.getElementById("c3");
-		x1.innerHTML=Math.round((soluciones[1]/soluciones[0])*100)/100;
-		x2.innerHTML=Math.round((soluciones[2]/soluciones[0])*100)/100;
-		x3.innerHTML=Math.round((soluciones[3]/soluciones[0])*100)/100;
+		x1.innerHTML=soluciones[1]/soluciones[0];
+		x2.innerHTML=soluciones[2]/soluciones[0];
+		x3.innerHTML=soluciones[3]/soluciones[0];
 	}
 
 }
@@ -614,9 +614,9 @@ function mostrarSistemaGauss(){
 	x1=document.getElementById("c1");
 	x2=document.getElementById("c2");
 	x3=document.getElementById("c3");
-	x1.innerHTML=Math.round(soluciones[0]*100)/100;
-	x2.innerHTML=Math.round(soluciones[1]*100)/100;
-	x3.innerHTML=Math.round(soluciones[2]*100)/100;
+	x1.innerHTML=soluciones[0];
+	x2.innerHTML=soluciones[1];
+	x3.innerHTML=soluciones[2];
 }
 
 function resolverGauss(a,b){
@@ -662,12 +662,25 @@ function resolverGauss(a,b){
 	b[2]=Number(b[2])*(Number(-a[4])/Number(aux));
 
 	b[2]=Number(b[2])+Number(b[1]);
-	sol3=Number(b[2])/Number(a[8]);
-	sol2=Number(b[1])-(Number(a[5])*Number(sol3));
-	sol2=Number(sol2)/Number(a[4]);
-	sol1=Number(b[0])-(Number(a[2])*Number(sol3));
-	sol1=Number(sol1)-(Number(a[1])*Number(sol2));
-	sol1=Number(sol1)/Number(a[0]);
+	if (a[8]==0) {
+		sol3='t';
+		sol2="("+String( b[1])+"-"+String( sol3);
+		sol2= String(sol2)+")/"+String( a[4]);
+		sol1= "("+String(b[0])+"-("+String( a[2])+"*"+String(sol3)+")";
+		sol1= String(sol1)+"-("+String( a[1])+"*"+String( sol2)+")";
+		sol1= String(sol1)+")/"+String( a[0]);
+	}
+	else {
+		sol3= b[2]/a[8];
+		sol2= b[1]-( a[5]* sol3);
+		sol2= sol2/ a[4];
+		sol1= b[0]-( a[2]* sol3);
+		sol1= sol1-( a[1]* sol2);
+		sol1= sol1/ a[0];
+	}
+
+
+
 	soluciones=[sol1,sol2,sol3];
 	return soluciones;
 }
