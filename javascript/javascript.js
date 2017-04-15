@@ -664,11 +664,14 @@ function resolverGauss(a,b){
 	b[2]=Number(b[2])+Number(b[1]);
 	if (a[8]==0) {
 		sol3='t';
-		sol2="("+String( b[1])+"-"+String( sol3);
-		sol2= String(sol2)+")/"+String( a[4]);
-		sol1= "("+String(b[0])+"-("+String( a[2])+"*"+String(sol3)+")";
-		sol1= String(sol1)+"-("+String( a[1])+"*"+String( sol2)+")";
-		sol1= String(sol1)+")/"+String( a[0]);
+		if(a[4]==0){
+			sol2="u";
+		}
+		else{
+			sol2="("+String(b[1])+"-("+String(a[5])+"*"+String(sol3)+"))"+"/"+String(a[4]);
+			sol1="("+String(b[0])+"-("+String(a[2])+"*"+String(sol3)+")"+"-("+String(a[1])+"*"+String(sol2)+")"+")"+"/"+String(a[0]);
+		}
+
 	}
 	else {
 		sol3= b[2]/a[8];
@@ -677,6 +680,11 @@ function resolverGauss(a,b){
 		sol1= b[0]-( a[2]* sol3);
 		sol1= sol1-( a[1]* sol2);
 		sol1= sol1/ a[0];
+
+		sol1=Math.round(sol1*100)/100;
+		sol2=Math.round(sol2*100)/100;
+		sol3=Math.round(sol3*100)/100;
+
 	}
 
 
