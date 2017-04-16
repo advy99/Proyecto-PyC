@@ -524,7 +524,7 @@ function mostrarSistemaCramer(){
 
 		}
 		else {
-			alert('Ha introducido un sistema incompatible, no tiene solución');
+			alert('Ha introducido un sistema determinado incompatible, intente resolverlo por el metodo de Gauss');
 		}
 
 	}
@@ -596,6 +596,7 @@ function calcSistema(a,b){
 	}
 	det3=calcDet3(vDet3);
 	var arrayDeterminantes=[detA,det1,det2,det3];
+	console.log(arrayDeterminantes);
 	return arrayDeterminantes;
 }
 function mostrarSistemaGauss(){
@@ -636,7 +637,20 @@ function resolverGauss(a,b){
 		b[0]=b[1];
 		b[1]=aux;
 	}
-
+	if(a[4]==0){
+		aux=a[3];
+		a[3]=a[6];
+		a[6]=aux;
+		aux=a[4];
+		a[4]=a[7];
+		a[7]=aux;
+		aux=a[5];
+		a[5]=a[8];
+		a[8]=aux;
+		aux=b[1];
+		b[1]=b[2];
+		b[2]=aux;
+	}
 	aux=a[3];
 	if(aux!=0){
 		for (var i = 3; i <6; i++) {
@@ -666,19 +680,25 @@ function resolverGauss(a,b){
 		b[2]=Number(b[2])*(Number(-a[4])/Number(aux));
 		b[2]=Number(b[2])+Number(b[1]);
 	}
+	console.log(a);
+	console.log(b);
 	if (a[8]==0) {
 		sol3='t';
 		if(a[4]==0){
 			sol2="u";
+			sol1="("+String(b[0])+"-("+String(a[2])+"*"+String(sol3)+")-("+String(a[1])+"*"+String(sol2)+"))";
+			sol1=sol1+"/"+String(a[0]);
 		}
 		else{
 			sol2="("+String(b[1])+"-("+String(a[5])+"*"+String(sol3)+"))"+"/"+String(a[4]);
 			sol1="("+String(b[0])+"-("+String(a[2])+"*"+String(sol3)+")"+"-("+String(a[1])+"*"+String(sol2)+")"+")"+"/"+String(a[0]);
 		}
+		soluciones=[sol1,sol2,sol3];
 
 	}
 	else {
 		sol3= b[2]/a[8];
+
 		sol2= b[1]-( a[5]* sol3);
 		sol2= sol2/ a[4];
 		sol1= b[0]-( a[2]* sol3);
@@ -688,11 +708,15 @@ function resolverGauss(a,b){
 		sol1=Math.round(sol1*100)/100;
 		sol2=Math.round(sol2*100)/100;
 		sol3=Math.round(sol3*100)/100;
-
+		if(!isFinite(sol1) || !isFinite(sol2) || !isFinite(sol3) ){
+			alert("El sistema es incompatible, no tiene solucion");
+			soluciones=["","",""];
+		}
+		else {
+			soluciones=[sol1,sol2,sol3];
+		}
 	}
 
-
-
-	soluciones=[sol1,sol2,sol3];
 	return soluciones;
+
 }
