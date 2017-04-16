@@ -636,32 +636,36 @@ function resolverGauss(a,b){
 		b[0]=b[1];
 		b[1]=aux;
 	}
+
 	aux=a[3];
-	for (var i = 3; i <6; i++) {
-		a[i]=Number(a[i])*(Number(-a[0])/Number(aux));
-		a[i]=Number(a[i])+Number(a[i-3]);
+	if(aux!=0){
+		for (var i = 3; i <6; i++) {
+			a[i]=Number(a[i])*(Number(-a[0])/Number(aux));
+			a[i]=Number(a[i])+Number(a[i-3]);
+		}
+		b[1]=Number(b[1])*(Number(-a[0])/Number(aux));
+		b[1]=Number(b[1])+Number(b[0]);
 	}
-	b[1]=Number(b[1])*(Number(-a[0])/Number(aux));
-	b[1]=Number(b[1])+Number(b[0]);
-
 	aux=a[6];
-	for (var i = 6; i <9; i++) {
-		a[i]=Number(a[i])*(Number(-a[0])/Number(aux));
-		a[i]=Number(a[i])+Number(a[i-6]);
+	if(aux!=0){
+		for (var i = 6; i <9; i++) {
+			a[i]=Number(a[i])*(Number(-a[0])/Number(aux));
+			a[i]=Number(a[i])+Number(a[i-6]);
+		}
+
+		b[2]=Number(b[2])*(Number(-a[0])/Number(aux));
+		b[2]=Number(b[2])+Number(b[0]);
 	}
-
-	b[2]=Number(b[2])*(Number(-a[0])/Number(aux));
-	b[2]=Number(b[2])+Number(b[0]);
-
 
 	aux=a[7];
-	for (var i = 7; i <9; i++) {
-		a[i]=Number(a[i])*(Number(-a[4])/Number(aux));
-		a[i]=Number(a[i])+Number(a[i-3]);
+	if(aux!=0){
+		for (var i = 7; i <9; i++) {
+			a[i]=Number(a[i])*(Number(-a[4])/Number(aux));
+			a[i]=Number(a[i])+Number(a[i-3]);
+		}
+		b[2]=Number(b[2])*(Number(-a[4])/Number(aux));
+		b[2]=Number(b[2])+Number(b[1]);
 	}
-	b[2]=Number(b[2])*(Number(-a[4])/Number(aux));
-
-	b[2]=Number(b[2])+Number(b[1]);
 	if (a[8]==0) {
 		sol3='t';
 		if(a[4]==0){
