@@ -637,7 +637,7 @@ function resolverGauss(a,b){
 		b[0]=b[1];
 		b[1]=aux;
 	}
-	if(a[4]==0){
+	if(a[4]==0 || a[4]-a[1]==0){
 		aux=a[3];
 		a[3]=a[6];
 		a[6]=aux;
@@ -680,11 +680,10 @@ function resolverGauss(a,b){
 		b[2]=Number(b[2])*(Number(-a[4])/Number(aux));
 		b[2]=Number(b[2])+Number(b[1]);
 	}
-	console.log(a);
-	console.log(b);
 	if (a[8]==0) {
 		sol3='t';
 		if(a[4]==0){
+			
 			sol2="u";
 			sol1="("+String(b[0])+"-("+String(a[2])+"*"+String(sol3)+")-("+String(a[1])+"*"+String(sol2)+"))";
 			sol1=sol1+"/"+String(a[0]);
