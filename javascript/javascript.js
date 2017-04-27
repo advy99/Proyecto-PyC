@@ -621,8 +621,14 @@ function mostrarSistemaGauss(){
 }
 
 function resolverGauss(a,b){
-
-	if (a[0]==0) {
+	incompatible=true;
+	for (var i = 2; i >= 0; i--) {
+		if (a[i]!=a[i+3]) {
+			incompatible=false;
+		}
+	}
+	if(incompatible==false){
+		if (a[0]==0) {
 		aux=0;
 		aux=a[0];
 		a[0]=a[3];
@@ -636,86 +642,94 @@ function resolverGauss(a,b){
 		aux=b[0];
 		b[0]=b[1];
 		b[1]=aux;
-	}
-	if(a[4]==0 || a[4]-a[1]==0){
-		aux=a[3];
-		a[3]=a[6];
-		a[6]=aux;
-		aux=a[4];
-		a[4]=a[7];
-		a[7]=aux;
-		aux=a[5];
-		a[5]=a[8];
-		a[8]=aux;
-		aux=b[1];
-		b[1]=b[2];
-		b[2]=aux;
-	}
-	aux=a[3];
-	if(aux!=0){
-		for (var i = 3; i <6; i++) {
-			a[i]=Number(a[i])*(Number(-a[0])/Number(aux));
-			a[i]=Number(a[i])+Number(a[i-3]);
 		}
-		b[1]=Number(b[1])*(Number(-a[0])/Number(aux));
-		b[1]=Number(b[1])+Number(b[0]);
-	}
-	aux=a[6];
-	if(aux!=0){
-		for (var i = 6; i <9; i++) {
-			a[i]=Number(a[i])*(Number(-a[0])/Number(aux));
-			a[i]=Number(a[i])+Number(a[i-6]);
-		}
-
-		b[2]=Number(b[2])*(Number(-a[0])/Number(aux));
-		b[2]=Number(b[2])+Number(b[0]);
-	}
-
-	aux=a[7];
-	if(aux!=0){
-		for (var i = 7; i <9; i++) {
-			a[i]=Number(a[i])*(Number(-a[4])/Number(aux));
-			a[i]=Number(a[i])+Number(a[i-3]);
-		}
-		b[2]=Number(b[2])*(Number(-a[4])/Number(aux));
-		b[2]=Number(b[2])+Number(b[1]);
-	}
-	if (a[8]==0) {
-		sol3='t';
 		if(a[4]==0){
-			
-			sol2="u";
-			sol1="("+String(b[0])+"-("+String(a[2])+"*"+String(sol3)+")-("+String(a[1])+"*"+String(sol2)+"))";
-			sol1=sol1+"/"+String(a[0]);
+			aux=a[3];
+			a[3]=a[6];
+			a[6]=aux;
+			aux=a[4];
+			a[4]=a[7];
+			a[7]=aux;
+			aux=a[5];
+			a[5]=a[8];
+			a[8]=aux;
+			aux=b[1];
+			b[1]=b[2];
+			b[2]=aux;
 		}
-		else{
-			sol2="("+String(b[1])+"-("+String(a[5])+"*"+String(sol3)+"))"+"/"+String(a[4]);
-			sol1="("+String(b[0])+"-("+String(a[2])+"*"+String(sol3)+")"+"-("+String(a[1])+"*"+String(sol2)+")"+")"+"/"+String(a[0]);
+		aux=a[3];
+		if(aux!=0){
+			for (var i = 3; i <6; i++) {
+				a[i]=Number(a[i])*(Number(-a[0])/Number(aux));
+				a[i]=Number(a[i])+Number(a[i-3]);
+			}
+			b[1]=Number(b[1])*(Number(-a[0])/Number(aux));
+			b[1]=Number(b[1])+Number(b[0]);
 		}
-		soluciones=[sol1,sol2,sol3];
+		aux=a[6];
+		if(aux!=0){
+			for (var i = 6; i <9; i++) {
+				a[i]=Number(a[i])*(Number(-a[0])/Number(aux));
+				a[i]=Number(a[i])+Number(a[i-6]);
+			}
 
-	}
-	else {
-		sol3= b[2]/a[8];
+			b[2]=Number(b[2])*(Number(-a[0])/Number(aux));
+			b[2]=Number(b[2])+Number(b[0]);
+		}
 
-		sol2= b[1]-( a[5]* sol3);
-		sol2= sol2/ a[4];
-		sol1= b[0]-( a[2]* sol3);
-		sol1= sol1-( a[1]* sol2);
-		sol1= sol1/ a[0];
+		aux=a[7];
+		if(aux!=0){
+			for (var i = 7; i <9; i++) {
+				a[i]=Number(a[i])*(Number(-a[4])/Number(aux));
+				a[i]=Number(a[i])+Number(a[i-3]);
+			}
+			b[2]=Number(b[2])*(Number(-a[4])/Number(aux));
+			b[2]=Number(b[2])+Number(b[1]);
+		}
+		if (a[8]==0) {
+			sol3='t';
+			if(a[4]==0){
+				
+				sol2="u";
+				sol1="("+String(b[0])+"-("+String(a[2])+"*"+String(sol3)+")-("+String(a[1])+"*"+String(sol2)+"))";
+				sol1=sol1+"/"+String(a[0]);
+			}
+			else{
+				sol2="("+String(b[1])+"-("+String(a[5])+"*"+String(sol3)+"))"+"/"+String(a[4]);
+				sol1="("+String(b[0])+"-("+String(a[2])+"*"+String(sol3)+")"+"-("+String(a[1])+"*"+String(sol2)+")"+")"+"/"+String(a[0]);
+			}
+			soluciones=[sol1,sol2,sol3];
 
-		sol1=Math.round(sol1*100)/100;
-		sol2=Math.round(sol2*100)/100;
-		sol3=Math.round(sol3*100)/100;
-		if(!isFinite(sol1) || !isFinite(sol2) || !isFinite(sol3) ){
-			alert("El sistema es incompatible, no tiene solucion");
-			soluciones=["","",""];
 		}
 		else {
-			soluciones=[sol1,sol2,sol3];
+			sol3= b[2]/a[8];
+
+			sol2= b[1]-( a[5]* sol3);
+			sol2= sol2/ a[4];
+			sol1= b[0]-( a[2]* sol3);
+			sol1= sol1-( a[1]* sol2);
+			sol1= sol1/ a[0];
+
+			sol1=Math.round(sol1*100)/100;
+			sol2=Math.round(sol2*100)/100;
+			sol3=Math.round(sol3*100)/100;
+			if(!isFinite(sol1) || !isFinite(sol2) || !isFinite(sol3) ){
+				alert("El sistema es incompatible, no tiene solucion");
+				soluciones=["","",""];
+			}
+			else {
+				soluciones=[sol1,sol2,sol3];
+			}
 		}
+
+		return soluciones;
+
+		}
+	else{
+		soluciones=["","",""];
+		alert("El sistema es incompatible");
+		return soluciones;
+
 	}
-
-	return soluciones;
-
+	
 }
