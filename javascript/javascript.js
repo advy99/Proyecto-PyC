@@ -83,7 +83,20 @@ function comprobarSuma(){
 function ejNumeroMatriz(){
 	ventanaNumeroMatriz=window.open('ejercicios/ejNumeroMatriz.html','','width=900,height=500')
 }
-
+function sumarMatrices(a,b){
+	var solucion=[];
+	for (var i = 0; i < a.length; i++) {
+		solucion[i]=Number(a[i])+Number(b[i]);
+	}
+	return solucion;
+}
+function restarMatrices(a,b){
+	var solucion=[];
+	for (var i = 0; i < a.length; i++) {
+		solucion[i]=Number(a[i])-Number(b[i]);
+	}
+	return solucion;
+}
 //Comprueba el ejercicion numero por matriz
 function comprobarNumeroMatriz(){
 	//Recoge las matrices y la solucion
@@ -365,35 +378,12 @@ function comprobarSistema(){
 }
 
 
-
-
-//Calculamos la suma y la mostramos con el for
-function calcSuma(){
-	a=document.getElementsByClassName("a");
-	b=document.getElementsByClassName("b");
-	c=document.getElementsByClassName("c");
-	for (var i = 0; i < 9; i++) {
-		c[i].innerHTML=Number(a[i].value)+Number(b[i].value);
+function calcNMatriz(a,b){
+	var solucion=[];
+	for (var i = 0; i < b.length; i++) {
+		solucion[i]=Number(a[0])*Number(b[i]);
 	}
-}
-//Calculamos la resta y la mostramos con el for
-function calcResta(){
-	a1=document.getElementsByClassName("a1");
-	b1=document.getElementsByClassName("b1");
-	c1=document.getElementsByClassName("c1");
-	for (var i = 0; i < 9; i++) {
-		c1[i].innerHTML=Number(a1[i].value)-Number(b1[i].value);
-	}
-}
-//Calculamos la multiplicacion y la mostramos con el for
-function calcNMatriz(){
-	a2=document.getElementsByClassName("a2");
-	b2=document.getElementsByClassName("b2");
-	c2=document.getElementsByClassName("c2");
-	for (var i = 0; i < 9; i++) {
-		//Como es solo para un numero solo usamos a2[0]
-		c2[i].innerHTML=Number(a2[0].value)*Number(b2[i].value);
-	}
+	return solucion;
 }
 //calculamos la multiplicacion de matrices
 function calcMatrices(){
@@ -416,11 +406,9 @@ function calcMatrices(){
 }
 
 //Calculamos el determinante de orden 2, como el ejercicio
-function calcDet2(){
-	a4=document.getElementsByClassName("a4");
-	c4=document.getElementsByClassName("c4");
-	c4[0].innerHTML=(Number(a4[0].value)*Number(a4[3].value))-(Number(a4[1].value)*Number(a4[2].value));
-
+function calcDet2(a){
+	solucion=(Number(a[0])*Number(a[3]))-(Number(a[1])*Number(a[2]));
+	return solucion;
 }
 
 //Calculamos el determinante de orden 3, como el ejercicio
@@ -676,56 +664,174 @@ function resolverGauss(a,b){
 }
 function generarOperacion(operacion,idDiv){
 	var id=document.getElementById(idDiv);
+	var divBoton=document.getElementById("boton");
 	var hijos=id.childNodes;
+	var hijosBoton=divBoton.childNodes;
+	var a1=[];
+	var b1=[];
+	for (var i = hijosBoton.length-1; i >=0; i--) {
+		divBoton.removeChild(hijosBoton[i]);
+	}
 	for (var i = hijos.length-1; i >=0; i--) {
 		id.removeChild(hijos[i]);
 	}
+	//parrafo=document.createElement("p");
+	boton=document.createElement("input");
+	boton.setAttribute("type","button");
+	boton.setAttribute("value","Calcular");
+
 	switch (operacion) {
+
 		case "sumaMatrices":
 
-				generarTablaInput(3,3,idDiv,"parentesis");
+				generarTabla(3,3,idDiv,"parentesis","tablaA","entrada");
 				id.appendChild(document.createTextNode("+"));
-				generarTablaInput(3,3,idDiv,"parentesis");
+				generarTabla(3,3,idDiv,"parentesis","tablaB","entrada");
 				id.appendChild(document.createTextNode("="));
+				boton.addEventListener("click",function(){
+						hijos=id.childElementCount;
+						if (hijos>2) {
+							id.removeChild(id.lastChild);
+						}
+						a=document.getElementsByClassName("tablaA");
+						b=document.getElementsByClassName("tablaB");
+						for (var i = 0; i < a.length; i++) {
+							a1[i]=a[i].value;
+							b1[i]=b[i].value;
+						}
+						soluciones=sumarMatrices(a1,b1);
+
+						generarTabla(3,3,idDiv,"parentesis","solA","salida",soluciones);
+					}
+				);
+
+				divBoton.appendChild(boton);
 			break;
 		case "restaMatrices":
-				generarTablaInput(3,3,idDiv,"parentesis");
+				generarTabla(3,3,idDiv,"parentesis","tablaA","entrada");
 				id.appendChild(document.createTextNode("-"));
-				generarTablaInput(3,3,idDiv,"parentesis");
+				generarTabla(3,3,idDiv,"parentesis","tablaB","entrada");
 				id.appendChild(document.createTextNode("="));
+				boton.addEventListener("click",function(){
+						hijos=id.childElementCount;
+						if (hijos>2) {
+							id.removeChild(id.lastChild);
+						}
+						a=document.getElementsByClassName("tablaA");
+						b=document.getElementsByClassName("tablaB");
+						for (var i = 0; i < a.length; i++) {
+							a1[i]=a[i].value;
+							b1[i]=b[i].value;
+						}
+						soluciones=restarMatrices(a1,b1);
+
+						generarTabla(3,3,idDiv,"parentesis","solA","salida",soluciones);
+					}
+				);
+				divBoton.appendChild(boton);
 			break;
 		case "multiplicarMatrices":
-				generarTablaInput(3,3,idDiv,"parentesis");
+				generarTabla(3,3,idDiv,"parentesis","tablaA","entrada");
 				id.appendChild(document.createTextNode("*"));
-				generarTablaInput(3,3,idDiv,"parentesis");
+				generarTabla(3,3,idDiv,"parentesis","tablaB","entrada");
 				id.appendChild(document.createTextNode("="));
+				boton.addEventListener("click",function(){
+						hijos=id.childElementCount;
+						if (hijos>2) {
+							id.removeChild(id.lastChild);
+						}
+						a=document.getElementsByClassName("tablaA");
+						b=document.getElementsByClassName("tablaB");
+						for (var i = 0; i < a.length; i++) {
+							a1[i]=a[i].value;
+							b1[i]=b[i].value;
+						}
+						soluciones=multiplicarMatrices(a1,b1);
+
+						generarTabla(3,3,idDiv,"parentesis","solA","salida",soluciones);
+					}
+				);
+				divBoton.appendChild(boton);
 			break;
 		case "multiplicarNMatriz":
-				generarTablaInput(1,1,idDiv,"parentesis");
+				generarTabla(1,1,idDiv,"parentesis","tablaA","entrada");
 				id.appendChild(document.createTextNode("*"));
-				generarTablaInput(3,3,idDiv,"parentesis");
+				generarTabla(3,3,idDiv,"parentesis","tablaB","entrada");
 				id.appendChild(document.createTextNode("="));
+				boton.addEventListener("click",function(){
+						hijos=id.childElementCount;
+						if (hijos>2) {
+							id.removeChild(id.lastChild);
+						}
+						a=document.getElementsByClassName("tablaA");
+						b=document.getElementsByClassName("tablaB");
+						a1[0]=a[0].value;
+						for (var i = 0; i < b.length; i++) {
+							b1[i]=b[i].value;
+						}
+						soluciones=calcNMatriz(a1,b1);
+						generarTabla(3,3,idDiv,"parentesis","solA","salida",soluciones);
+					}
+				);
+				divBoton.appendChild(boton);
+
 			break;
 		case "determinante2":
-				generarTablaInput(2,2,idDiv,"linea");
+				generarTabla(2,2,idDiv,"linea","tablaA","entrada");
 				id.appendChild(document.createTextNode("="));
+				boton.addEventListener("click",function(){
+						hijos=id.childElementCount;
+						if (hijos>2) {
+							id.removeChild(id.lastChild);
+						}
+						a=document.getElementsByClassName("tablaA");
+						for (var i = 0; i < a.length; i++) {
+							a1[i]=a[i].value;
+						}
+						soluciones=document.createTextNode(calcDet2(a1));
+						id.appendChild(soluciones);
+					}
+				);
+				divBoton.appendChild(boton);
 			break;
 		case "determinante3":
-				generarTablaInput(3,3,idDiv,"linea");
+				generarTabla(3,3,idDiv,"linea","tablaA","entrada");
 				id.appendChild(document.createTextNode("="));
-			break;
-		
+				boton.addEventListener("click",function(){
+						hijos=id.childElementCount;
+						if (hijos>2) {
+							id.removeChild(id.lastChild);
+						}
+						a=document.getElementsByClassName("tablaA");
+						for (var i = 0; i < a.length; i++) {
+							a1[i]=a[i].value;
+						}
+						console.log(a1);
+						soluciones=document.createTextNode(calcDet3(a1));
 
+						id.appendChild(soluciones);
+					}
+				);
+				divBoton.appendChild(boton);
+			break;
 	}
+
+
 }
-function generarTablaInput(filas,columnas,idDiv,parentesis){
+
+function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMostrar){
 	var id=document.getElementById(idDiv);
-	var elementoTabla=document.createElement("input");
+	if(opcionIO=="entrada"){
+		var elementoTabla=document.createElement("input");
+	}
+	else{
+		var elementoTabla=document.createTextNode("");
+	}
 	var tabla=document.createElement("table");
 	var tr=document.createElement("tr");
 	var td=document.createElement("td");
 	var longitudTabla=filas*columnas;
-
+	td.style.textAling="center";
 
 	if(parentesis=="parentesis"){
 		td.appendChild(document.createTextNode(""));
@@ -741,11 +847,24 @@ function generarTablaInput(filas,columnas,idDiv,parentesis){
 	}
 
 	for (var i = 0; i <= longitudTabla ; i++) {
-		elementoTabla=document.createElement("input");
-		elementoTabla.setAttribute("type","text");
-		elementoTabla.style.borderRadius="10px";
-		elementoTabla.style.width="50px";
+		if(opcionIO=="entrada"){
+			elementoTabla=document.createElement("input");
+			elementoTabla.setAttribute("type","text");
+			elementoTabla.className=clase;
+			elementoTabla.style.textAlign="center";
+			elementoTabla.style.borderRadius="10px";
+			elementoTabla.style.width="50px";
+
+		}
+		else{
+			var texto=document.createTextNode(elementoMostrar[i]);
+		 	elementoTabla=document.createElement("p");
+			elementoTabla.style.width="30px";
+			elementoTabla.appendChild(texto);
+		}
+
 		td=document.createElement("td");
+		td.style.textAlign="center";
 		td.appendChild(elementoTabla);
 
 		if (i%columnas==0) {

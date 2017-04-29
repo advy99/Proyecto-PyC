@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<script type="text/javascript" src="javascript/javascript.js"></script>
 	</head>
-	<body>
+	<body onload="document.getElementById('selector').reset()">
 		<div class="cabezero"><h2><a href="index.html">Matematicas 2º Bachillerato</a></h2></div>
 		<div class="contenedor">
 			<div class="menu_izq">
@@ -33,7 +33,7 @@
 			</div>
 			<div class="contenido">
 				<p>Calculadora de matrices</p>
-				<p><form>
+				<p><form id="selector">
 					<select onchange="generarOperacion(this.value,'calculadora')">
 						<option value="seleccion" selected="selected" id="1sel">Seleccione una operación</option>
 						<option value="sumaMatrices">Sumar matrices</option>
@@ -48,7 +48,8 @@
 					</form></p>
 
 					<div  class="matriz" id="calculadora">
-
+					</div>
+					<div  class="matriz" id="boton">
 					</div>
 
 		</div>
