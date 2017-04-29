@@ -366,70 +366,7 @@ function comprobarSistema(){
 
 
 
-//Inicializa la calculadora
-//Pone todas las operaciones ocultas y vacia las casillas con la funcion reset()
-function iniciarCalculadora(){
-	document.getElementById("formCalc").reset();
-	document.getElementById("1sel").selected="selected";
-	suma=document.getElementById("sumaM");
-	resta=document.getElementById("restaM");
-	multiplicarMatrizNumero=document.getElementById("multiplicarNM");
-	multiplicarMatriz=document.getElementById("multiplicarM");
-	determinanteO2=document.getElementById("detO2");
-	determinanteO3=document.getElementById("detO3");
-	sistemaCramer=document.getElementById("sistema");
-	suma.style.display="none";
-	resta.style.display="none";
-	multiplicarMatrizNumero.style.display="none";
-	multiplicarMatriz.style.display="none";
-	determinanteO2.style.display="none";
-	determinanteO3.style.display="none";
-	sistemaCramer.style.display="none";
-}
 
-//Ejecuta al cambiar de operacion en a calculadora
-function cambiarCalculadora(operacion){
-	suma=document.getElementById("sumaM");
-	resta=document.getElementById("restaM");
-	multiplicarMatrizNumero=document.getElementById("multiplicarNM");
-	multiplicarMatriz=document.getElementById("multiplicarM");
-	determinanteO2=document.getElementById("detO2");
-	determinanteO3=document.getElementById("detO3");
-	sistemaCramer=document.getElementById("sistema");
-
-	suma.style.display="none";
-	resta.style.display="none";
-	multiplicarMatrizNumero.style.display="none";
-	multiplicarMatriz.style.display="none";
-	determinanteO2.style.display="none";
-	determinanteO3.style.display="none";
-	sistemaCramer.style.display="none";
-
-	//Comprobamos la operacion seleccionada en la calculadora con un switch y la mostramos con display:inline
-	switch(operacion){
-		case "sumaMatrices":
-							suma.style.display="inline";
-							break;
-		case "restaMatrices":
-							resta.style.display="inline";
-							break;
-		case "multiplicarNMatriz":
-							multiplicarMatrizNumero.style.display="inline";
-							break;
-		case "multiplicarMatrices":
-							multiplicarMatriz.style.display="inline";
-							break;
-		case "determinante2":
-							determinanteO2.style.display="inline";
-							break;
-		case "determinante3":
-							determinanteO3.style.display="inline";
-							break;
-		case "sistema":
-							sistemaCramer.style.display="inline";
-							break;
-	}
-}
 //Calculamos la suma y la mostramos con el for
 function calcSuma(){
 	a=document.getElementsByClassName("a");
@@ -504,7 +441,11 @@ function calcDet3(a){
 function mostrarDeterminante3(){
 	a5=document.getElementsByClassName("a5");
 	c5=document.getElementsByClassName("c5");
-	c5[0].innerHTML=calcDet3(a5);
+	var b=[];
+	for (var i = a5.length - 1; i >= 0; i--) {
+		b[i]=a5[i].value;
+	}
+	c5[0].innerHTML=calcDet3(b);
 }
 function mostrarSistemaCramer(){
 	a=document.getElementsByClassName("a6");
@@ -689,7 +630,7 @@ function resolverGauss(a,b){
 		if (a[8]==0) {
 			sol3='t';
 			if(a[4]==0){
-				
+
 				sol2="u";
 				sol1="("+String(b[0])+"-("+String(a[2])+"*"+String(sol3)+")-("+String(a[1])+"*"+String(sol2)+"))";
 				sol1=sol1+"/"+String(a[0]);
@@ -731,5 +672,108 @@ function resolverGauss(a,b){
 		return soluciones;
 
 	}
-	
+
+}
+function generarOperacion(operacion,idDiv){
+	var id=document.getElementById(idDiv);
+	var hijos=id.childNodes;
+	for (var i = hijos.length-1; i >=0; i--) {
+		id.removeChild(hijos[i]);
+	}
+	switch (operacion) {
+		case "sumaMatrices":
+
+				generarTablaInput(3,3,idDiv,"parentesis");
+				id.appendChild(document.createTextNode("+"));
+				generarTablaInput(3,3,idDiv,"parentesis");
+				id.appendChild(document.createTextNode("="));
+			break;
+		case "restaMatrices":
+				generarTablaInput(3,3,idDiv,"parentesis");
+				id.appendChild(document.createTextNode("-"));
+				generarTablaInput(3,3,idDiv,"parentesis");
+				id.appendChild(document.createTextNode("="));
+			break;
+		case "multiplicarMatrices":
+				generarTablaInput(3,3,idDiv,"parentesis");
+				id.appendChild(document.createTextNode("*"));
+				generarTablaInput(3,3,idDiv,"parentesis");
+				id.appendChild(document.createTextNode("="));
+			break;
+		case "multiplicarNMatriz":
+				generarTablaInput(1,1,idDiv,"parentesis");
+				id.appendChild(document.createTextNode("*"));
+				generarTablaInput(3,3,idDiv,"parentesis");
+				id.appendChild(document.createTextNode("="));
+			break;
+		case "determinante2":
+				generarTablaInput(2,2,idDiv,"linea");
+				id.appendChild(document.createTextNode("="));
+			break;
+		case "determinante3":
+				generarTablaInput(3,3,idDiv,"linea");
+				id.appendChild(document.createTextNode("="));
+			break;
+		
+
+	}
+}
+function generarTablaInput(filas,columnas,idDiv,parentesis){
+	var id=document.getElementById(idDiv);
+	var elementoTabla=document.createElement("input");
+	var tabla=document.createElement("table");
+	var tr=document.createElement("tr");
+	var td=document.createElement("td");
+	var longitudTabla=filas*columnas;
+
+
+	if(parentesis=="parentesis"){
+		td.appendChild(document.createTextNode(""));
+		td.rowSpan=filas+1;
+		td.className="parentesisMatrizIzq";
+		tr.appendChild(td);
+	}
+	else{
+		td.appendChild(document.createTextNode(""));
+		td.rowSpan=filas+1;
+		td.className="detDer";
+		tr.appendChild(td);
+	}
+
+	for (var i = 0; i <= longitudTabla ; i++) {
+		elementoTabla=document.createElement("input");
+		elementoTabla.setAttribute("type","text");
+		elementoTabla.style.borderRadius="10px";
+		elementoTabla.style.width="50px";
+		td=document.createElement("td");
+		td.appendChild(elementoTabla);
+
+		if (i%columnas==0) {
+
+			tabla.appendChild(tr);
+			tr="";
+			tr=document.createElement("tr");
+
+		}
+		tr.appendChild(td);
+		if(i==(filas-1)){
+			if(parentesis=="parentesis"){
+				td=document.createElement("td");
+				td.appendChild(document.createTextNode(""));
+				td.rowSpan=filas+1;
+				td.className="parentesisMatrizDer";
+				tr.appendChild(td);
+			}
+			else{
+				td=document.createElement("td");
+				td.appendChild(document.createTextNode(""));
+				td.rowSpan=filas+1;
+				td.className="detIzq";
+				tr.appendChild(td);
+			}
+		}
+
+	}
+	tabla.style.display="inline-table";
+	id.appendChild(tabla);
 }
