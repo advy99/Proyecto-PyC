@@ -814,6 +814,10 @@ function generarOperacion(operacion,idDiv){
 				);
 				divBoton.appendChild(boton);
 			break;
+		case "sistema":
+				generarTabla(3,3,idDiv,"sistema","tablaA","entrada");
+				generarTabla(3,1,idDiv,"soluciones","tablaB","entrada");
+			break;
 	}
 
 
@@ -839,7 +843,7 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 		td.className="parentesisMatrizIzq";
 		tr.appendChild(td);
 	}
-	else{
+	if(parentesis=="line"){
 		td.appendChild(document.createTextNode(""));
 		td.rowSpan=filas+1;
 		td.className="detDer";
@@ -862,10 +866,21 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 			elementoTabla.style.width="30px";
 			elementoTabla.appendChild(texto);
 		}
-
 		td=document.createElement("td");
 		td.style.textAlign="center";
 		td.appendChild(elementoTabla);
+		if(parentesis=="sistema"){
+
+			if ((i%filas)+1==3) {
+				var valorX=document.createTextNode(String("X")+String((i%filas)+1)+"=");
+			}
+			else {
+				var valorX=document.createTextNode(String("X")+String((i%filas)+1)+"+");
+			}
+			td.appendChild(valorX);
+		}
+
+
 
 		if (i%columnas==0) {
 
@@ -883,7 +898,7 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 				td.className="parentesisMatrizDer";
 				tr.appendChild(td);
 			}
-			else{
+			if(parentesis=="line"){
 				td=document.createElement("td");
 				td.appendChild(document.createTextNode(""));
 				td.rowSpan=filas+1;
