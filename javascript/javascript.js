@@ -49,7 +49,7 @@ function rellenarMatrices(){
 
 }
 
-//Comprueba la suma.
+//Comprueba la suma
 function comprobarSuma(){
 	//Recoge las matrices A,B y la solucion, C
 	a1=new Array(8);
@@ -83,6 +83,8 @@ function comprobarSuma(){
 function ejNumeroMatriz(){
 	ventanaNumeroMatriz=window.open('ejercicios/ejNumeroMatriz.html','','width=900,height=500')
 }
+
+//Suma dos matrices. Usada en la calculadora
 function sumarMatrices(a,b){
 	var solucion=[];
 	for (var i = 0; i < a.length; i++) {
@@ -90,6 +92,8 @@ function sumarMatrices(a,b){
 	}
 	return solucion;
 }
+
+//Resta dos matrices. Usada en la calculadora
 function restarMatrices(a,b){
 	var solucion=[];
 	for (var i = 0; i < a.length; i++) {
@@ -134,6 +138,7 @@ function ejMatrices(){
 	ventanaMatriz=window.open('ejercicios/ejMatrices.html','','width=900,height=500');
 }
 
+//Funcion que multiplica dos matrices y devuelve la matriz solucion, usada en la calculadora y en el ejercicio
 function multiplicarMatrices(a1,b1){
 	sol=0;
 	sol=Number(sol);
@@ -318,6 +323,9 @@ function clickSarrus(item,nombre){
 function abrirEjSistemas(){
 	window.open('ejercicios/ejSistemasCramer.html','','width=900,height=500');
 }
+
+//Coge las matrices del ejercicio y comprueba la solucion usando Cramer, es decir, con los distintos determinantes
+//y la comprueba con la funcion calcSistema
 function comprobarSistema(){
 	a=document.getElementsByClassName("a");
 	b=document.getElementsByClassName("b");
@@ -335,7 +343,6 @@ function comprobarSistema(){
 	x1=document.getElementById("c1");
 	x2=document.getElementById("c2");
 	x3=document.getElementById("c3");
-	console.log(x1.value);
 	if (detA==0) {
 		alert('Para resolver el sistema de ecuaciones el determinante de A debe ser distinto de 0');
 	}
@@ -377,7 +384,7 @@ function comprobarSistema(){
 
 }
 
-
+//Multipllica la matriz b por un numero a, usada en la calculadora
 function calcNMatriz(a,b){
 	var solucion=[];
 	for (var i = 0; i < b.length; i++) {
@@ -426,6 +433,8 @@ function calcDet3(a){
 	return solucion;
 
 }
+
+
 function mostrarDeterminante3(){
 	a5=document.getElementsByClassName("a5");
 	c5=document.getElementsByClassName("c5");
@@ -535,6 +544,8 @@ function calcSistema(a,b){
 	var soluciones=[sol1,sol2,sol3];
 	return soluciones;
 }
+
+//Muestra e sistema usando Gauss
 function mostrarSistemaGauss(){
 	a=document.getElementsByClassName("a6");
 	b=document.getElementsByClassName("b6");
@@ -555,9 +566,10 @@ function mostrarSistemaGauss(){
 	x2.innerHTML=soluciones[1];
 	x3.innerHTML=soluciones[2];
 }
-
+//Resuelve el sistema por el metodo de gaus
 function resolverGauss(a,b){
 	incompatible=true;
+	//Si el primer elemento y el cuarto son iguales el sistema es compatible indeterminado
 	for (var i = 2; i >= 0; i--) {
 		if (a[i]!=a[i+3]) {
 			incompatible=false;
@@ -641,20 +653,26 @@ function resolverGauss(a,b){
 			sol3= b[2]/a[8];
 
 			sol2= b[1]-( a[5]* sol3);
-			sol2= sol2/ a[4];
-			sol1= b[0]-( a[2]* sol3);
-			sol1= sol1-( a[1]* sol2);
-			sol1= sol1/ a[0];
+			if(a[4]!=0){
+				sol2= sol2/ a[4];
+				sol1= b[0]-( a[2]* sol3);
+				sol1= sol1-( a[1]* sol2);
+				sol1= sol1/ a[0];
 
-			sol1=Math.round(sol1*100)/100;
-			sol2=Math.round(sol2*100)/100;
-			sol3=Math.round(sol3*100)/100;
-			if(!isFinite(sol1) || !isFinite(sol2) || !isFinite(sol3) ){
-				alert("El sistema es incompatible, no tiene solucion");
-				soluciones=["","",""];
+				sol1=Math.round(sol1*100)/100;
+				sol2=Math.round(sol2*100)/100;
+				sol3=Math.round(sol3*100)/100;
+				if(!isFinite(sol1) || !isFinite(sol2) || !isFinite(sol3) ){
+					alert("El sistema es incompatible, no tiene solucion");
+					soluciones=["","",""];
+				}
+				else {
+					soluciones=[sol1,sol2,sol3];
+				}
 			}
 			else {
-				soluciones=[sol1,sol2,sol3];
+				alert("No se puede resolver por el metodo de Gauss, intentelo por Cramer");
+				soluciones=["","",""];
 			}
 		}
 
@@ -866,10 +884,7 @@ function generarOperacion(operacion,idDiv){
 				divBoton.appendChild(boton);
 			break;
 	}
-
-
 }
-
 function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMostrar){
 	var id=document.getElementById(idDiv);
 	if(opcionIO=="entrada"){
@@ -883,7 +898,6 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 	var td=document.createElement("td");
 	var longitudTabla=filas*columnas;
 	td.style.textAling="center";
-
 	if(parentesis=="parentesis"){
 		td.appendChild(document.createTextNode(""));
 		td.rowSpan=filas+1;
@@ -896,7 +910,6 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 		td.className="detDer";
 		tr.appendChild(td);
 	}
-
 	for (var i = 0; i <= longitudTabla ; i++) {
 		if(opcionIO=="entrada"){
 			elementoTabla=document.createElement("input");
@@ -905,7 +918,6 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 			elementoTabla.style.textAlign="center";
 			elementoTabla.style.borderRadius="10px";
 			elementoTabla.style.width="50px";
-
 		}
 		else{
 			var texto=document.createTextNode(elementoMostrar[i]);
@@ -917,7 +929,6 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 		td.style.textAlign="center";
 		td.appendChild(elementoTabla);
 		if(parentesis=="sistema"){
-
 			if ((i%filas)+1==3) {
 				var valorX=document.createTextNode(String("X")+String((i%filas)+1)+"=");
 			}
@@ -926,15 +937,10 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 			}
 			td.appendChild(valorX);
 		}
-
-
-
 		if (i%columnas==0) {
-
 			tabla.appendChild(tr);
 			tr="";
 			tr=document.createElement("tr");
-
 		}
 		tr.appendChild(td);
 		if(i==(filas-1)){
@@ -953,7 +959,6 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 				tr.appendChild(td);
 			}
 		}
-
 	}
 	tabla.style.display="inline-table";
 	id.appendChild(tabla);
