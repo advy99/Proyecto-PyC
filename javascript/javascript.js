@@ -329,48 +329,48 @@ function comprobarSistema(){
 	for (var i = 0; i < b.length; i++) {
 		b1.push(b[i].innerHTML);
 	}
-
+	detA=calcDet3(a1);
 	soluciones=calcSistema(a1,b1);
 
 	x1=document.getElementById("c1");
 	x2=document.getElementById("c2");
 	x3=document.getElementById("c3");
-
+	console.log(x1.value);
 	if (detA==0) {
 		alert('Para resolver el sistema de ecuaciones el determinante de A debe ser distinto de 0');
 	}
 	else{
 		//comprobamos si son correctos con la regla de cramer
-		if(c1.value==Math.round((soluciones[1]/soluciones[0])*100)/100){//Multiplicamos por cien, redondeamos y dividimos por cien para aproximarlo a los decimales
+		if(x1.value==soluciones[0]){//Multiplicamos por cien, redondeamos y dividimos por cien para aproximarlo a los decimales
 			//Aplica estilos si es correcto
-			c1.style.backgroundColor="green";
-			c1.style.color="white";
+			x1.style.backgroundColor="green";
+			x1.style.color="white";
 		}
 		else{
 			//Aplica estilos si es falso
-			c1.style.backgroundColor="red";
-			c1.style.color="white";
+			x1.style.backgroundColor="red";
+			x1.style.color="white";
 		}
-		if(c2.value==Math.round((soluciones[2]/soluciones[0])*100)/100){
+		if(x2.value==soluciones[1]){
 			//Aplica estilos si es correcto
-			c2.style.backgroundColor="green";
-			c2.style.color="white";
+			x2.style.backgroundColor="green";
+			x2.style.color="white";
 		}
 		else{
 			//Aplica estilos si es falso
-			c2.style.backgroundColor="red";
-			c2.style.color="white";
+			x2.style.backgroundColor="red";
+			x2.style.color="white";
 		}
 
-		if(c3.value==Math.round((soluciones[3]/soluciones[0])*100)/100){
+		if(x3.value==soluciones[2]){
 			//Aplica estilos si es correcto
-			c3.style.backgroundColor="green";
-			c3.style.color="white";
+			x3.style.backgroundColor="green";
+			x3.style.color="white";
 		}
 		else{
 			//Aplica estilos si es falso
-			c3.style.backgroundColor="red";
-			c3.style.color="white";
+			x3.style.backgroundColor="red";
+			x3.style.color="white";
 		}
 	}
 
@@ -468,8 +468,6 @@ function mostrarSistemaCramer(){
 
 }
 function calcSistema(a,b){
-	console.log(a);
-	console.log(b);
 	vDetA=[];
 	for (var i = 0; i < a.length; i++) {
 		vDetA[i]=a[i];
@@ -817,7 +815,6 @@ function generarOperacion(operacion,idDiv){
 						for (var i = 0; i < a.length; i++) {
 							a1[i]=a[i].value;
 						}
-						console.log(a1);
 						soluciones=document.createTextNode(calcDet3(a1));
 						id.appendChild(soluciones);
 					}
@@ -893,7 +890,7 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 		td.className="parentesisMatrizIzq";
 		tr.appendChild(td);
 	}
-	if(parentesis=="line"){
+	if(parentesis=="linea"){
 		td.appendChild(document.createTextNode(""));
 		td.rowSpan=filas+1;
 		td.className="detDer";
@@ -948,7 +945,7 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 				td.className="parentesisMatrizDer";
 				tr.appendChild(td);
 			}
-			if(parentesis=="line"){
+			if(parentesis=="linea"){
 				td=document.createElement("td");
 				td.appendChild(document.createTextNode(""));
 				td.rowSpan=filas+1;
