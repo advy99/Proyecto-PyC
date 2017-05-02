@@ -468,6 +468,8 @@ function mostrarSistemaCramer(){
 
 }
 function calcSistema(a,b){
+	console.log(a);
+	console.log(b);
 	vDetA=[];
 	for (var i = 0; i < a.length; i++) {
 		vDetA[i]=a[i];
@@ -489,6 +491,7 @@ function calcSistema(a,b){
 
 		}
 	}
+
 	det1=calcDet3(vDet1);
 
 	vDet2=[];
@@ -505,6 +508,7 @@ function calcSistema(a,b){
 
 		}
 	}
+
 	det2=calcDet3(vDet2);
 
 	//Calculamos el determinante del sistema, cambiando los elementos de la tercera columna por los de clase B
@@ -524,9 +528,14 @@ function calcSistema(a,b){
 		}
 	}
 	det3=calcDet3(vDet3);
-	var arrayDeterminantes=[detA,det1,det2,det3];
-	console.log(arrayDeterminantes);
-	return arrayDeterminantes;
+	sol1=Number(det1)/Number(detA);
+	sol2=Number(det2)/Number(detA);
+	sol3=Number(det3)/Number(detA);
+	sol1=Math.round(sol1*100)/100;
+	sol2=Math.round(sol2*100)/100;
+	sol3=Math.round(sol3*100)/100;
+	var soluciones=[sol1,sol2,sol3];
+	return soluciones;
 }
 function mostrarSistemaGauss(){
 	a=document.getElementsByClassName("a6");
@@ -795,6 +804,8 @@ function generarOperacion(operacion,idDiv){
 				divBoton.appendChild(boton);
 			break;
 		case "determinante3":
+
+
 				generarTabla(3,3,idDiv,"linea","tablaA","entrada");
 				id.appendChild(document.createTextNode("="));
 				boton.addEventListener("click",function(){
@@ -808,15 +819,54 @@ function generarOperacion(operacion,idDiv){
 						}
 						console.log(a1);
 						soluciones=document.createTextNode(calcDet3(a1));
-
 						id.appendChild(soluciones);
 					}
 				);
 				divBoton.appendChild(boton);
 			break;
 		case "sistema":
+				var metodoCramer=document.createElement("input");
+				metodoCramer.setAttribute("type","radio");
+				metodoCramer.setAttribute("name","sistema");
+				metodoCramer.setAttribute("id","cramer");
+
+				var metodoGauss=document.createElement("input");
+				metodoGauss.setAttribute("type","radio");
+				metodoGauss.setAttribute("name","sistema");
+				metodoGauss.setAttribute("id","gauss");
+
+				var textoCramer=document.createTextNode("Cramer:");
+				var textoGauss=document.createTextNode("Gauss:");
+				id.appendChild(textoCramer);
+				id.appendChild(metodoCramer);
+				id.appendChild(textoGauss);
+				id.appendChild(metodoGauss);
+
 				generarTabla(3,3,idDiv,"sistema","tablaA","entrada");
 				generarTabla(3,1,idDiv,"soluciones","tablaB","entrada");
+				boton.addEventListener("click",function(){
+						hijos=id.childElementCount;
+						if (hijos>4) {
+							id.removeChild(id.lastChild);
+						}
+						a=document.getElementsByClassName("tablaA");
+						for (var i = 0; i < a.length; i++) {
+							a1[i]=a[i].value;
+						}
+						b=document.getElementsByClassName("tablaB");
+						for (var i = 0; i < b.length; i++) {
+							b1[i]=b[i].value;
+						}
+						if(metodoCramer.checked){
+							soluciones=calcSistema(a1,b1);
+						}
+						else {
+							soluciones=resolverGauss(a1,b1);
+						}
+						generarTabla(3,1,idDiv,"parentesis","solA","salida",soluciones);
+					}
+				);
+				divBoton.appendChild(boton);
 			break;
 	}
 
