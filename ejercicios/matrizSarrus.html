@@ -3,13 +3,19 @@
 	<head>
 		<title>Matematicas 2ºBachillerato</title>
 		<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+		<script type="text/javascript" src="../javascript/jquery.js"></script>
+		<script type="text/javascript" src="../javascript/jquery-ui/jquery-ui.js"></script>
 		<script type="text/javascript" src="../javascript/javascript.js"></script>
 	</head>
 	<body onload="ordenSarrus()">
+		<img src="../img/rectangulo.png" id="rectangulo" width="50px" height="20px"/>
+		<img src="../img/x.png" id="imgX" width="100px" height="100px"/>
+		<img src="../img/+.png" id="imgSuma" width="100px" height="100px"/>
+		<img src="../img/-.png" id="imgResta" width="100px" height="100px"/>
 		<div class="cabezero"><h2><a href="../index.html">Matematicas 2º Bachillerato</a></h2></div>
 		<div style="display: block;">
 			<p>Pincha en el orden correcto en el que se debe realizar el determinante según Sarrus</p>
-			<img src="../img/matriz.png" alt="imagen determinante" usemap="#ordenSarrus" style="margin-left: 40%;" />
+			<img src="../img/matriz.png" alt="imagen determinante" usemap="#ordenSarrus" style="margin-left: 400px;margin-top:40px;" />
 			<map name="ordenSarrus" class="areaImagen">
 				<area shape="rect" id="1" alt="11" coords="31,14,75,36" onclick="clickSarrus(this.id,this.alt)" >
 				<area shape="rect" id="4" alt="21" coords="31,41,75,63" onclick="clickSarrus(this.id,this.alt)">
@@ -22,7 +28,7 @@
 				<area shape="rect" id="3" alt="13" coords="140,14,184,36" onclick="clickSarrus(this.id,this.alt)">
 				<area shape="rect" id="6" alt="23" coords="140,41,184,63" onclick="clickSarrus(this.id,this.alt)">
 				<area shape="rect" id="9" alt="33" coords="140,66,184,89" onclick="clickSarrus(this.id,this.alt)">
-				
+
 			</map>
 			<p id="listaSeleccionados">
 				Posiciones Selccionadas :
@@ -30,6 +36,7 @@
 			<p>
 				<button class="botonEjercicio" onclick="ordenSarrus()">Comenzar de nuevo</button>
 			</p>
+			<p><button class="botonEjercicio" onclick="mostrarSolSarrus()">Mostrar proceso</button></p>
 			<p id="correccion" class="correccionSarrus"></p>
 		</div>
 		<footer id="footer"><p>Antonio David Villegas Yeguas 2ºBachillerato A </p>

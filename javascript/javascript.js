@@ -13,16 +13,6 @@ $( function() {
     });
 	$("#divMenu").css("height","0");
 } );
-//Funcion que comprueba el estado del menu, si esta visible (display:block;), al ser pulsado cambia a none, y viceversa
-function pulsarMenu(menu){
-	pulsado=document.getElementById(menu);
-	if (pulsado.style.display=="block") {
-		pulsado.style.display="none";
-	}
-	else{
-		pulsado.style.display="block";
-	}
-}
 
 //Abre una ventana emergente con el manual
 function manual(){
@@ -282,16 +272,134 @@ function comprobarDeterminanteTres(){
 		sol.style.backgroundColor="red";
 		sol.style.color="white";
 	}
-
 }
 
 //Abre ejercicio Sarrus
 function abrirImagenSarrus(){
 	window.open('ejercicios/matrizSarrus.html','','width=900,height=500');
 }
+function mostrarSolSarrus(){
+	direccion=1;
+	posInicialLeft=430;
+	posInicialTop=183;
+	posLeft=posInicialLeft;
+	posTop=posInicialTop;
+	$("#rectangulo").css({
+		'margin-left': posLeft+'px',
+		'margin-top': posTop+'px'
+	});
+	$("#rectangulo").fadeToggle(1500);
+	cont=0;
+	numeroFilas=0;
+	intervalo=setInterval(function(){
+		if(cont!=2)
+			$("#imgX").fadeToggle(1500).fadeToggle(1500);
+		posLeft+=52*direccion;
+		posTop+=25;
+
+		if((numeroFilas==1&&cont==1 )||(numeroFilas==2&&cont==0)||(numeroFilas==4&&cont==1)||(numeroFilas==5&&cont==0))
+			posTop=posInicialTop;
+		mostrarSolSarrusR();
+		if (cont==2) {
+			numeroFilas++;
+			switch (numeroFilas) {
+				case 1:posLeft=posInicialLeft;
+						posTop=posInicialTop+25;
+						$("#imgSuma").fadeToggle(1500).fadeToggle(1500);
+						cont=-1;
+
+					break;
+				case 2:posLeft=posInicialLeft;
+						posTop=posInicialTop+50;
+						$("#imgSuma").fadeToggle(1500).fadeToggle(1500);
+						cont=-1;
+					break;
+				case 3:posLeft=posInicialLeft+104;
+					posTop=posInicialTop;
+					$("#imgResta").fadeToggle(1500).fadeToggle(1500);
+					direccion=-1;
+					cont=-1;
+					break;
+				case 4:posLeft=posInicialLeft+104;
+					posTop=posInicialTop+25;
+					$("#imgResta").fadeToggle(1500).fadeToggle(1500);
+					cont=-1;
+					break;
+				case 5:posLeft=posInicialLeft+104;
+					posTop=posInicialTop+50;
+					$("#imgResta").fadeToggle(1500).fadeToggle(1500);
+					cont=-1;
+					break;
+				case 6:
+						clearInterval(intervalo);
+						$("#rectangulo").fadeToggle(1500);
+					break;
+
+			}
+
+		}
+		cont++;
+	},4000);
+	/*window.setTimeout(function(){
+		$("#imgX").fadeToggle(1500).fadeToggle(1500);
+		posLeft+=52;
+		posTop+=25;
+		mostrarSolSarrusR();
+		window.setTimeout(function(){
+			$("#imgX").fadeToggle(1500).fadeToggle(1500);
+			posLeft+=52;
+			posTop+=25;
+			mostrarSolSarrusR();
+			window.setTimeout(function(){
+				$("#imgSuma").fadeToggle(1500).fadeToggle(1500);
+				mostrarSolSarrus1(posInicialLeft,posInicialTop);
+			},4000);
+		},4000);
+	},2000);*/
+}
+function mostrarSolSarrus1(posInicialLeft,posInicialTop){
+	posLeft=posInicialLeft;
+	posTop=posInicialTop+25;
+	$("#rectangulo").hide();
+	$("#rectangulo").css({
+		'margin-left': posLeft+'px',
+		'margin-top': posTop+'px'
+	});
+	$("#rectangulo").show();
+}
+function mostrarSolSarrusR(){
+	window.setTimeout(function(){
+		$("#rectangulo").animate({
+			'margin-left':posLeft+'px',
+			'margin-top':posTop+'px'
+		},2000);
+	},2000);
+}
 
 //Vacia el orden seleccionado de Sarrus e inicializa la correccion
 function ordenSarrus(){
+	$("#rectangulo").css({
+		'position':'absolute'
+	});
+	$("#imgX").css({
+		'position':'absolute',
+		'margin-left':'450',
+		'margin-top':'160px'
+	});
+	$("#imgSuma").css({
+		'position':'absolute',
+		'margin-left':'450',
+		'margin-top':'160px'
+	});
+	$("#imgResta").css({
+		'position':'absolute',
+		'margin-left':'450',
+		'margin-top':'160px'
+	});
+	$("#rectangulo").hide();
+	$("#imgSuma").hide();
+	$("#imgResta").hide();
+	$("#imgX").hide();
 
 	ORDENARRAY = [];
 	var seleccionados=document.getElementById("listaSeleccionados");
@@ -959,7 +1067,7 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 			if(parentesis=="parentesis"){
 				td=document.createElement("td");
 				td.appendChild(document.createTextNode(""));
-				td.rowSpan=filas+1;
+				td.rowSpan=filas;
 				td.className="parentesisMatrizDer";
 				tr.appendChild(td);
 			}
