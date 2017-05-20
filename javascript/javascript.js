@@ -6,6 +6,13 @@ var ORDENARRAY = [];
 //Orden correcto para Sarrus
 var ORDENEVALIDOS =[1,5,9,4,8,3,7,2,6,3,5,7,6,8,1,9,2,4];
 
+
+$( function() {
+	$( ".menu_izq" ).accordion({
+      collapsible: true
+    });
+	$("#divMenu").css("height","0");
+} );
 //Funcion que comprueba el estado del menu, si esta visible (display:block;), al ser pulsado cambia a none, y viceversa
 function pulsarMenu(menu){
 	pulsado=document.getElementById(menu);
@@ -643,6 +650,11 @@ function resolverGauss(a,b){
 				sol1=sol1+"/"+String(a[0]);
 			}
 			else{
+				for (var i = 0; i < 6; i++) {
+					a[i]=Math.round(a[i]*100)/100;
+				}
+				b[0]=Math.round(b[0]*100)/100;
+				b[1]=Math.round(b[1]*100)/100;
 				sol2="("+String(b[1])+"-("+String(a[5])+"*"+String(sol3)+"))"+"/"+String(a[4]);
 				sol1="("+String(b[0])+"-("+String(a[2])+"*"+String(sol3)+")"+"-("+String(a[1])+"*"+String(sol2)+")"+")"+"/"+String(a[0]);
 			}
@@ -922,7 +934,7 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 		else{
 			var texto=document.createTextNode(elementoMostrar[i]);
 		 	elementoTabla=document.createElement("p");
-			elementoTabla.style.width="30px";
+			elementoTabla.style.width="150px";
 			elementoTabla.appendChild(texto);
 		}
 		td=document.createElement("td");

@@ -3,31 +3,34 @@
 	<head>
 		<title>Matematicas 2ºBachillerato</title>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script type="text/javascript" src="javascript/jquery.js"></script>
+		<script type="text/javascript" src="javascript/jquery-ui/jquery-ui.js"></script>
 		<script type="text/javascript" src="javascript/javascript.js"></script>
 	</head>
 	<body>
 		<div class="cabezero"><h2><a href="index.html">Matematicas 2º Bachillerato</a></h2></div>
 		<div class="contenedor">
 			<div class="menu_izq">
-				<ul>
-					<li class="cabezeroMenu">Temario</li>
-					<li><a name="algebra" onclick="pulsarMenu(this.name)">Álgebra</a>
-						<div id="algebra" style="display: none;">
+					<h2 style="text-align:center;">Menú</h2>
+					<div id="divMenu"></div>
+					<h3>Algebra</h3>
+						<div >
 							<ul>
 								<li><a href="matrices.html">Matrices</a></li>
 								<li><a href="determinantes.html">Determinantes</a></li>
 								<li><a href="sistemasEcuaciones.html">Sistemas de ecuaciones</a></li>
 							</ul>
 						</div>
-					</li>
-					<li><a name="calculadora" href="calculadora.html">Calculadora matricial</a>
-						
-					</li>
-					<li class="cabezeroMenu"><a onclick="manual();" style="color:black;">Manual</a></li>
-					<li class="cabezeroMenu">Sitios de interes</li>
-					<li><a href="http://www.juntadeandalucia.es/averroes/centros-tic/23000106/moodle2/"><img src="img/ies.gif" height="100" width="100" style="float: left;"><span style="float: right;padding-top: 25%;">Moodle 2</span></a></li>
-					<li><a href="http://www.unicoos.com/"><img src="img/unicoos.jpe" height="100" width="100" style="float:left;"><span style="float: right;padding-top: 25%;">Unicoos</span></a></li>
-				</ul>
+					<h3>Aplicaciones</h3>
+						<div>
+							<ul>
+							<li><a name="calculadora" href="calculadora.html">Calculadora matricial</a></li>
+							<li class="cabezeroMenu"><a onclick="manual();" style="color:black;">Manual</a></li>
+							<li class="cabezeroMenu">Sitios de interes</li>
+							<li><a href="http://www.juntadeandalucia.es/averroes/centros-tic/23000106/moodle2/"><img src="img/ies.gif" height="100" width="100" style="float: left;"><span style="float: right;padding-top: 25%;">Moodle 2</span></a></li>
+							<li><a href="http://www.unicoos.com/"><img src="img/unicoos.jpe" height="100" width="100" style="float:left;"><span style="float: right;padding-top: 25%;">Unicoos</span></a></li>
+						</ul>
+						</div>
 			</div>
 			<div class="contenido">
 				<h3>Matrices</h3>
@@ -107,7 +110,7 @@
 
 
 					</li>
-				
+
 					<li>
 						Matriz traspuesta, aquella donde se cambian los elementos de las filas por las columnas, y se escribirá A<span class="superindice">t</span>.=
 						<table style="display: inline;" class="matriz">
@@ -269,11 +272,11 @@
 							<td>2</td>
 							<td>3</td>
 							<td>√2</td>
-							
-							
-							
+
+
+
 						</tr>
-						
+
 					</table>*
 					<table class="matriz">
 						<tr>
@@ -331,7 +334,6 @@
 				<p>Para resolver sistemas y ecuaciones matriciales, basta con conocer las propiedades de los productos y las sumas.</p>
 			</div>
 		</div>
-		<footer id="footer"><p>Antonio David Villegas Yeguas 2ºBachillerato A</p>
-		</footer>
+		
 	</body>
 </html>

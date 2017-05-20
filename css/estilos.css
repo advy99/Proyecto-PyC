@@ -42,7 +42,7 @@ body{
 .menu_izq ul{
 	list-style-type: none;
 	font-weight: bold;
-	padding-left: 10%;
+	padding-left: 5%;
 	font-size: 16px;
 }
 #algebra, #geometria{
@@ -96,10 +96,11 @@ body{
     text-align: center;
 }
 footer{
-	position: absolute;
+	position: relative;
 	line-height: 2;
 	margin: 0;
 	left: 0;
+	bottom:0px;
 	width: 100%;
 	background-color: #efefef;
 	text-align: center;
