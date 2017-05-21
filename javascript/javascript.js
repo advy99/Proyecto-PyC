@@ -340,22 +340,6 @@ function mostrarSolSarrus(){
 		}
 		cont++;
 	},4000);
-	/*window.setTimeout(function(){
-		$("#imgX").fadeToggle(1500).fadeToggle(1500);
-		posLeft+=52;
-		posTop+=25;
-		mostrarSolSarrusR();
-		window.setTimeout(function(){
-			$("#imgX").fadeToggle(1500).fadeToggle(1500);
-			posLeft+=52;
-			posTop+=25;
-			mostrarSolSarrusR();
-			window.setTimeout(function(){
-				$("#imgSuma").fadeToggle(1500).fadeToggle(1500);
-				mostrarSolSarrus1(posInicialLeft,posInicialTop);
-			},4000);
-		},4000);
-	},2000);*/
 }
 function mostrarSolSarrus1(posInicialLeft,posInicialTop){
 	posLeft=posInicialLeft;
@@ -820,7 +804,6 @@ function generarOperacion(operacion,idDiv){
 	for (var i = hijos.length-1; i >=0; i--) {
 		id.removeChild(hijos[i]);
 	}
-	//parrafo=document.createElement("p");
 	boton=document.createElement("input");
 	boton.setAttribute("type","button");
 	boton.setAttribute("value","Calcular");
@@ -1082,4 +1065,47 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 	}
 	tabla.style.display="inline-table";
 	id.appendChild(tabla);
+}
+function anadirRectaGrafico(){
+	parrafo=document.createElement("p");
+	parrafoY=document.createTextNode("y=");
+	parrafoX=document.createTextNode("*x+");
+	inputXRecta=document.createElement("input");
+	inputNRecta=document.createElement("input");
+	inputMostrar=document.createElement("input");
+	inputMostrar.setAttribute("type","button");
+	inputMostrar.setAttribute("value","Mostrar");
+	inputXRecta.setAttribute("size","2");
+	inputNRecta.setAttribute("size","2");
+
+	//Añadimos todo la parte posterior al igual a parrafo
+	parrafo.appendChild(inputXRecta);
+	parrafo.appendChild(parrafoX);
+	parrafo.appendChild(inputNRecta);
+
+	//ParrafoY se añade aparte, para hacer más facil la evaluacion del contido
+	document.getElementById("superficies").appendChild(parrafoY);
+	document.getElementById("superficies").appendChild(parrafo);
+	document.getElementById("superficies").appendChild(inputMostrar);
+
+	origenX=294;
+	origenY=266;
+	$(inputMostrar).on("click",function(){
+		var ecuacion=String(inputXRecta.value)+String(parrafoX.nodeValue)+String(inputNRecta.value);
+		var x=-5;
+		var y=eval(ecuacion);
+		coord1X=origenX+(x*50);
+		coord1Y=origenY-(y*50);
+		var x=5;
+		var y=eval(ecuacion);
+		coord2X=origenX+(x*50);
+		coord2Y=origenY-(y*50);
+		$('canvas').drawLine({
+		  strokeStyle: '#000',
+		  strokeWidth: 4,
+		  x1: coord1X, y1: coord1Y,
+		  x2: coord2X, y2: coord2Y
+		});
+
+	});
 }

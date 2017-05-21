@@ -4,6 +4,7 @@
 		<title>Matematicas 2ºBachillerato</title>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<script type="text/javascript" src="javascript/jquery.js"></script>
+		<script type="text/javascript" src="javascript/jcanvas.js"></script>
 		<script type="text/javascript" src="javascript/jquery-ui/jquery-ui.js"></script>
 		<script type="text/javascript" src="javascript/javascript.js"></script>
 	</head>
@@ -11,6 +12,17 @@
 		<div class="cabezero"><h2><a href="index.html">Matematicas 2º Bachillerato</a></h2></div>
 
 		<div class="contenedor">
+			<div class="menu_grafico">
+				<input type="button" value="Añadir recta" onclick="anadirRectaGrafico()" />
+				<div id="superficies" style="position:absolute;">
+				</div>
+			</div>
+			<div class="contenido">
+				<div class="contenedorCanvas">
+					<canvas width="647px" height="500px" style="position:absolute;margin-left: 100px;margin-top:40px;"></canvas>
+					<img src="img/ejes.gif" alt="mapa coordenadas" width="647px" height="500px" style="position:absolute;margin-left: 100px;margin-top:40px;" />
+				</div>
+			</div>
 		</div>
 
 	</body>
