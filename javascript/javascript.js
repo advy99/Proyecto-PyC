@@ -1073,39 +1073,61 @@ function anadirRectaGrafico(){
 	inputXRecta=document.createElement("input");
 	inputNRecta=document.createElement("input");
 	inputMostrar=document.createElement("input");
+	inputEliminar=document.createElement("input");
 	inputMostrar.setAttribute("type","button");
 	inputMostrar.setAttribute("value","Mostrar");
+	inputEliminar.setAttribute("type","button");
+	inputEliminar.setAttribute("value","Borrar");
 	inputXRecta.setAttribute("size","2");
 	inputNRecta.setAttribute("size","2");
 
-	//Añadimos todo la parte posterior al igual a parrafo
+	parrafo.appendChild(parrafoY);
 	parrafo.appendChild(inputXRecta);
 	parrafo.appendChild(parrafoX);
 	parrafo.appendChild(inputNRecta);
+	parrafo.appendChild(inputMostrar);
+	parrafo.appendChild(inputEliminar);
 
-	//ParrafoY se añade aparte, para hacer más facil la evaluacion del contido
-	document.getElementById("superficies").appendChild(parrafoY);
+	parrafo.setAttribute("class","menuEcuaciones");
+
 	document.getElementById("superficies").appendChild(parrafo);
-	document.getElementById("superficies").appendChild(inputMostrar);
 
 	origenX=294;
 	origenY=266;
+	var padreParrafo=parrafo.parentNode;
 	$(inputMostrar).on("click",function(){
 		var ecuacion=String(inputXRecta.value)+String(parrafoX.nodeValue)+String(inputNRecta.value);
-		var x=-5;
+		var x=-7;
 		var y=eval(ecuacion);
 		coord1X=origenX+(x*50);
 		coord1Y=origenY-(y*50);
-		var x=5;
+		var x=7;
 		var y=eval(ecuacion);
 		coord2X=origenX+(x*50);
 		coord2Y=origenY-(y*50);
+
 		$('canvas').drawLine({
 		  strokeStyle: '#000',
 		  strokeWidth: 4,
 		  x1: coord1X, y1: coord1Y,
 		  x2: coord2X, y2: coord2Y
 		});
-
 	});
+	$(inputEliminar).on("click",function(){
+		eliminarElemento(this);
+	});
+}
+function eliminarGrafico(){
+	$('canvas').clearCanvas();
+	$('.menuEcuaciones').remove();
+}
+function eliminarElemento(parrafo){
+	var padre;
+	var abuelo;
+	//Obtenemos el padre del parrafo
+	padre=parrafo.parentNode;
+	//Obtenemos el abuelo
+	abuelo=padre.parentNode;
+	//A partir del abuelo eliminamos el parrafo, es decir, el padre
+	abuelo.removeChild(padre);
 }
