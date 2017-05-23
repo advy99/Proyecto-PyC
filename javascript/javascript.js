@@ -582,6 +582,7 @@ function calcSistema(a,b){
 	}
 	//Calculamos el determinante del sistema
 	detA=calcDet3(vDetA);
+	if(detA==0)
 	//Calculamos el determinante del sistema, cambiando los elementos de la primera columna por los de clase B
 	vDet1=[];
 	for (var i = 0; i < a.length; i++) {
@@ -909,7 +910,7 @@ function generarOperacion(operacion,idDiv){
 				id.appendChild(document.createTextNode("="));
 				boton.addEventListener("click",function(){
 						hijos=id.childElementCount;
-						if (hijos>2) {
+						if (hijos>0) {
 							id.removeChild(id.lastChild);
 						}
 						a=document.getElementsByClassName("tablaA");
@@ -918,18 +919,17 @@ function generarOperacion(operacion,idDiv){
 						}
 						soluciones=document.createTextNode(calcDet2(a1));
 						id.appendChild(soluciones);
+
 					}
 				);
 				divBoton.appendChild(boton);
 			break;
 		case "determinante3":
-
-
 				generarTabla(3,3,idDiv,"linea","tablaA","entrada");
 				id.appendChild(document.createTextNode("="));
 				boton.addEventListener("click",function(){
 						hijos=id.childElementCount;
-						if (hijos>2) {
+						if (hijos>0) {
 							id.removeChild(id.lastChild);
 						}
 						a=document.getElementsByClassName("tablaA");
