@@ -9,18 +9,19 @@ var ORDENEVALIDOS =[1,5,9,4,8,3,7,2,6,3,5,7,6,8,1,9,2,4];
 
 $( function() {
 	$( ".menu_izq" ).accordion({
-      collapsible: true
+      collapsible: true,
+			active:false
     });
-	$("#divMenu").css("height","0");
+	//$("#divMenu").css("height","0");
 
 
 	$(".menu_izq").on("click",function(){
 		var menuActivo = $( ".menu_izq" ).accordion( "option", "active" );
 		switch (menuActivo) {
-			case 1:$("#flecha2").removeClass("rotar");
+			case 0:$("#flecha2").removeClass("rotar");
 					$("#flecha1").addClass("rotar");
 				break;
-			case 2:$("#flecha1").removeClass("rotar");
+			case 1:$("#flecha1").removeClass("rotar");
 					$("#flecha2").addClass("rotar");
 				break;
 			default:$("#flecha1").removeClass("rotar");

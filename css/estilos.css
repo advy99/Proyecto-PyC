@@ -26,26 +26,40 @@ body{
 	background-color: #54a2d4;
 	text-align: left;
 }
-.menu_izq a{
-	text-decoration: none;
-	display: block;
-	color: #32393c;
-
-}
-.menu_izq a:link,.table_izq a:visited{
-	text-decoration: none;
-}
-.menu_izq a:hover{
-	background-color: #3e5857;
-	color: #e4ee92;
-
-}
 .menu_izq ul{
 	list-style-type: none;
 	font-weight: bold;
 	padding-left: 5%;
 	font-size: 16px;
 }
+.menu_izq1{
+	float: left;
+	width: 210px;
+	background-color: #54a2d4;
+	text-align: left;
+}
+.menu_izq1 ul{
+	list-style-type: none;
+	font-weight: bold;
+	padding-left: 5%;
+	font-size: 16px;
+}
+.menu_izq1 a{
+	text-decoration: none;
+	display: block;
+	color: #32393c;
+
+}
+.menu_izq1 a:link,.table_izq a:visited{
+	text-decoration: none;
+}
+.menu_izq1 a:hover{
+	background-color: #3e5857;
+	color: #e4ee92;
+
+}
+
+
 #algebra, #geometria{
 	padding-left: 12%;
 }
