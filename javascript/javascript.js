@@ -12,6 +12,30 @@ $( function() {
       collapsible: true
     });
 	$("#divMenu").css("height","0");
+
+
+	$(".menu_izq").on("click",function(){
+		var menuActivo = $( ".menu_izq" ).accordion( "option", "active" );
+		switch (menuActivo) {
+			case 1:$("#flecha2").removeClass("rotar");
+					$("#flecha1").addClass("rotar");
+				break;
+			case 2:$("#flecha1").removeClass("rotar");
+					$("#flecha2").addClass("rotar");
+				break;
+			default:$("#flecha1").removeClass("rotar");
+					$("#flecha2").removeClass("rotar");
+
+		}
+
+
+	});
+	/*$("#menuAplicaciones").on("click",function(){
+		var active = $( ".menu_izq" ).accordion( "option", "active" );
+			console.log(active);
+		$("#flecha2").addClass("rotar");
+	});*/
+
 } );
 
 //Abre una ventana emergente con el manual
@@ -1066,12 +1090,16 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 	tabla.style.display="inline-table";
 	id.appendChild(tabla);
 }
-function anadirRectaGrafico(){
+function anadirGrafico(){
+	tipoGrafico=$("#dibujo").val();
+	console.log(tipoGrafico);
 	parrafo=document.createElement("p");
 	parrafoY=document.createTextNode("y=");
 	parrafoX=document.createTextNode("*x+");
+	parrafoX2=document.createTextNode("*x*x+");
 	inputXRecta=document.createElement("input");
 	inputNRecta=document.createElement("input");
+	inputX2=document.createElement("input");
 	inputMostrar=document.createElement("input");
 	inputEliminar=document.createElement("input");
 	inputMostrar.setAttribute("type","button");
@@ -1079,9 +1107,15 @@ function anadirRectaGrafico(){
 	inputEliminar.setAttribute("type","button");
 	inputEliminar.setAttribute("value","Borrar");
 	inputXRecta.setAttribute("size","2");
+	inputX2.setAttribute("size","2");
 	inputNRecta.setAttribute("size","2");
 
 	parrafo.appendChild(parrafoY);
+
+	if(tipoGrafico=="parabola"){
+		parrafo.appendChild(inputX2);
+		parrafo.appendChild(parrafoX2);
+	}
 	parrafo.appendChild(inputXRecta);
 	parrafo.appendChild(parrafoX);
 	parrafo.appendChild(inputNRecta);
@@ -1096,22 +1130,50 @@ function anadirRectaGrafico(){
 	origenY=266;
 	var padreParrafo=parrafo.parentNode;
 	$(inputMostrar).on("click",function(){
-		var ecuacion=String(inputXRecta.value)+String(parrafoX.nodeValue)+String(inputNRecta.value);
-		var x=-7;
-		var y=eval(ecuacion);
-		coord1X=origenX+(x*50);
-		coord1Y=origenY-(y*50);
-		var x=7;
-		var y=eval(ecuacion);
-		coord2X=origenX+(x*50);
-		coord2Y=origenY-(y*50);
+		if(tipoGrafico=="recta"){
+			var ecuacion=String(inputXRecta.value)+String(parrafoX.nodeValue)+String(inputNRecta.value);
+			var x=-7;
+			var y=eval(ecuacion);
+			coord1X=origenX+(x*50);
+			coord1Y=origenY-(y*50);
+			var x=7;
+			var y=eval(ecuacion);
+			coord2X=origenX+(x*50);
+			coord2Y=origenY-(y*50);
 
-		$('canvas').drawLine({
-		  strokeStyle: '#000',
-		  strokeWidth: 4,
-		  x1: coord1X, y1: coord1Y,
-		  x2: coord2X, y2: coord2Y
-		});
+			$('canvas').drawLine({
+			  strokeStyle: '#000',
+			  strokeWidth: 4,
+			  x1: coord1X, y1: coord1Y,
+			  x2: coord2X, y2: coord2Y
+			});
+		}
+
+		//NO ESTA ACABADO, NO FUNCIONA CORRECTAMENTE
+		else {
+			var ecuacion=String(inputX2.value)+String(parrafoX2.nodeValue)+String(inputXRecta.value)+String(parrafoX.nodeValue)+String(inputNRecta.value);
+			var verticeParabola=eval("-"+String(inputXRecta.value)+"/(2*"+String(inputX2.value)+")");
+			var x=-3;
+			var y=eval(ecuacion);
+			coord1X=origenX+(x*50);
+			coord1Y=origenY-(y*50);
+
+			var x=verticeParabola;
+			var y=eval(ecuacion);
+			coordC1X=origenX+(x*100);
+			coordC1Y=origenY+(y*100);
+			var x=3;
+			var y=eval(ecuacion);
+			coord2X=origenX+(x*50);
+			coord2Y=origenY-(y*50);
+			$('canvas').drawQuadratic({
+				strokeStyle: '#000',
+				strokeWidth: 5,
+				x1:coord1X, y1:coord1Y,
+				cx1:coordC1X, cy1:coordC1Y,
+				x2:coord2X, y2:coord2Y
+			});
+		}/////
 	});
 	$(inputEliminar).on("click",function(){
 		eliminarElemento(this);
@@ -1121,6 +1183,7 @@ function eliminarGrafico(){
 	$('canvas').clearCanvas();
 	$('.menuEcuaciones').remove();
 }
+
 function eliminarElemento(parrafo){
 	var padre;
 	var abuelo;
