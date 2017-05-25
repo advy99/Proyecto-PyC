@@ -161,11 +161,9 @@ label{
 }
 .rotar{
 	transition: transform 0.3s;
-	-moz-transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
 }
 .deshacerRotar{
-	transform:rotate(-90deg);
+	transition: transform 0.3s;
+	transform:rotate(0deg);
 }

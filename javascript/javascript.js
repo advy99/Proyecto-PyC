@@ -18,14 +18,18 @@ $( function() {
 	$(".menu_izq").on("click",function(){
 		var menuActivo = $( ".menu_izq" ).accordion( "option", "active" );
 		switch (menuActivo) {
-			case 0:$("#flecha2").removeClass("rotar");
+			case 0:$("#flecha2").addClass("deshacerRotar");
+					$("#flecha1").removeClass("deshacerRotar");
 					$("#flecha1").addClass("rotar");
 				break;
-			case 1:$("#flecha1").removeClass("rotar");
+			case 1:$("#flecha1").addClass("deshacerRotar");
+					$("#flecha2").removeClass("deshacerRotar");
 					$("#flecha2").addClass("rotar");
 				break;
-			default:$("#flecha1").removeClass("rotar");
+			default:$("#flecha2").removeClass("rotar");
 					$("#flecha2").removeClass("rotar");
+					$("#flecha1").addClass("deshacerRotar");
+					$("#flecha2").addClass("deshacerRotar");
 
 		}
 
