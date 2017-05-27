@@ -2,6 +2,7 @@
 	<meta charset="UTF-8" />
 	<head>
 		<title>Matematicas 2ºBachillerato</title>
+		<link rel="stylesheet" type="text/css" href="javascript/jquery-ui/jquery-ui.css">
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<script type="text/javascript" src="javascript/jquery.js"></script>
 		<script type="text/javascript" src="javascript/jcanvas.js"></script>
@@ -19,7 +20,7 @@
 						<option value="parabola">Parábola</option>
 					</select>
 				</form>
-				<input type="button" value="Añadir" onclick="anadirGrafico()" />
+				<input type="button" id="anadir" value="Añadir" onclick="anadirGrafico()" />
 				<input type="button" value="Eliminar todo" onclick="eliminarGrafico()" />
 				<div id="superficies" style="position:absolute;">
 				</div>
@@ -31,6 +32,8 @@
 				</div>
 			</div>
 		</div>
-
+		<div style="visibility:hidden" title="Error" id="mensajeError">
+			<p>Primero debes añadir el seleccionado y despues podras añadir más</p>
+		</div>
 	</body>
 </html>

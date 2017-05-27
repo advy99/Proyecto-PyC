@@ -1080,7 +1080,12 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 	tabla.style.display="inline-table";
 	id.appendChild(tabla);
 }
+function errorAnadir(){
+	$("#mensajeError").css("visibility","visible");
+	$("#mensajeError").dialog();
+}
 function anadirGrafico(){
+	$("#anadir").attr("onclick","errorAnadir()");
 	tipoGrafico=$("#dibujo").val();
 	parrafo=document.createElement("p");
 	parrafoY=document.createTextNode("y=");
@@ -1164,6 +1169,7 @@ function anadirGrafico(){
 				x2:coord2X, y2:coord2Y
 			});
 		}
+		$("#anadir").attr("onclick","anadirGrafico()");
 	});
 	$(inputEliminar).on("click",function(){
 		eliminarElemento(this);
@@ -1172,6 +1178,7 @@ function anadirGrafico(){
 function eliminarGrafico(){
 	$('canvas').clearCanvas();
 	$('.menuEcuaciones').remove();
+	$("#anadir").attr("onclick","anadirGrafico()");
 }
 
 function eliminarElemento(parrafo){
