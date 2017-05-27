@@ -1097,7 +1097,6 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 }
 function anadirGrafico(){
 	tipoGrafico=$("#dibujo").val();
-	console.log(tipoGrafico);
 	parrafo=document.createElement("p");
 	parrafoY=document.createTextNode("y=");
 	parrafoX=document.createTextNode("*x+");
@@ -1158,18 +1157,19 @@ function anadirGrafico(){
 		else {
 			var ecuacion=String(inputX2.value)+String(parrafoX2.nodeValue)+String(inputXRecta.value)+String(parrafoX.nodeValue)+String(inputNRecta.value);
 			var verticeParabola=eval("-"+String(inputXRecta.value)+"/(2*"+String(inputX2.value)+")");
-			var x=-3;
+			console.log(verticeParabola);
+			var x=-5;
 			var y=eval(ecuacion);
-			coord1X=origenX+(x*50);
-			coord1Y=origenY-(y*50);
+			coord1X=origenX+(x*48);
+			coord1Y=origenY-(y*48);
 
 			var x=verticeParabola;
 			var y=eval(ecuacion);
-			coordC1X=origenX+(x*100);
-			coordC1Y=origenY+(y*100);
-			var x=3;
+			coordC1X=origenX+(x*20);
+			coordC1Y=(origenY-(y*10)+1230);
+			var x=5;
 			var y=eval(ecuacion);
-			coord2X=origenX+(x*50);
+			coord2X=origenX+(x*48);
 			coord2Y=origenY-(y*50);
 			$('canvas').drawQuadratic({
 				strokeStyle: '#000',
@@ -1178,7 +1178,7 @@ function anadirGrafico(){
 				cx1:coordC1X, cy1:coordC1Y,
 				x2:coord2X, y2:coord2Y
 			});
-		}/////
+		}
 	});
 	$(inputEliminar).on("click",function(){
 		eliminarElemento(this);
