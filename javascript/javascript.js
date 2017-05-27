@@ -12,7 +12,7 @@ $( function() {
       collapsible: true,
 			active:false
     });
-	//$("#divMenu").css("height","0");
+$("#divAnimacionCramer").hide();
 
 
 	$(".menu_izq").on("click",function(){
@@ -35,12 +35,6 @@ $( function() {
 
 
 	});
-	/*$("#menuAplicaciones").on("click",function(){
-		var active = $( ".menu_izq" ).accordion( "option", "active" );
-			console.log(active);
-		$("#flecha2").addClass("rotar");
-	});*/
-
 } );
 
 //Abre una ventana emergente con el manual
@@ -370,16 +364,7 @@ function mostrarSolSarrus(){
 		cont++;
 	},4000);
 }
-function mostrarSolSarrus1(posInicialLeft,posInicialTop){
-	posLeft=posInicialLeft;
-	posTop=posInicialTop+25;
-	$("#rectangulo").hide();
-	$("#rectangulo").css({
-		'margin-left': posLeft+'px',
-		'margin-top': posTop+'px'
-	});
-	$("#rectangulo").show();
-}
+
 function mostrarSolSarrusR(){
 	window.setTimeout(function(){
 		$("#rectangulo").animate({
@@ -1198,4 +1183,49 @@ function eliminarElemento(parrafo){
 	abuelo=padre.parentNode;
 	//A partir del abuelo eliminamos el parrafo, es decir, el padre
 	abuelo.removeChild(padre);
+}
+function comenzarAnimacionCramer(){
+	$("#botonAnimacion").attr("onclick","");
+	$("#cramerY").css("marginLeft","20%");
+	$("#cramerZ").css("marginLeft","20%");
+	$("#cramerX","#cramerY","#cramerZ").css("marginTop","1000px");
+
+	$("#divAnimacionCramer").show("blind",2000);
+	scrollTo(0,860);
+	setTimeout(function(){
+		posX="-155px";
+		posY="465px";
+		solCramerOrdenCol("Sol",posX,posY);
+		posX="0px";
+		solCramerOrdenCol("B",posX,posY);
+		posX="-30px";
+		solCramerOrdenCol("C",posX,posY);
+	},2000);
+	setTimeout(function(){
+		posX="410px";
+		posY="465px";
+		solCramerOrdenCol("A",posX,posY);
+		posX="260px";
+		solCramerOrdenCol("Sol",posX,posY);
+		posX="350px";
+		solCramerOrdenCol("C",posX,posY);
+	},5000);
+	setTimeout(function(){
+		posX="795px";
+		posY="465px";
+		solCramerOrdenCol("A",posX,posY);
+		posX="765px";
+		solCramerOrdenCol("B",posX,posY);
+		posX="670px";
+		solCramerOrdenCol("Sol",posX,posY);
+	},8000);
+}
+function solCramerOrdenCol(col,posX,posY) {
+	var columna=$("#col"+col);
+	var clon=columna.clone();
+	columna.after(clon);
+	clon.css("position","absolute").animate({
+		marginLeft:posX,
+		marginTop:posY
+	},2000);
 }

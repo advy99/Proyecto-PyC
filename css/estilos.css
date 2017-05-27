@@ -167,3 +167,7 @@ label{
 	transition: transform 0.3s;
 	transform:rotate(0deg);
 }
+.imgEjSistema{
+	margin-left: -10px;
+	margin-right: -10px;
+}

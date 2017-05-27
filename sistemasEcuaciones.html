@@ -125,6 +125,22 @@
 				<p>Dos <span style="font-weight: bold;">sistemas son equivalentes</span> si tienen el mismo conjunto de soluciones, y para pasar de uno a otro, se realizan transformacines elementales.</p>
 				<h3>Regla de Cramer.-</h3>
 				<p>La Regla de Cramer nos da la solución en el caso de sistemas de n-ecuaciones con n-incógnitas y compatible determinado.</p>
+				<p>Un ejemplo de estos sistemas es el siguiente:</p>
+				<div>
+					<img class="imgEjSistema" id="colA" src="img/columnaA.png" />
+					<img class="imgEjSistema" src="img/columna*.png" />
+					<img class="imgEjSistema" src="img/columnaX1.png" />
+					<img class="imgEjSistema" src="img/columna+.png" />
+					<img class="imgEjSistema" id="colB" src="img/columnaB.png" />
+					<img class="imgEjSistema" src="img/columna*.png" />
+					<img class="imgEjSistema" src="img/columnaX2.png" />
+					<img class="imgEjSistema" src="img/columna+.png" />
+					<img class="imgEjSistema" id="colC" src="img/columnaC.png" />
+					<img class="imgEjSistema" src="img/columna*.png" />
+					<img class="imgEjSistema" src="img/columnaX3.png" />
+					<img class="imgEjSistema" src="img/columna=.png" />
+					<img class="imgEjSistema" id="colSol" src="img/columnaN.png" />
+				</div>
 				<table class="matriz" style="overflow-x:none">
 					<tr>
 						<td rowspan="3">X = A<span class="superindice">−1</span> · B ⇔ X =</td>
@@ -146,8 +162,21 @@
 				<p>
 					<form>
 						<input type="button" class="botonEjercicio" name="sistemasEcuaciones" value="Ejemplo" onclick="abrirEjSistemas()">
+
 					</form>
 				</p>
+				<p><input type="button" class="botonEjercicio" value="Animación" id="botonAnimacion" onclick="comenzarAnimacionCramer()"></p>
+				<div style="height:200px;" id="divAnimacionCramer">
+					<span id="cramerX"><span style="margin-top:75px;position:absolute;">X=</span>
+						<img src="img/imgCramer.png" style="margin-left:10px;" />
+					</span>
+					<span id="cramerY"><span style="margin-top:75px;position:absolute;">Y=</span>
+						<img src="img/imgCramer.png" style="margin-left:10px;" />
+					</span>
+					<span id="cramerZ"><span style="margin-top:75px;position:absolute;">Z=</span>
+						<img src="img/imgCramer.png" style="margin-left:10px;" />
+					</span>
+				</div>
 				<h3>Teorema de Rouché-Fröbenius.-</h3>
 				<p>A continuación estudiaremos cuando el número de ecuaciones e incógnitas no coincidan.</p>
 				<p>Un S.E.L »S» es compatible si y solo si el rango de la matriz de los coeficientes coincide con el rango de la matriz ampliada A|B, es decir,</p>
