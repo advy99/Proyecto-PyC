@@ -2,6 +2,7 @@
 	<meta charset="UTF-8" />
 	<head>
 		<title>Matematicas 2ºBachillerato</title>
+			<link rel="stylesheet" type="text/css" href="javascript/jquery-ui1/jquery-ui.css">
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<script type="text/javascript" src="javascript/jquery.js"></script>
 		<script type="text/javascript" src="javascript/jquery-ui/jquery-ui.js"></script>
@@ -31,6 +32,7 @@
 								</ul>
 							</div>
 					</div>
+						<h3 class="cabezeroMenu"><a onclick="opinion()">Danos tu opinion</a></h3>
 			 	<h3 class="cabezeroMenu">Sitios de interes</h3>
 				 	<ul>
 						<li><a href="http://www.juntadeandalucia.es/averroes/centros-tic/23000106/moodle2/"><img src="img/ies.gif" height="100" width="100" style="float: left;"><span style="float: right;padding-top: 25%;">Moodle 2</span></a></li>
@@ -59,6 +61,20 @@
 					<p><div  class="matriz" id="boton">
 					</div></p>
 
+		</div>
+		<div id="dialogoOpinion" class="dialogoOpinion" title="Danos tu opinión">
+			<p>Por favor, di que te gusta y que no sobre la pagina.</p>
+
+			<form>
+					<label for="nombre">Nombre</label>
+					<input type="text" name="nombre" id="nombre">
+					<div></div>
+					<label for="email">Email</label>
+					<input type="text" name="email" id="email" >
+					<label for="textareaOpinion">Opinión</label>
+					<textarea id="textareaOpinion" rows="4" cols="25"></textarea>
+					<div></div>
+					<input type="button" value="Enviar" onclick="comprobarDatos()"  style="position:absolute">
 		</div>
 
 	</body>

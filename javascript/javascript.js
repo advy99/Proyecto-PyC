@@ -8,11 +8,12 @@ var ORDENEVALIDOS =[1,5,9,4,8,3,7,2,6,3,5,7,6,8,1,9,2,4];
 
 
 $( function() {
+	$("#dialogoOpinion").hide();
 	$( ".menu_izq" ).accordion({
       collapsible: true,
 			active:false
     });
-$("#divAnimacionCramer").hide();
+	$("#divAnimacionCramer").hide();
 
 
 	$(".menu_izq").on("click",function(){
@@ -32,9 +33,8 @@ $("#divAnimacionCramer").hide();
 					$("#flecha2").addClass("deshacerRotar");
 
 		}
-
-
 	});
+
 } );
 
 //Abre una ventana emergente con el manual
@@ -1235,4 +1235,25 @@ function solCramerOrdenCol(col,posX,posY) {
 		marginLeft:posX,
 		marginTop:posY
 	},2000);
+}
+function opinion(){
+	$("#dialogoOpinion").dialog();
+
+}
+function comprobarDatos(){
+	validado=true;
+	nombre=$("#nombre").val();
+	if(nombre.length<2){
+		$("<div>Error en la longitud del nombre, por favor escriba su nombre completo</div>").dialog();
+		validado=false;
+	}
+	email=$("#email").val();
+	if(email.indexOf("@")==-1){
+		$("<div>Error, introduzca un email correcto</div>").dialog();
+		validado=false;
+	}
+	if(validado==true){
+		$("#dialogoOpinion").dialog("close");
+	}
+
 }
