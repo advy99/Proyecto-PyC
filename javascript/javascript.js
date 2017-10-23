@@ -102,13 +102,8 @@ const sumarMatrices = function(a,b){
 }
 
 //Resta dos matrices. Usada en la calculadora
-const restarMatrices = function(a,b){
-	const solucion=[];
-	for (let i = 0; i < a.length; i++) {
-		solucion[i]=Number(a[i])-Number(b[i]);
-	}
-	return solucion;
-}
+const restarMatrices = (a, b) => a.map( (el, i) => Number(el) - Number(b.[i]);
+				       
 //Comprueba el ejercicion numero por matriz
 const comprobarNumeroMatriz = function(){
 	//Recoge las matrices y la solucion
