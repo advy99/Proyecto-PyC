@@ -65,7 +65,7 @@ function rellenarMatrices() {
 function comprobarSuma() {
     //Comprueba que la casilla N de C valga la casilla N de A + la casilla N de B
     for (var i = 0; i <= 5; i++) {
-        if ($('.c').eq(i).value == (Number($('.a').eq(i).innerHTML) + Number($('.b').eq(i).innerHTML))) {
+        if ($('.c').eq(i).val() == (Number($('.a').eq(i).html()) + Number($('.b').eq(i).html()))) {
             //Si es correcto le aplica un fondo verde con letra en blanco
             $('.c').eq(i).style.backgroundColor = "green";
             $('.c').eq(i).style.color = "white";
@@ -151,12 +151,10 @@ function multiplicarMatrices(a1, b1) {
             else {
                 vectorSolucion.push(sol);
                 sol = 0;
-
-                if (j >= 11) {
+                if (j >= 11)
                     j -= 11;
-                } else {
+                else
                     j -= 8;
-                }
                 //Resetea el contador y num para continuar con la proxima fila
                 cont = 0;
                 num -= 3;
@@ -203,13 +201,10 @@ function comprobarMatrices() {
 }
 
 function rellenarDeterminante2() {
-    a = document.getElementsByClassName("a");
-
     //Rellena la matriz A
-    for (var i = 0; i < a.length; i++) {
-        a[i].innerHTML = Math.trunc((Math.random() * 10));
-    }
-
+	$('.a').each(function(){
+		$(this).html(Math.trunc((Math.random() * 10)));
+	});
 }
 //Abre la ventana con el ejercicio determinante orden 2
 function determinanteDos() {
@@ -217,7 +212,6 @@ function determinanteDos() {
 }
 //comprueba el determinante de orden 2
 function comprobarDeterminanteDos() {
-    a = new Array(8);
     a = document.getElementsByClassName("a");
     //Realiza los calculos expuestos en la teoria
     respuesta = (Number(a[0].innerHTML) * Number(a[4].innerHTML)) - (Number(a[1].innerHTML) * Number(a[3].innerHTML));
@@ -292,7 +286,6 @@ function mostrarSolSarrus() {
                     posTop = posInicialTop + 25;
                     $("#imgSuma").fadeToggle(1500).fadeToggle(1500);
                     cont = -1;
-
                     break;
                 case 2:
                     posLeft = posInicialLeft;
@@ -322,10 +315,7 @@ function mostrarSolSarrus() {
                 case 6:
                     clearInterval(intervalo);
                     $("#rectangulo").fadeToggle(1500);
-                    break;
-
             }
-
         }
         cont++;
     }, 4000);
@@ -366,10 +356,8 @@ function ordenSarrus() {
     $("#imgX").hide();
 
     ORDENARRAY = [];
-    var seleccionados = document.getElementById("listaSeleccionados");
-    seleccionados.innerHTML = "Posiciones Seleccionadas :";
-    var correccion = document.getElementById("correccion");
-    correccion.innerHTML = "";
+	$('#listaSeleccionados').html('Posiciones Seleccionadas :');
+    $('#correccion').html('');
 
 }
 
@@ -377,23 +365,17 @@ function ordenSarrus() {
 function clickSarrus(item, nombre) {
     //Añade el id al orden
     ORDENARRAY.push(Number(item));
-    var seleccionados = document.getElementById("listaSeleccionados");
-    var correccion = document.getElementById("correccion");
+    var seleccionados = $('#listaSeleccionados');
+    var correccion = $("#correccion");
     //Si no ha pulsado como minimo 18 veces añade el ultimo pulsado
-    if (ORDENARRAY.length <= 18) {
-        seleccionados.innerHTML += 'posicion ' + nombre;
-        seleccionados.innerHTML += '. ';
-    }
+    if (ORDENARRAY.length <= 18)
+        seleccionados.append('posicion ' + nombre + '. ');
     //Cuando supera los 17 click comprueba el orden. ya que sarrus se hace en 18 click
     if (ORDENARRAY.length > 17) {
-
-        if (String(ORDENARRAY) == String(ORDENEVALIDOS)) {
-            correccion.innerHTML = "¡CORRECTO!";
-        } else {
-            correccion.innerHTML = "Vuelve a probar";
-
-        }
-
+        if (String(ORDENARRAY) == String(ORDENEVALIDOS))
+            correccion.html('¡CORRECTO!');
+        else
+            correccion.html("Vuelve a probar");
     }
 }
 
@@ -405,16 +387,14 @@ function abrirEjSistemas() {
 //Coge las matrices del ejercicio y comprueba la solucion usando Cramer, es decir, con los distintos determinantes
 //y la comprueba con la funcion calcSistema
 function comprobarSistema() {
-    a = document.getElementsByClassName("a");
-    b = document.getElementsByClassName("b");
     a1 = [];
-    for (var i = 0; i < a.length; i++) {
-        a1.push(a[i].innerHTML);
-    }
-    b1 = [];
-    for (var i = 0; i < b.length; i++) {
-        b1.push(b[i].innerHTML);
-    }
+	b1 = [];
+	$('.a').each(function(){
+		a1.push($(this).html());
+	});
+	$('.b').each(function(){
+		b1.push($(this).html());
+	});
     detA = calcDet3(a1);
     soluciones = calcSistema(a1, b1);
 
@@ -454,8 +434,6 @@ function comprobarSistema() {
             x3.style.color = "white";
         }
     }
-
-
 }
 
 //Multipllica la matriz b por un numero a, usada en la calculadora
@@ -468,16 +446,14 @@ function calcNMatriz(a, b) {
 }
 //calculamos la multiplicacion de matrices
 function calcMatrices() {
-    a3 = document.getElementsByClassName("a3");
     a = [];
-    for (var i = 0; i < a3.length; i++) {
-        a.push(a3[i].value);
-    }
-    b3 = document.getElementsByClassName("b3");
-    b = [];
-    for (var i = 0; i < b3.length; i++) {
-        b.push(b3[i].value);
-    }
+	b = [];
+	$('.a3').each(function(){
+		a.push($(this).val());
+	})
+	$('.b3').each(function(){
+		b.push($(this).val());
+	})
     c3 = document.getElementsByClassName("c3");
     soluciones = [];
     soluciones = multiplicarMatrices(a, b);
@@ -511,43 +487,32 @@ function calcDet3(a) {
 
 function mostrarDeterminante3() {
     a5 = document.getElementsByClassName("a5");
-    c5 = document.getElementsByClassName("c5");
     var b = [];
     for (var i = a5.length - 1; i >= 0; i--) {
         b[i] = a5[i].value;
     }
-    c5[0].innerHTML = calcDet3(b);
+    $('.c5').eq(0).html(calcDet3(b));
 }
 
 function mostrarSistemaCramer() {
-    a = document.getElementsByClassName("a6");
-    b = document.getElementsByClassName("b6");
     a1 = [];
-    for (var i = 0; i < a.length; i++) {
-        a1.push(a[i].value);
-    }
-    b1 = [];
-    for (var i = 0; i < b.length; i++) {
-        b1.push(b[i].value);
-    }
+	b1 = [];
+	$('.a6').each(function(){
+		a1.push($(this).val());
+	});
+	$('.b6').each(function(){
+		b1.push($(this).val());
+	});
     soluciones = calcSistema(a1, b1);
     //Calculamos el determinante del sistema
     if (soluciones[0] == 0) {
-        if (soluciones[1] != 0 && soluciones[2] != 0 && soluciones[3] != 0) {
-
-        } else {
-            alert('Ha introducido un sistema determinado incompatible, intente resolverlo por el metodo de Gauss');
-        }
-
+        if (soluciones[1] == 0 && soluciones[2] == 0 && soluciones[3] == 0)
+			alert('Ha introducido un sistema determinado incompatible, intente resolverlo por el metodo de Gauss');
     } else {
-        x1 = document.getElementById("c1");
-        x2 = document.getElementById("c2");
-        x3 = document.getElementById("c3");
-        x1.innerHTML = soluciones[1] / soluciones[0];
-        x2.innerHTML = soluciones[2] / soluciones[0];
-        x3.innerHTML = soluciones[3] / soluciones[0];
+		$('#c1').html(soluciones[1] / soluciones[0]);
+		$('#c2').html(soluciones[2] / soluciones[0]);
+		$('#c3').html(soluciones[3] / soluciones[0]);
     }
-
 }
 
 function calcSistema(a, b) {
@@ -568,13 +533,11 @@ function calcSistema(a, b) {
             case 3:
                 vDet1[i] = b[1];
                 break;
-
             case 6:
                 vDet1[i] = b[2];
                 break;
             default:
                 vDet1[i] = a[i];
-
         }
     }
 
@@ -589,7 +552,6 @@ function calcSistema(a, b) {
             case 4:
                 vDet2[i] = b[1];
                 break;
-
             case 7:
                 vDet2[i] = b[2];
                 break;
@@ -612,7 +574,6 @@ function calcSistema(a, b) {
             case 5:
                 vDet3[i] = b[1];
                 break;
-
             case 8:
                 vDet3[i] = b[2];
                 break;
@@ -634,37 +595,31 @@ function calcSistema(a, b) {
 
 //Muestra e sistema usando Gauss
 function mostrarSistemaGauss() {
-    a = document.getElementsByClassName("a6");
-    b = document.getElementsByClassName("b6");
     a1 = [];
-    for (var i = 0; i < a.length; i++) {
-        a1.push(a[i].value);
-    }
-    b1 = [];
-    for (var i = 0; i < b.length; i++) {
-        b1.push(b[i].value);
-    }
+	b1 = [];
+	$(.'a6').each(function(){
+		a1.push($(this).val());
+	});
+	$(.'b6').each(function(){
+		b1.push($(this).val());
+	});
+
     soluciones = resolverGauss(a1, b1);
 
-    x1 = document.getElementById("c1");
-    x2 = document.getElementById("c2");
-    x3 = document.getElementById("c3");
-    x1.innerHTML = soluciones[0];
-    x2.innerHTML = soluciones[1];
-    x3.innerHTML = soluciones[2];
+	$('#c1').html(soluciones[0]);
+	$('#c2').html(soluciones[1]);
+	$('#c3').html(soluciones[2]);
 }
 //Resuelve el sistema por el metodo de gaus
 function resolverGauss(a, b) {
     incompatible = true;
     //Si el primer elemento y el cuarto son iguales el sistema es compatible indeterminado
     for (var i = 2; i >= 0; i--) {
-        if (a[i] != a[i + 3]) {
+        if (a[i] != a[i + 3])
             incompatible = false;
-        }
     }
     if (incompatible == false) {
         if (a[0] == 0) {
-            aux = 0;
             aux = a[0];
             a[0] = a[3];
             a[3] = aux;
@@ -724,10 +679,9 @@ function resolverGauss(a, b) {
         if (a[8] == 0) {
             sol3 = 't';
             if (a[4] == 0) {
-
                 sol2 = "u";
                 sol1 = "(" + String(b[0]) + "-(" + String(a[2]) + "*" + String(sol3) + ")-(" + String(a[1]) + "*" + String(sol2) + "))";
-                sol1 = sol1 + "/" + String(a[0]);
+                sol1 += "/" + String(a[0]);
             } else {
                 for (var i = 0; i < 6; i++) {
                     a[i] = Math.round(a[i] * 100) / 100;
@@ -793,18 +747,16 @@ function generarOperacion(operacion, idDiv) {
     boton.setAttribute("value", "Calcular");
 
     switch (operacion) {
-
         case "sumaMatrices":
-
             generarTabla(3, 3, idDiv, "parentesis", "tablaA", "entrada");
             id.appendChild(document.createTextNode("+"));
             generarTabla(3, 3, idDiv, "parentesis", "tablaB", "entrada");
             id.appendChild(document.createTextNode("="));
             boton.addEventListener("click", function() {
                 hijos = id.childElementCount;
-                if (hijos > 2) {
+                if (hijos > 2)
                     id.removeChild(id.lastChild);
-                }
+
                 a = document.getElementsByClassName("tablaA");
                 b = document.getElementsByClassName("tablaB");
                 for (var i = 0; i < a.length; i++) {
@@ -815,7 +767,6 @@ function generarOperacion(operacion, idDiv) {
 
                 generarTabla(3, 3, idDiv, "parentesis", "solA", "salida", soluciones);
             });
-
             divBoton.appendChild(boton);
             break;
         case "restaMatrices":
@@ -825,9 +776,9 @@ function generarOperacion(operacion, idDiv) {
             id.appendChild(document.createTextNode("="));
             boton.addEventListener("click", function() {
                 hijos = id.childElementCount;
-                if (hijos > 2) {
+                if (hijos > 2)
                     id.removeChild(id.lastChild);
-                }
+
                 a = document.getElementsByClassName("tablaA");
                 b = document.getElementsByClassName("tablaB");
                 for (var i = 0; i < a.length; i++) {
@@ -847,9 +798,9 @@ function generarOperacion(operacion, idDiv) {
             id.appendChild(document.createTextNode("="));
             boton.addEventListener("click", function() {
                 hijos = id.childElementCount;
-                if (hijos > 2) {
+                if (hijos > 2)
                     id.removeChild(id.lastChild);
-                }
+
                 a = document.getElementsByClassName("tablaA");
                 b = document.getElementsByClassName("tablaB");
                 for (var i = 0; i < a.length; i++) {
@@ -869,33 +820,32 @@ function generarOperacion(operacion, idDiv) {
             id.appendChild(document.createTextNode("="));
             boton.addEventListener("click", function() {
                 hijos = id.childElementCount;
-                if (hijos > 2) {
+                if (hijos > 2)
                     id.removeChild(id.lastChild);
-                }
+
                 a = document.getElementsByClassName("tablaA");
                 b = document.getElementsByClassName("tablaB");
                 a1[0] = a[0].value;
-                for (var i = 0; i < b.length; i++) {
+                for (var i = 0; i < b.length; i++)
                     b1[i] = b[i].value;
-                }
+
                 soluciones = calcNMatriz(a1, b1);
                 generarTabla(3, 3, idDiv, "parentesis", "solA", "salida", soluciones);
             });
             divBoton.appendChild(boton);
-
             break;
         case "determinante2":
             generarTabla(2, 2, idDiv, "linea", "tablaA", "entrada");
             id.appendChild(document.createTextNode("="));
             boton.addEventListener("click", function() {
                 hijos = id.childElementCount;
-                if (hijos > 0) {
+                if (hijos > 0)
                     id.removeChild(id.lastChild);
-                }
+
                 a = document.getElementsByClassName("tablaA");
-                for (var i = 0; i < a.length; i++) {
+                for (var i = 0; i < a.length; i++)
                     a1[i] = a[i].value;
-                }
+
                 soluciones = document.createTextNode(calcDet2(a1));
                 id.appendChild(soluciones);
 
@@ -907,13 +857,13 @@ function generarOperacion(operacion, idDiv) {
             id.appendChild(document.createTextNode("="));
             boton.addEventListener("click", function() {
                 hijos = id.childElementCount;
-                if (hijos > 0) {
+                if (hijos > 0)
                     id.removeChild(id.lastChild);
-                }
+
                 a = document.getElementsByClassName("tablaA");
-                for (var i = 0; i < a.length; i++) {
+                for (var i = 0; i < a.length; i++)
                     a1[i] = a[i].value;
-                }
+
                 soluciones = document.createTextNode(calcDet3(a1));
                 id.appendChild(soluciones);
             });
@@ -941,22 +891,22 @@ function generarOperacion(operacion, idDiv) {
             generarTabla(3, 1, idDiv, "soluciones", "tablaB", "entrada");
             boton.addEventListener("click", function() {
                 hijos = id.childElementCount;
-                if (hijos > 4) {
+                if (hijos > 4)
                     id.removeChild(id.lastChild);
-                }
+
                 a = document.getElementsByClassName("tablaA");
-                for (var i = 0; i < a.length; i++) {
+                for (var i = 0; i < a.length; i++)
                     a1[i] = a[i].value;
-                }
+
                 b = document.getElementsByClassName("tablaB");
-                for (var i = 0; i < b.length; i++) {
+                for (var i = 0; i < b.length; i++)
                     b1[i] = b[i].value;
-                }
-                if (metodoCramer.checked) {
+
+                if (metodoCramer.checked)
                     soluciones = calcSistema(a1, b1);
-                } else {
+                else
                     soluciones = resolverGauss(a1, b1);
-                }
+
                 generarTabla(3, 1, idDiv, "parentesis", "solA", "salida", soluciones);
             });
             divBoton.appendChild(boton);
@@ -965,11 +915,11 @@ function generarOperacion(operacion, idDiv) {
 
 function generarTabla(filas, columnas, idDiv, parentesis, clase, opcionIO, elementoMostrar) {
     var id = document.getElementById(idDiv);
-    if (opcionIO == "entrada") {
+    if (opcionIO == "entrada")
         var elementoTabla = document.createElement("input");
-    } else {
+    else
         var elementoTabla = document.createTextNode("");
-    }
+
     var tabla = document.createElement("table");
     var tr = document.createElement("tr");
     var td = document.createElement("td");
@@ -1005,11 +955,11 @@ function generarTabla(filas, columnas, idDiv, parentesis, clase, opcionIO, eleme
         td.style.textAlign = "center";
         td.appendChild(elementoTabla);
         if (parentesis == "sistema") {
-            if ((i % filas) + 1 == 3) {
+            if ((i % filas) + 1 == 3)
                 var valorX = document.createTextNode(String("X") + String((i % filas) + 1) + "=");
-            } else {
+            else
                 var valorX = document.createTextNode(String("X") + String((i % filas) + 1) + "+");
-            }
+
             td.appendChild(valorX);
         }
         if (i % columnas == 0) {
@@ -1223,5 +1173,4 @@ function comprobarDatos() {
     if (validado == true) {
         $("#dialogoOpinion").dialog("close");
     }
-
 }
