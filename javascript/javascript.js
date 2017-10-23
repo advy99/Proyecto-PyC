@@ -1,11 +1,10 @@
 /*Variables globales para comprobar el orden en el que hacer Sarrus
 Son globales ya que las modifican dos funciones, una que lo vacia cuando acabemos y otra que va añadiendo el orden
 */
-var ORDENARRAY = [];
+const ORDENARRAY = [];
 
 //Orden correcto para Sarrus
-var ORDENEVALIDOS =[1,5,9,4,8,3,7,2,6,3,5,7,6,8,1,9,2,4];
-
+const ORDENEVALIDOS =[1,5,9,4,8,3,7,2,6,3,5,7,6,8,1,9,2,4];
 
 $( function() {
 	$("#dialogoOpinion").hide();
@@ -38,17 +37,17 @@ $( function() {
 } );
 
 //Abre una ventana emergente con el manual
-function manual(){
+const manual = function(){
 	ventanaManual=window.open('manual.html','','width=1000,height=500,top=100000000,left=100000000');
 }
 
 //Abre una ventana emergente con el ejercicio sobre suma de matrices
-function ejSumaMatrices(){
+const ejSumaMatrices = function(){
 	ventanaSumaMatrices=window.open('ejercicios/ejSumaMatrices.html','','width=900,height=500')
 }
 
 //Funcion que rellena las matrices con numeros aleatorios y vacia automaticamente las casillas en los que se introducen los datos
-function rellenarMatrices(){
+const rellenarMatrices = function(){
 	//cogemosla matriz a y la rellenamos de numeros aleatorios
 	a=document.getElementsByClassName("a");
 	b=document.getElementsByClassName("b");
@@ -70,7 +69,7 @@ function rellenarMatrices(){
 }
 
 //Comprueba la suma
-function comprobarSuma(){
+const comprobarSuma = function(){
 	//Recoge las matrices A,B y la solucion, C
 	a1=new Array(8);
 
@@ -100,12 +99,12 @@ function comprobarSuma(){
 }
 
 //Abre la ventana de ejercicion numero por matriz
-function ejNumeroMatriz(){
+const ejNumeroMatriz = function(){
 	ventanaNumeroMatriz=window.open('ejercicios/ejNumeroMatriz.html','','width=900,height=500')
 }
 
 //Suma dos matrices. Usada en la calculadora
-function sumarMatrices(a,b){
+const sumarMatrices = function(a,b){
 	var solucion=[];
 	for (var i = 0; i < a.length; i++) {
 		solucion[i]=Number(a[i])+Number(b[i]);
@@ -114,7 +113,7 @@ function sumarMatrices(a,b){
 }
 
 //Resta dos matrices. Usada en la calculadora
-function restarMatrices(a,b){
+const restarMatrices = function(a,b){
 	var solucion=[];
 	for (var i = 0; i < a.length; i++) {
 		solucion[i]=Number(a[i])-Number(b[i]);
@@ -122,7 +121,7 @@ function restarMatrices(a,b){
 	return solucion;
 }
 //Comprueba el ejercicion numero por matriz
-function comprobarNumeroMatriz(){
+const comprobarNumeroMatriz = function(){
 	//Recoge las matrices y la solucion
 	a1=new Array(8);
 
@@ -154,12 +153,12 @@ function comprobarNumeroMatriz(){
 
 }
 //Abre ventana de multiplicacion de matrices
-function ejMatrices(){
+const ejMatrices = function(){
 	ventanaMatriz=window.open('ejercicios/ejMatrices.html','','width=900,height=500');
 }
 
 //Funcion que multiplica dos matrices y devuelve la matriz solucion, usada en la calculadora y en el ejercicio
-function multiplicarMatrices(a1,b1){
+const multiplicarMatrices = function(a1,b1){
 	sol=0;
 	sol=Number(sol);
 	//Otra variable que controlara el numero de columna al multiplicar
@@ -207,8 +206,9 @@ function multiplicarMatrices(a1,b1){
 	return vectorSolucion;
 
 }
+
 //Comprueba la multiplicacion de matrices
-function comprobarMatrices(){
+const comprobarMatrices = function(){
 	//Recoge las matrices y la repuesta
 	//Vector con todo el campo
 	a1=document.getElementsByClassName("a");
@@ -240,7 +240,8 @@ function comprobarMatrices(){
 	}
 
 }
-function rellenarDeterminante2(){
+
+const rellenarDeterminante2 = function(){
 	a=document.getElementsByClassName("a");
 
 	//Rellena la matriz A
@@ -249,12 +250,14 @@ function rellenarDeterminante2(){
 	}
 
 }
+
 //Abre la ventana con el ejercicio determinante orden 2
-function determinanteDos(){
+const determinanteDos = function(){
 	window.open('ejercicios/ejDeterminante2.html','','width=900,height=500');
 }
+
 //comprueba el determinante de orden 2
-function comprobarDeterminanteDos(){
+const comprobarDeterminanteDos = function(){
 	a=new Array(8);
 	a=document.getElementsByClassName("a");
 	//Realiza los calculos expuestos en la teoria
@@ -272,12 +275,14 @@ function comprobarDeterminanteDos(){
 	}
 
 }
+
 //Abre ventana determinante orden 3
-function determinanteTres(){
+const determinanteTres = function(){
 	window.open('ejercicios/ejDeterminante3.html','','width=900,height=500');
 }
+
 //Comprueba determinante orden 3
-function comprobarDeterminanteTres(){
+const comprobarDeterminanteTres = function(){
 	a=document.getElementsByClassName("a");
 	b= [];
 	for (var i = 0; i < a.length; i++) {
@@ -298,10 +303,11 @@ function comprobarDeterminanteTres(){
 }
 
 //Abre ejercicio Sarrus
-function abrirImagenSarrus(){
+const abrirImagenSarrus = function(){
 	window.open('ejercicios/matrizSarrus.html','','width=900,height=500');
 }
-function mostrarSolSarrus(){
+
+const mostrarSolSarrus = function(){
 	direccion=1;
 	posInicialLeft=430;
 	posInicialTop=183;
@@ -365,7 +371,7 @@ function mostrarSolSarrus(){
 	},4000);
 }
 
-function mostrarSolSarrusR(){
+const mostrarSolSarrusR = function(){
 	window.setTimeout(function(){
 		$("#rectangulo").animate({
 			'margin-left':posLeft+'px',
@@ -375,7 +381,7 @@ function mostrarSolSarrusR(){
 }
 
 //Vacia el orden seleccionado de Sarrus e inicializa la correccion
-function ordenSarrus(){
+const ordenSarrus = function(){
 	$("#rectangulo").css({
 		'position':'absolute'
 	});
@@ -408,7 +414,7 @@ function ordenSarrus(){
 }
 
 //Ejecutado al hacer click en algun elemento del mapa de imagen
-function clickSarrus(item,nombre){
+const clickSarrus = function(item,nombre){
 	//Añade el id al orden
 	ORDENARRAY.push(Number(item));
 	var seleccionados=document.getElementById("listaSeleccionados");
@@ -433,13 +439,13 @@ function clickSarrus(item,nombre){
 }
 
 //abre la pagina de ejercicio de sistemas
-function abrirEjSistemas(){
+const abrirEjSistemas = function(){
 	window.open('ejercicios/ejSistemasCramer.html','','width=900,height=500');
 }
 
 //Coge las matrices del ejercicio y comprueba la solucion usando Cramer, es decir, con los distintos determinantes
 //y la comprueba con la funcion calcSistema
-function comprobarSistema(){
+const comprobarSistema = function(){
 	a=document.getElementsByClassName("a");
 	b=document.getElementsByClassName("b");
 	a1 = [];
@@ -498,7 +504,7 @@ function comprobarSistema(){
 }
 
 //Multipllica la matriz b por un numero a, usada en la calculadora
-function calcNMatriz(a,b){
+const calcNMatriz = function(a,b){
 	var solucion=[];
 	for (var i = 0; i < b.length; i++) {
 		solucion[i]=Number(a[0])*Number(b[i]);
@@ -506,7 +512,7 @@ function calcNMatriz(a,b){
 	return solucion;
 }
 //calculamos la multiplicacion de matrices
-function calcMatrices(){
+const calcMatrices = function(){
 	a3=document.getElementsByClassName("a3");
 	a = [];
 	for (var i = 0; i < a3.length; i++) {
@@ -526,14 +532,13 @@ function calcMatrices(){
 }
 
 //Calculamos el determinante de orden 2, como el ejercicio
-function calcDet2(a){
+const calcDet2 = function(a){
 	solucion=(Number(a[0])*Number(a[3]))-(Number(a[1])*Number(a[2]));
 	return solucion;
 }
 
 //Calculamos el determinante de orden 3, como el ejercicio
-
-function calcDet3(a){
+const calcDet3 = function(a){
 
 	positivos=(Number(a[0])*Number(a[4])*Number(a[8]));
 	positivos+=(Number(a[1])*Number(a[5])*Number(a[6]));
@@ -544,11 +549,9 @@ function calcDet3(a){
 	negativos-=(Number(a[0])*Number(a[5])*Number(a[7]));
 	solucion=Number(positivos)+Number(negativos);
 	return solucion;
-
 }
 
-
-function mostrarDeterminante3(){
+const mostrarDeterminante3 = function(){
 	a5=document.getElementsByClassName("a5");
 	c5=document.getElementsByClassName("c5");
 	var b=[];
@@ -557,7 +560,8 @@ function mostrarDeterminante3(){
 	}
 	c5[0].innerHTML=calcDet3(b);
 }
-function mostrarSistemaCramer(){
+
+const mostrarSistemaCramer = function(){
 	a=document.getElementsByClassName("a6");
 	b=document.getElementsByClassName("b6");
 	a1 = [];
@@ -589,7 +593,8 @@ function mostrarSistemaCramer(){
 	}
 
 }
-function calcSistema(a,b){
+
+const calcSistema = function(a,b){
 	vDetA=[];
 	for (var i = 0; i < a.length; i++) {
 		vDetA[i]=a[i];
@@ -660,7 +665,7 @@ function calcSistema(a,b){
 }
 
 //Muestra e sistema usando Gauss
-function mostrarSistemaGauss(){
+const mostrarSistemaGauss = function(){
 	a=document.getElementsByClassName("a6");
 	b=document.getElementsByClassName("b6");
 	a1 = [];
@@ -680,8 +685,9 @@ function mostrarSistemaGauss(){
 	x2.innerHTML=soluciones[1];
 	x3.innerHTML=soluciones[2];
 }
+
 //Resuelve el sistema por el metodo de gaus
-function resolverGauss(a,b){
+const resolverGauss = function(a,b){
 	incompatible=true;
 	//Si el primer elemento y el cuarto son iguales el sistema es compatible indeterminado
 	for (var i = 2; i >= 0; i--) {
@@ -806,7 +812,8 @@ function resolverGauss(a,b){
 	}
 
 }
-function generarOperacion(operacion,idDiv){
+
+const generarOperacion = function(operacion,idDiv){
 	var id=document.getElementById(idDiv);
 	var divBoton=document.getElementById("boton");
 	var hijos=id.childNodes;
@@ -1002,7 +1009,8 @@ function generarOperacion(operacion,idDiv){
 			break;
 	}
 }
-function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMostrar){
+
+const generarTabla = function(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMostrar){
 	var id=document.getElementById(idDiv);
 	if(opcionIO=="entrada"){
 		var elementoTabla=document.createElement("input");
@@ -1080,11 +1088,13 @@ function generarTabla(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMos
 	tabla.style.display="inline-table";
 	id.appendChild(tabla);
 }
-function errorAnadir(){
+
+const errorAnadir = function(){
 	$("#mensajeError").css("visibility","visible");
 	$("#mensajeError").dialog();
 }
-function anadirGrafico(){
+
+const anadirGrafico = function(){
 	$("#anadir").attr("onclick","errorAnadir()");
 	tipoGrafico=$("#dibujo").val();
 	parrafo=document.createElement("p");
@@ -1175,13 +1185,14 @@ function anadirGrafico(){
 		eliminarElemento(this);
 	});
 }
-function eliminarGrafico(){
+
+const eliminarGrafico = function(){
 	$('canvas').clearCanvas();
 	$('.menuEcuaciones').remove();
 	$("#anadir").attr("onclick","anadirGrafico()");
 }
 
-function eliminarElemento(parrafo){
+const eliminarElemento = function(parrafo){
 	var padre;
 	var abuelo;
 	//Obtenemos el padre del parrafo
@@ -1191,7 +1202,8 @@ function eliminarElemento(parrafo){
 	//A partir del abuelo eliminamos el parrafo, es decir, el padre
 	abuelo.removeChild(padre);
 }
-function comenzarAnimacionCramer(){
+
+const comenzarAnimacionCramer = function(){
 	$("#botonAnimacion").attr("onclick","");
 	$("#cramerY").css("marginLeft","20%");
 	$("#cramerZ").css("marginLeft","20%");
@@ -1227,7 +1239,8 @@ function comenzarAnimacionCramer(){
 		solCramerOrdenCol("Sol",posX,posY);
 	},8000);
 }
-function solCramerOrdenCol(col,posX,posY) {
+
+cosnt solCramerOrdenCol = function(col,posX,posY) {
 	var columna=$("#col"+col);
 	var clon=columna.clone();
 	columna.after(clon);
@@ -1236,11 +1249,13 @@ function solCramerOrdenCol(col,posX,posY) {
 		marginTop:posY
 	},2000);
 }
-function opinion(){
+
+const opinion = function(){
 	$("#dialogoOpinion").dialog();
 
 }
-function comprobarDatos(){
+
+const comprobarDatos = function(){
 	validado=true;
 	nombre=$("#nombre").val();
 	if(nombre.length<2){
@@ -1255,5 +1270,4 @@ function comprobarDatos(){
 	if(validado==true){
 		$("#dialogoOpinion").dialog("close");
 	}
-
 }
