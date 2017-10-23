@@ -49,19 +49,11 @@ const ejSumaMatrices = function(){
 //Funcion que rellena las matrices con numeros aleatorios y vacia automaticamente las casillas en los que se introducen los datos
 const rellenarMatrices = function(){
 	
-	//cogemosla matriz a y la rellenamos de numeros aleatorios
-	a=document.getElementsByClassName("a");
-	b=document.getElementsByClassName("b");
-	c=document.getElementsByClassName("c");
-	
-	//Rellena la matriz A
-	a.forEach(el => el.innerHTML=Math.trunc((Math.random()*10));
-
-	//Rellena la matriz B
-	b.forEach(el => el.innerHTML=Math.trunc((Math.random()*10)));
+	//Rellena la matriz A and B
+	document.querySelectorAll('.a, .b').forEach(el => el.innerHTML=Math.trunc((Math.random()*10));
 
 	//Vacia las casillas de resultados
-	c.forEach(el => el.value = "");
+	document.querySelector('.c').forEach(el => el.value = '');
 
 }
 
