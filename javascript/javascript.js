@@ -16,7 +16,7 @@ $( function() {
 
 
 	$(".menu_izq").on("click",function(){
-		var menuActivo = $( ".menu_izq" ).accordion( "option", "active" );
+		const menuActivo = $( ".menu_izq" ).accordion( "option", "active" );
 		switch (menuActivo) {
 			case 0:$("#flecha2").addClass("deshacerRotar");
 					$("#flecha1").removeClass("deshacerRotar");
@@ -53,15 +53,15 @@ const rellenarMatrices = function(){
 	b=document.getElementsByClassName("b");
 	c=document.getElementsByClassName("c");
 	//Rellena la matriz A
-	for (var i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i++) {
 		a[i].innerHTML=Math.trunc((Math.random()*10));
 	}
 	//Rellena la matriz B
-	for (var i = 0; i < b.length; i++) {
+	for (let i = 0; i < b.length; i++) {
 		b[i].innerHTML=Math.trunc((Math.random()*10));
 	}
 	//Vacia las casillas de resultados
-	for (var i = 0; i < c.length; i++) {
+	for (let i = 0; i < c.length; i++) {
 		c[i].value="";
 	}
 
@@ -84,7 +84,7 @@ const comprobarSuma = function(){
 	c1=document.getElementsByClassName("c");
 
 	//Comprueba que la casilla N de C valga la casilla N de A + la casilla N de B
-	for (var i = 0; i <= 5; i++) {
+	for (let i = 0; i <= 5; i++) {
 		if (c1[i].value==(Number(a1[i].innerHTML)+Number(b1[i].innerHTML))) {
 			//Si es correcto le aplica un fondo verde con letra en blanco
 			c1[i].style.backgroundColor="green";
@@ -105,8 +105,8 @@ const ejNumeroMatriz = function(){
 
 //Suma dos matrices. Usada en la calculadora
 const sumarMatrices = function(a,b){
-	var solucion=[];
-	for (var i = 0; i < a.length; i++) {
+	const solucion=[];
+	for (let i = 0; i < a.length; i++) {
 		solucion[i]=Number(a[i])+Number(b[i]);
 	}
 	return solucion;
@@ -114,8 +114,8 @@ const sumarMatrices = function(a,b){
 
 //Resta dos matrices. Usada en la calculadora
 const restarMatrices = function(a,b){
-	var solucion=[];
-	for (var i = 0; i < a.length; i++) {
+	const solucion=[];
+	for (let i = 0; i < a.length; i++) {
 		solucion[i]=Number(a[i])-Number(b[i]);
 	}
 	return solucion;
@@ -137,7 +137,7 @@ const comprobarNumeroMatriz = function(){
 
 
 	//Comprueba, como con la suma pero con la multiplicacion
-	for (var i = 0; i <= 5; i++) {
+	for (let i = 0; i <= 5; i++) {
 		//En este caso solo nos interesa a1[0], ya que es un solo numero por la matriz
 		if (c1[i].value==(Number(a1[0].innerHTML)*Number(b1[i].innerHTML))) {
 			//Aplica estilos si acierta
@@ -173,9 +173,9 @@ const multiplicarMatrices = function(a1,b1){
 	//Creamos un vector con la solucion, servira para devolver todas las soluciones de golpe
 	vectorSolucion = [];
 	//for para las tres filas
-	for (var l = 0; l < 3; l++) {
+	for (let l = 0; l < 3; l++) {
 		//Cada fila tendra que realizar los calculos 12 veces
-		for (var i = 0; i <=11; i++) {
+		for (let i = 0; i <=11; i++) {
 			//cuando el contador es menor que tres multiplica los elementos en orden
 			if(cont<3){
 				sol=sol+(Number(a1[num])*Number(b1[j]));
@@ -214,19 +214,19 @@ const comprobarMatrices = function(){
 	a1=document.getElementsByClassName("a");
 	//Vector que contendra los numeros
 	a = [];
-	for (var i = 0; i < a1.length; i++) {
+	for (let i = 0; i < a1.length; i++) {
 		a.push(a1[i].innerHTML);
 	}
 	b1=document.getElementsByClassName("b");
 	b = [];
-	for (var i = 0; i < b1.length; i++) {
+	for (let i = 0; i < b1.length; i++) {
 		b.push(b1[i].innerHTML);
 	}
 	c1=document.getElementsByClassName("c");
 	//Creamos un vector en la que se almacenara la solucion
 	soluciones = [];
 	soluciones = multiplicarMatrices(a,b);
-	for (var k = c1.length - 1; k >= 0; k--) {
+	for (let k = c1.length - 1; k >= 0; k--) {
 		if (c1[k].value==soluciones[k]) {
 			c1[k].style.backgroundColor="green";
 			c1[k].style.color="white";
@@ -245,7 +245,7 @@ const rellenarDeterminante2 = function(){
 	a=document.getElementsByClassName("a");
 
 	//Rellena la matriz A
-	for (var i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i++) {
 		a[i].innerHTML=Math.trunc((Math.random()*10));
 	}
 
@@ -285,7 +285,7 @@ const determinanteTres = function(){
 const comprobarDeterminanteTres = function(){
 	a=document.getElementsByClassName("a");
 	b= [];
-	for (var i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i++) {
 		b[i]=a[i].innerHTML;
 	}
 	respuesta=calcDet3(b);
@@ -406,9 +406,9 @@ const ordenSarrus = function(){
 	$("#imgX").hide();
 
 	ORDENARRAY = [];
-	var seleccionados=document.getElementById("listaSeleccionados");
+	const seleccionados=document.getElementById("listaSeleccionados");
 	seleccionados.innerHTML="Posiciones Seleccionadas :";
-	var correccion=document.getElementById("correccion");
+	const correccion=document.getElementById("correccion");
 	correccion.innerHTML="";
 
 }
@@ -417,8 +417,8 @@ const ordenSarrus = function(){
 const clickSarrus = function(item,nombre){
 	//Añade el id al orden
 	ORDENARRAY.push(Number(item));
-	var seleccionados=document.getElementById("listaSeleccionados");
-	var correccion=document.getElementById("correccion");
+	const seleccionados=document.getElementById("listaSeleccionados");
+	const correccion=document.getElementById("correccion");
 	//Si no ha pulsado como minimo 18 veces añade el ultimo pulsado
 	if (ORDENARRAY.length<=18) {
 		seleccionados.innerHTML+='posicion '+ nombre;
@@ -449,11 +449,11 @@ const comprobarSistema = function(){
 	a=document.getElementsByClassName("a");
 	b=document.getElementsByClassName("b");
 	a1 = [];
-	for (var i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i++) {
 		a1.push(a[i].innerHTML);
 	}
 	b1 = [];
-	for (var i = 0; i < b.length; i++) {
+	for (let i = 0; i < b.length; i++) {
 		b1.push(b[i].innerHTML);
 	}
 	detA=calcDet3(a1);
@@ -505,8 +505,8 @@ const comprobarSistema = function(){
 
 //Multipllica la matriz b por un numero a, usada en la calculadora
 const calcNMatriz = function(a,b){
-	var solucion=[];
-	for (var i = 0; i < b.length; i++) {
+	const solucion=[];
+	for (let i = 0; i < b.length; i++) {
 		solucion[i]=Number(a[0])*Number(b[i]);
 	}
 	return solucion;
@@ -515,18 +515,18 @@ const calcNMatriz = function(a,b){
 const calcMatrices = function(){
 	a3=document.getElementsByClassName("a3");
 	a = [];
-	for (var i = 0; i < a3.length; i++) {
+	for (let i = 0; i < a3.length; i++) {
 		a.push(a3[i].value);
 	}
 	b3=document.getElementsByClassName("b3");
 	b = [];
-	for (var i = 0; i < b3.length; i++) {
+	for (let i = 0; i < b3.length; i++) {
 		b.push(b3[i].value);
 	}
 	c3=document.getElementsByClassName("c3");
 	soluciones = [];
 	soluciones = multiplicarMatrices(a,b);
-	for (var i = soluciones.length - 1; i >= 0; i--) {
+	for (let i = soluciones.length - 1; i >= 0; i--) {
 		c3[i].innerHTML=soluciones[i];
 	}
 }
@@ -554,8 +554,8 @@ const calcDet3 = function(a){
 const mostrarDeterminante3 = function(){
 	a5=document.getElementsByClassName("a5");
 	c5=document.getElementsByClassName("c5");
-	var b=[];
-	for (var i = a5.length - 1; i >= 0; i--) {
+	const b=[];
+	for (let i = a5.length - 1; i >= 0; i--) {
 		b[i]=a5[i].value;
 	}
 	c5[0].innerHTML=calcDet3(b);
@@ -565,11 +565,11 @@ const mostrarSistemaCramer = function(){
 	a=document.getElementsByClassName("a6");
 	b=document.getElementsByClassName("b6");
 	a1 = [];
-	for (var i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i++) {
 		a1.push(a[i].value);
 	}
 	b1 = [];
-	for (var i = 0; i < b.length; i++) {
+	for (let i = 0; i < b.length; i++) {
 		b1.push(b[i].value);
 	}
 	soluciones=calcSistema(a1,b1);
@@ -596,7 +596,7 @@ const mostrarSistemaCramer = function(){
 
 const calcSistema = function(a,b){
 	vDetA=[];
-	for (var i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i++) {
 		vDetA[i]=a[i];
 	}
 	//Calculamos el determinante del sistema
@@ -604,7 +604,7 @@ const calcSistema = function(a,b){
 	if(detA==0)
 	//Calculamos el determinante del sistema, cambiando los elementos de la primera columna por los de clase B
 	vDet1=[];
-	for (var i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i++) {
 		switch (i) {
 			case 0:vDet1[i]=b[0];
 				break;
@@ -621,7 +621,7 @@ const calcSistema = function(a,b){
 	det1=calcDet3(vDet1);
 
 	vDet2=[];
-	for (var i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i++) {
 		switch (i) {
 			case 1:vDet2[i]=b[0];
 				break;
@@ -640,7 +640,7 @@ const calcSistema = function(a,b){
 	//Calculamos el determinante del sistema, cambiando los elementos de la tercera columna por los de clase B
 
 	vDet3=[];
-	for (var i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i++) {
 		switch (i) {
 			case 2:vDet3[i]=b[0];
 				break;
@@ -660,7 +660,7 @@ const calcSistema = function(a,b){
 	sol1=Math.round(sol1*100)/100;
 	sol2=Math.round(sol2*100)/100;
 	sol3=Math.round(sol3*100)/100;
-	var soluciones=[sol1,sol2,sol3];
+	const soluciones=[sol1,sol2,sol3];
 	return soluciones;
 }
 
@@ -669,11 +669,11 @@ const mostrarSistemaGauss = function(){
 	a=document.getElementsByClassName("a6");
 	b=document.getElementsByClassName("b6");
 	a1 = [];
-	for (var i = 0; i < a.length; i++) {
+	for (let i = 0; i < a.length; i++) {
 		a1.push(a[i].value);
 	}
 	b1 = [];
-	for (var i = 0; i < b.length; i++) {
+	for (let i = 0; i < b.length; i++) {
 		b1.push(b[i].value);
 	}
 	soluciones=resolverGauss(a1,b1);
@@ -690,7 +690,7 @@ const mostrarSistemaGauss = function(){
 const resolverGauss = function(a,b){
 	incompatible=true;
 	//Si el primer elemento y el cuarto son iguales el sistema es compatible indeterminado
-	for (var i = 2; i >= 0; i--) {
+	for (let i = 2; i >= 0; i--) {
 		if (a[i]!=a[i+3]) {
 			incompatible=false;
 		}
@@ -727,7 +727,7 @@ const resolverGauss = function(a,b){
 		}
 		aux=a[3];
 		if(aux!=0){
-			for (var i = 3; i <6; i++) {
+			for (let i = 3; i <6; i++) {
 				a[i]=Number(a[i])*(Number(-a[0])/Number(aux));
 				a[i]=Number(a[i])+Number(a[i-3]);
 			}
@@ -736,7 +736,7 @@ const resolverGauss = function(a,b){
 		}
 		aux=a[6];
 		if(aux!=0){
-			for (var i = 6; i <9; i++) {
+			for (let i = 6; i <9; i++) {
 				a[i]=Number(a[i])*(Number(-a[0])/Number(aux));
 				a[i]=Number(a[i])+Number(a[i-6]);
 			}
@@ -747,7 +747,7 @@ const resolverGauss = function(a,b){
 
 		aux=a[7];
 		if(aux!=0){
-			for (var i = 7; i <9; i++) {
+			for (let i = 7; i <9; i++) {
 				a[i]=Number(a[i])*(Number(-a[4])/Number(aux));
 				a[i]=Number(a[i])+Number(a[i-3]);
 			}
@@ -763,7 +763,7 @@ const resolverGauss = function(a,b){
 				sol1=sol1+"/"+String(a[0]);
 			}
 			else{
-				for (var i = 0; i < 6; i++) {
+				for (let i = 0; i < 6; i++) {
 					a[i]=Math.round(a[i]*100)/100;
 				}
 				b[0]=Math.round(b[0]*100)/100;
@@ -814,16 +814,16 @@ const resolverGauss = function(a,b){
 }
 
 const generarOperacion = function(operacion,idDiv){
-	var id=document.getElementById(idDiv);
-	var divBoton=document.getElementById("boton");
-	var hijos=id.childNodes;
-	var hijosBoton=divBoton.childNodes;
-	var a1=[];
-	var b1=[];
-	for (var i = hijosBoton.length-1; i >=0; i--) {
+	const id=document.getElementById(idDiv);
+	const divBoton=document.getElementById("boton");
+	const hijos=id.childNodes;
+	const hijosBoton=divBoton.childNodes;
+	const a1=[];
+	const b1=[];
+	for (let i = hijosBoton.length-1; i >=0; i--) {
 		divBoton.removeChild(hijosBoton[i]);
 	}
-	for (var i = hijos.length-1; i >=0; i--) {
+	for (let i = hijos.length-1; i >=0; i--) {
 		id.removeChild(hijos[i]);
 	}
 	boton=document.createElement("input");
@@ -845,7 +845,7 @@ const generarOperacion = function(operacion,idDiv){
 						}
 						a=document.getElementsByClassName("tablaA");
 						b=document.getElementsByClassName("tablaB");
-						for (var i = 0; i < a.length; i++) {
+						for (let i = 0; i < a.length; i++) {
 							a1[i]=a[i].value;
 							b1[i]=b[i].value;
 						}
@@ -869,7 +869,7 @@ const generarOperacion = function(operacion,idDiv){
 						}
 						a=document.getElementsByClassName("tablaA");
 						b=document.getElementsByClassName("tablaB");
-						for (var i = 0; i < a.length; i++) {
+						for (let i = 0; i < a.length; i++) {
 							a1[i]=a[i].value;
 							b1[i]=b[i].value;
 						}
@@ -892,7 +892,7 @@ const generarOperacion = function(operacion,idDiv){
 						}
 						a=document.getElementsByClassName("tablaA");
 						b=document.getElementsByClassName("tablaB");
-						for (var i = 0; i < a.length; i++) {
+						for (let i = 0; i < a.length; i++) {
 							a1[i]=a[i].value;
 							b1[i]=b[i].value;
 						}
@@ -916,7 +916,7 @@ const generarOperacion = function(operacion,idDiv){
 						a=document.getElementsByClassName("tablaA");
 						b=document.getElementsByClassName("tablaB");
 						a1[0]=a[0].value;
-						for (var i = 0; i < b.length; i++) {
+						for (let i = 0; i < b.length; i++) {
 							b1[i]=b[i].value;
 						}
 						soluciones=calcNMatriz(a1,b1);
@@ -935,7 +935,7 @@ const generarOperacion = function(operacion,idDiv){
 							id.removeChild(id.lastChild);
 						}
 						a=document.getElementsByClassName("tablaA");
-						for (var i = 0; i < a.length; i++) {
+						for (let i = 0; i < a.length; i++) {
 							a1[i]=a[i].value;
 						}
 						soluciones=document.createTextNode(calcDet2(a1));
@@ -954,7 +954,7 @@ const generarOperacion = function(operacion,idDiv){
 							id.removeChild(id.lastChild);
 						}
 						a=document.getElementsByClassName("tablaA");
-						for (var i = 0; i < a.length; i++) {
+						for (let i = 0; i < a.length; i++) {
 							a1[i]=a[i].value;
 						}
 						soluciones=document.createTextNode(calcDet3(a1));
@@ -964,18 +964,18 @@ const generarOperacion = function(operacion,idDiv){
 				divBoton.appendChild(boton);
 			break;
 		case "sistema":
-				var metodoCramer=document.createElement("input");
+				const metodoCramer=document.createElement("input");
 				metodoCramer.setAttribute("type","radio");
 				metodoCramer.setAttribute("name","sistema");
 				metodoCramer.setAttribute("id","cramer");
 
-				var metodoGauss=document.createElement("input");
+				const metodoGauss=document.createElement("input");
 				metodoGauss.setAttribute("type","radio");
 				metodoGauss.setAttribute("name","sistema");
 				metodoGauss.setAttribute("id","gauss");
 
-				var textoCramer=document.createTextNode("Cramer:");
-				var textoGauss=document.createTextNode("Gauss:");
+				const textoCramer=document.createTextNode("Cramer:");
+				const textoGauss=document.createTextNode("Gauss:");
 				id.appendChild(textoCramer);
 				id.appendChild(metodoCramer);
 				id.appendChild(textoGauss);
@@ -989,11 +989,11 @@ const generarOperacion = function(operacion,idDiv){
 							id.removeChild(id.lastChild);
 						}
 						a=document.getElementsByClassName("tablaA");
-						for (var i = 0; i < a.length; i++) {
+						for (let i = 0; i < a.length; i++) {
 							a1[i]=a[i].value;
 						}
 						b=document.getElementsByClassName("tablaB");
-						for (var i = 0; i < b.length; i++) {
+						for (let i = 0; i < b.length; i++) {
 							b1[i]=b[i].value;
 						}
 						if(metodoCramer.checked){
@@ -1011,17 +1011,13 @@ const generarOperacion = function(operacion,idDiv){
 }
 
 const generarTabla = function(filas,columnas,idDiv,parentesis,clase,opcionIO,elementoMostrar){
-	var id=document.getElementById(idDiv);
-	if(opcionIO=="entrada"){
-		var elementoTabla=document.createElement("input");
-	}
-	else{
-		var elementoTabla=document.createTextNode("");
-	}
-	var tabla=document.createElement("table");
-	var tr=document.createElement("tr");
-	var td=document.createElement("td");
-	var longitudTabla=filas*columnas;
+	const id=document.getElementById(idDiv);
+	const elementoTabla = opcionIO == "entrada" ? document.createElement("input") : document.createTextNode("");
+
+	const tabla=document.createElement("table");
+	const tr=document.createElement("tr");
+	const td=document.createElement("td");
+	const longitudTabla=filas*columnas;
 	td.style.textAling="center";
 	if(parentesis=="parentesis"){
 		td.appendChild(document.createTextNode(""));
@@ -1035,8 +1031,8 @@ const generarTabla = function(filas,columnas,idDiv,parentesis,clase,opcionIO,ele
 		td.className="detDer";
 		tr.appendChild(td);
 	}
-	for (var i = 0; i <= longitudTabla ; i++) {
-		if(opcionIO=="entrada"){
+	for (let i = 0; i <= longitudTabla ; i++) {
+		if (opcionIO=="entrada"){
 			elementoTabla=document.createElement("input");
 			elementoTabla.setAttribute("type","text");
 			elementoTabla.className=clase;
@@ -1044,8 +1040,8 @@ const generarTabla = function(filas,columnas,idDiv,parentesis,clase,opcionIO,ele
 			elementoTabla.style.borderRadius="10px";
 			elementoTabla.style.width="50px";
 		}
-		else{
-			var texto=document.createTextNode(elementoMostrar[i]);
+		else {
+			let texto=document.createTextNode(elementoMostrar[i]);
 		 	elementoTabla=document.createElement("p");
 			elementoTabla.style.width="150px";
 			elementoTabla.appendChild(texto);
@@ -1054,12 +1050,10 @@ const generarTabla = function(filas,columnas,idDiv,parentesis,clase,opcionIO,ele
 		td.style.textAlign="center";
 		td.appendChild(elementoTabla);
 		if(parentesis=="sistema"){
-			if ((i%filas)+1==3) {
-				var valorX=document.createTextNode(String("X")+String((i%filas)+1)+"=");
-			}
-			else {
-				var valorX=document.createTextNode(String("X")+String((i%filas)+1)+"+");
-			}
+			const valorX = (i%filas)+1==3 ?
+				document.createTextNode(String("X")+String((i%filas)+1)+"=") :
+				document.createTextNode(String("X")+String((i%filas)+1)+"+");
+
 			td.appendChild(valorX);
 		}
 		if (i%columnas==0) {
@@ -1132,16 +1126,16 @@ const anadirGrafico = function(){
 
 	origenX=294;
 	origenY=266;
-	var padreParrafo=parrafo.parentNode;
+	const padreParrafo=parrafo.parentNode;
 	$(inputMostrar).on("click",function(){
 		if(tipoGrafico=="recta"){
-			var ecuacion=String(inputXRecta.value)+String(parrafoX.nodeValue)+String(inputNRecta.value);
-			var x=-7;
-			var y=eval(ecuacion);
+			const ecuacion=String(inputXRecta.value)+String(parrafoX.nodeValue)+String(inputNRecta.value);
+			let x=-7;
+			let y=eval(ecuacion);
 			coord1X=origenX+(x*50);
 			coord1Y=origenY-(y*50);
-			var x=7;
-			var y=eval(ecuacion);
+			x=7;
+			y=eval(ecuacion);
 			coord2X=origenX+(x*50);
 			coord2Y=origenY-(y*50);
 
@@ -1155,20 +1149,21 @@ const anadirGrafico = function(){
 
 		//NO ESTA ACABADO, NO FUNCIONA CORRECTAMENTE
 		else {
-			var ecuacion=String(inputX2.value)+String(parrafoX2.nodeValue)+String(inputXRecta.value)+String(parrafoX.nodeValue)+String(inputNRecta.value);
-			var verticeParabola=eval("-"+String(inputXRecta.value)+"/(2*"+String(inputX2.value)+")");
+			const ecuacion = String(inputX2.value)+String(parrafoX2.nodeValue)+String(inputXRecta.value)+String(parrafoX.nodeValue)+String(inputNRecta.value);
+			const verticeParabola = eval("-"+String(inputXRecta.value)+"/(2*"+String(inputX2.value)+")");
 			console.log(verticeParabola);
-			var x=-5;
-			var y=eval(ecuacion);
+			let x=-5;
+			let y=eval(ecuacion);
 			coord1X=origenX+(x*48);
 			coord1Y=origenY-(y*48);
 
-			var x=verticeParabola;
-			var y=eval(ecuacion);
+			x=verticeParabola;
+			y=eval(ecuacion);
 			coordC1X=origenX+(x*20);
 			coordC1Y=(origenY-(y*10)+1230);
-			var x=5;
-			var y=eval(ecuacion);
+			
+			x=5;
+			y=eval(ecuacion);
 			coord2X=origenX+(x*48);
 			coord2Y=origenY-(y*50);
 			$('canvas').drawQuadratic({
@@ -1193,12 +1188,10 @@ const eliminarGrafico = function(){
 }
 
 const eliminarElemento = function(parrafo){
-	var padre;
-	var abuelo;
 	//Obtenemos el padre del parrafo
-	padre=parrafo.parentNode;
+	const  padre=parrafo.parentNode;
 	//Obtenemos el abuelo
-	abuelo=padre.parentNode;
+	const abuelo=padre.parentNode;
 	//A partir del abuelo eliminamos el parrafo, es decir, el padre
 	abuelo.removeChild(padre);
 }
@@ -1241,8 +1234,8 @@ const comenzarAnimacionCramer = function(){
 }
 
 cosnt solCramerOrdenCol = function(col,posX,posY) {
-	var columna=$("#col"+col);
-	var clon=columna.clone();
+	const columna=$("#col"+col);
+	const clon=columna.clone();
 	columna.after(clon);
 	clon.css("position","absolute").animate({
 		marginLeft:posX,
